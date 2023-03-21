@@ -1,0 +1,12 @@
+.app-container {
+  display: grid;
+  grid-template-areas: 
+  "header header"
+  "sidemenu content"
+  "footer footer"
+  ;
+  grid-template-rows: 60px 1fr 60px;
+  grid-template-columns: 2fr 10fr;
+  grid-gap: 10px;
+}
+

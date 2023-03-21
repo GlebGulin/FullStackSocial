@@ -1,0 +1,12 @@
+D:\Learn_Programming\Execution\Core\SOCIAL-BACK\SocialWeb.API\Data.LAYER\bin\Debug\net5.0\Data.LAYER.deps.json
+D:\Learn_Programming\Execution\Core\SOCIAL-BACK\SocialWeb.API\Data.LAYER\bin\Debug\net5.0\Data.LAYER.dll
+D:\Learn_Programming\Execution\Core\SOCIAL-BACK\SocialWeb.API\Data.LAYER\bin\Debug\net5.0\ref\Data.LAYER.dll
+D:\Learn_Programming\Execution\Core\SOCIAL-BACK\SocialWeb.API\Data.LAYER\bin\Debug\net5.0\Data.LAYER.pdb
+D:\Learn_Programming\Execution\Core\SOCIAL-BACK\SocialWeb.API\Data.LAYER\obj\Debug\net5.0\Data.LAYER.csproj.AssemblyReference.cache
+D:\Learn_Programming\Execution\Core\SOCIAL-BACK\SocialWeb.API\Data.LAYER\obj\Debug\net5.0\Data.LAYER.GeneratedMSBuildEditorConfig.editorconfig
+D:\Learn_Programming\Execution\Core\SOCIAL-BACK\SocialWeb.API\Data.LAYER\obj\Debug\net5.0\Data.LAYER.AssemblyInfoInputs.cache
+D:\Learn_Programming\Execution\Core\SOCIAL-BACK\SocialWeb.API\Data.LAYER\obj\Debug\net5.0\Data.LAYER.AssemblyInfo.cs
+D:\Learn_Programming\Execution\Core\SOCIAL-BACK\SocialWeb.API\Data.LAYER\obj\Debug\net5.0\Data.LAYER.csproj.CoreCompileInputs.cache
+D:\Learn_Programming\Execution\Core\SOCIAL-BACK\SocialWeb.API\Data.LAYER\obj\Debug\net5.0\Data.LAYER.dll
+D:\Learn_Programming\Execution\Core\SOCIAL-BACK\SocialWeb.API\Data.LAYER\obj\Debug\net5.0\ref\Data.LAYER.dll
+D:\Learn_Programming\Execution\Core\SOCIAL-BACK\SocialWeb.API\Data.LAYER\obj\Debug\net5.0\Data.LAYER.pdb

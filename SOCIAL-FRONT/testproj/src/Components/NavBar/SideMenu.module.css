@@ -1,0 +1,11 @@
+.SideMenu {
+    grid-area: sidemenu;
+    background-color: chocolate;
+} 
+
+.item {
+    color: blanchedalmond !important;
+}
+.itemLink {
+    color: blanchedalmond !important;
+}
