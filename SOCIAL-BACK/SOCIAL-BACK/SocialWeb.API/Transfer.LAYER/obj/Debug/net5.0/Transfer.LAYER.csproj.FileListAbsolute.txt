@@ -10,3 +10,15 @@ D:\Learn_Programming\Execution\Core\SOCIAL-BACK\SocialWeb.API\Transfer.LAYER\obj
 D:\Learn_Programming\Execution\Core\SOCIAL-BACK\SocialWeb.API\Transfer.LAYER\obj\Debug\net5.0\Transfer.LAYER.dll
 D:\Learn_Programming\Execution\Core\SOCIAL-BACK\SocialWeb.API\Transfer.LAYER\obj\Debug\net5.0\ref\Transfer.LAYER.dll
 D:\Learn_Programming\Execution\Core\SOCIAL-BACK\SocialWeb.API\Transfer.LAYER\obj\Debug\net5.0\Transfer.LAYER.pdb
+E:\LearnProgramming\React\LearnProject1\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\Transfer.LAYER\bin\Debug\net5.0\Transfer.LAYER.deps.json
+E:\LearnProgramming\React\LearnProject1\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\Transfer.LAYER\bin\Debug\net5.0\Transfer.LAYER.dll
+E:\LearnProgramming\React\LearnProject1\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\Transfer.LAYER\bin\Debug\net5.0\ref\Transfer.LAYER.dll
+E:\LearnProgramming\React\LearnProject1\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\Transfer.LAYER\bin\Debug\net5.0\Transfer.LAYER.pdb
+E:\LearnProgramming\React\LearnProject1\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\Transfer.LAYER\obj\Debug\net5.0\Transfer.LAYER.csproj.AssemblyReference.cache
+E:\LearnProgramming\React\LearnProject1\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\Transfer.LAYER\obj\Debug\net5.0\Transfer.LAYER.GeneratedMSBuildEditorConfig.editorconfig
+E:\LearnProgramming\React\LearnProject1\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\Transfer.LAYER\obj\Debug\net5.0\Transfer.LAYER.AssemblyInfoInputs.cache
+E:\LearnProgramming\React\LearnProject1\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\Transfer.LAYER\obj\Debug\net5.0\Transfer.LAYER.AssemblyInfo.cs
+E:\LearnProgramming\React\LearnProject1\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\Transfer.LAYER\obj\Debug\net5.0\Transfer.LAYER.csproj.CoreCompileInputs.cache
+E:\LearnProgramming\React\LearnProject1\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\Transfer.LAYER\obj\Debug\net5.0\Transfer.LAYER.dll
+E:\LearnProgramming\React\LearnProject1\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\Transfer.LAYER\obj\Debug\net5.0\ref\Transfer.LAYER.dll
+E:\LearnProgramming\React\LearnProject1\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\Transfer.LAYER\obj\Debug\net5.0\Transfer.LAYER.pdb
