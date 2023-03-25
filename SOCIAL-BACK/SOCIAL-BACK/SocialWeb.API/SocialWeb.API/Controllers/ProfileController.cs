@@ -15,12 +15,20 @@ namespace SocialWeb.API.Controllers
         {
             _profileService = profileServices;
         }
+
         [Route("get-profile")]
         [HttpGet]
         public async Task<JsonResult> GetProfile()
         {
             var result = await _profileService.GetProfile();
             return Json(result);
+        }
+
+        [Route("my-post")]
+        [HttpGet]
+        public async Task<JsonResult> GetMyPosts()
+        {
+
         }
     }
 }

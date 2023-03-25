@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data.LAYER.Model
+namespace Transfer.LAYER.Enums
 {
-    public class GroupModel
+    public enum ProductEnums
     {
-        public string Id { get; set; }
-        public string Name { get; set; }
-
+        Pending = 0,
+        Active,
+        Rejected
     }
 }

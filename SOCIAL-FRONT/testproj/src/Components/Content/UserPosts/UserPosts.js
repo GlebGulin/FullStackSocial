@@ -1,11 +1,12 @@
-const UserPosts = () => {
+import classes from './UserPosts.module.css';
+
+const UserPosts = (props) => {
     return (
-        <div className="">
-            <div><p>First Post 1</p></div>
-            <div><p>First Post 2</p></div>
-            <div><p>First Post 3</p></div>
-            <div><p>First Post 4</p></div>
-            <div><p>First Post 5</p></div>
+        <div>
+            <p className={classes.author}>Author</p>
+            <p className={classes.postTextContent}>{props.text}</p>
+            <></>
+                
         </div>
     );
 }
