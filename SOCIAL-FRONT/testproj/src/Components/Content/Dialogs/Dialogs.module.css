@@ -1,0 +1,25 @@
+.dialogsContent {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.dialogItem {
+
+}
+
+.active{
+    color: gold !important;
+}
+
+.resident a {
+    text-decoration: none;
+    margin: 20px;
+}
+
+.resident {
+
+}
+
+.dialog {
+
+}

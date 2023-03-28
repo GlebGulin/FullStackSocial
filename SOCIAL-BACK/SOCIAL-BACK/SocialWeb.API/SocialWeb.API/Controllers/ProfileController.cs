@@ -24,11 +24,11 @@ namespace SocialWeb.API.Controllers
             return Json(result);
         }
 
-        [Route("my-post")]
-        [HttpGet]
-        public async Task<JsonResult> GetMyPosts()
-        {
+        //[Route("my-post")]
+        //[HttpGet]
+        //public async Task<JsonResult> GetMyPosts()
+        //{
 
-        }
+        //}
     }
 }

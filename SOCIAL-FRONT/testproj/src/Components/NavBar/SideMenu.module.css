@@ -1,11 +1,13 @@
 .SideMenu {
     grid-area: sidemenu;
-    background-color: chocolate;
+    background-color: rgb(88, 180, 241);
 } 
 
-.item {
-    color: blanchedalmond !important;
+.item a{
+    color: rgb(250, 249, 248);
+    text-decoration: none;
 }
-.itemLink {
-    color: blanchedalmond !important;
+
+.item a.activeLink {
+    color: rgb(112, 96, 3);
 }

@@ -3,7 +3,7 @@ import classes from './NewPost.module.css';
 const NewPost = () => {
     return (
        <div>
-            <textarea></textarea>
+            <textarea></textarea><br />
             <button>Post</button>
         </div>
     );

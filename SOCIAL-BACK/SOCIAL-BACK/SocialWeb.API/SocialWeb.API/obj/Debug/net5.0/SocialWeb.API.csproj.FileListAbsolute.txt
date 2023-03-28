@@ -82,3 +82,16 @@ D:\Learn_Programming\React\testproj\FullStackSocial\SOCIAL-BACK\SOCIAL-BACK\Soci
 D:\Learn_Programming\React\testproj\FullStackSocial\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\SocialWeb.API\obj\Debug\net5.0\ref\SocialWeb.API.dll
 D:\Learn_Programming\React\testproj\FullStackSocial\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\SocialWeb.API\obj\Debug\net5.0\SocialWeb.API.pdb
 D:\Learn_Programming\React\testproj\FullStackSocial\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\SocialWeb.API\obj\Debug\net5.0\SocialWeb.API.genruntimeconfig.cache
+E:\LearnProgramming\React\LearnProject1\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\SocialWeb.API\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\LearnProgramming\React\LearnProject1\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\SocialWeb.API\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
+E:\LearnProgramming\React\LearnProject1\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\SocialWeb.API\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+E:\LearnProgramming\React\LearnProject1\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\SocialWeb.API\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+E:\LearnProgramming\React\LearnProject1\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\SocialWeb.API\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\LearnProgramming\React\LearnProject1\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\SocialWeb.API\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+E:\LearnProgramming\React\LearnProject1\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\SocialWeb.API\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+E:\LearnProgramming\React\LearnProject1\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\SocialWeb.API\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\LearnProgramming\React\LearnProject1\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\SocialWeb.API\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+E:\LearnProgramming\React\LearnProject1\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\SocialWeb.API\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+E:\LearnProgramming\React\LearnProject1\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\SocialWeb.API\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+E:\LearnProgramming\React\LearnProject1\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\SocialWeb.API\bin\Debug\net5.0\Data.LAYER.dll
+E:\LearnProgramming\React\LearnProject1\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\SocialWeb.API\bin\Debug\net5.0\Data.LAYER.pdb

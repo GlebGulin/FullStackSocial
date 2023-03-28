@@ -1,21 +1,37 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 import classes from './SideMenu.module.css';
 const SideMenu = () => {
     return (
         <div className={classes.SideMenu}>
-            Will be sidemenu
+            Menu
             <div className={classes.item}>
-                <a href="/profile" className={classes.itemLink}>My profile</a>
+                <NavLink to="/profile" 
+                    className = { navData => navData.isActive ? classes.activeLink : classes.item }>
+                        My profile
+                </NavLink>
             </div>
+
             <div className={classes.item}>
-                <a href="/messages" className={classes.itemLink}>My messages</a>
+                <NavLink to="/messages" 
+                    className = { navData => navData.isActive ? classes.activeLink : classes.item }>
+                        My messages
+                </NavLink>
             </div>
+
             <div className={classes.item}>
-                <a href="/music" className={classes.itemLink}>My music</a>
+                <NavLink to="/news" 
+                    className = { navData => navData.isActive ? classes.activeLink : classes.item }>
+                        News
+                </NavLink>
             </div>
+
             <div className={classes.item}>
-                <a href="/gallery" className={classes.itemLink}>My photos</a>
+                <NavLink to="/gallery" 
+                    className = { navData => navData.isActive ? classes.activeLink : classes.item }>
+                        My photos
+                </NavLink>
             </div>
         </div>
     );

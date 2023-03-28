@@ -7,6 +7,8 @@ import Footer from './Components/Footer/Footer';
 import Dialogs from './Components/Content/Dialogs/Dialogs';
 import React from 'react';
 import {BrowserRouter, Route, Routes } from 'react-router-dom';
+import News from './Components/Content/News/News';
+import Gallery from './Components/Content/Gallery/Gallery';
 
 function App() {
   return (
@@ -15,9 +17,11 @@ function App() {
         <Header />
         <SideMenu />
         <div className="content-container">
-        <Routes>
-          <Route path="profile" element={<MainContent />} />
-          <Route path="messages" element={<Dialogs />} />
+          <Routes>
+            <Route path="profile" element={<MainContent />} />
+            <Route path="messages/*" element={<Dialogs />} />
+            <Route path="news" element={<News />} />
+            <Route path="gallery" element={<Gallery />} />
           </Routes>
         </div>
         <Footer />

@@ -1,15 +1,16 @@
 import UserPosts from './UserPosts/UserPosts';
 import NewPost from './NewPost/NewPost';
+import Profile from './Profile/Profile';
 
 import st from './Content.module.css';
 
 const MainContent = () => {
     return(
         <div>
-            <p>Will be main content</p>
-            <img src="https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg?auto=compress&cs=tinysrgb&w=600"/>
+            <Profile />
             <NewPost />
-            <UserPosts text="Message number one"/>
+            <UserPosts text="Message number one" author='Author 1'/>
+            <UserPosts text="Message number two" author='Author 2'/>
         </div>
     );
 }
