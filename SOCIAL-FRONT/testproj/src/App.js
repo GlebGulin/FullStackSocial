@@ -15,9 +15,9 @@ function App() {
         <Header />
         <SideMenu />
         <div className="content-container">
-        <Routes>
-          <Route path="profile" element={<MainContent />} />
-          <Route path="messages" element={<Dialogs />} />
+          <Routes>
+            <Route path="profile" element={<MainContent />} />
+            <Route path="messages" element={<Dialogs />} />
           </Routes>
         </div>
         <Footer />

@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 import classes from './SideMenu.module.css';
 const SideMenu = () => {
@@ -6,16 +7,16 @@ const SideMenu = () => {
         <div className={classes.SideMenu}>
             Will be sidemenu
             <div className={classes.item}>
-                <a href="/profile" className={classes.itemLink}>My profile</a>
+                <NavLink to="/profile" className={classes.itemLink}>My profile</NavLink>
             </div>
             <div className={classes.item}>
-                <a href="/messages" className={classes.itemLink}>My messages</a>
+                <NavLink to="/messages" className={classes.itemLink}>My messages</NavLink>
             </div>
             <div className={classes.item}>
-                <a href="/music" className={classes.itemLink}>My music</a>
+                <NavLink to="/music" className={classes.itemLink}>My music</NavLink>
             </div>
             <div className={classes.item}>
-                <a href="/gallery" className={classes.itemLink}>My photos</a>
+                <NavLink to="/gallery" className={classes.itemLink}>My photos</NavLink>
             </div>
         </div>
     );
