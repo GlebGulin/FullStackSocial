@@ -12,4 +12,11 @@ namespace Transfer.LAYER.Enums
         Active,
         Rejected
     }
+
+    public enum Result
+    {
+        Ok = 0,
+        BadRequest, 
+        NotFound
+    }
 }

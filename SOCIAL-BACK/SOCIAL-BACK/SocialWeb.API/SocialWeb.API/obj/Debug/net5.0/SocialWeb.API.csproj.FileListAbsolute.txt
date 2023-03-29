@@ -95,3 +95,16 @@ E:\LearnProgramming\React\LearnProject1\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\So
 E:\LearnProgramming\React\LearnProject1\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\SocialWeb.API\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
 E:\LearnProgramming\React\LearnProject1\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\SocialWeb.API\bin\Debug\net5.0\Data.LAYER.dll
 E:\LearnProgramming\React\LearnProject1\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\SocialWeb.API\bin\Debug\net5.0\Data.LAYER.pdb
+D:\Learn_Programming\React\testproj\FullStackSocial\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\SocialWeb.API\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Learn_Programming\React\testproj\FullStackSocial\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\SocialWeb.API\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
+D:\Learn_Programming\React\testproj\FullStackSocial\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\SocialWeb.API\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Learn_Programming\React\testproj\FullStackSocial\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\SocialWeb.API\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+D:\Learn_Programming\React\testproj\FullStackSocial\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\SocialWeb.API\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Learn_Programming\React\testproj\FullStackSocial\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\SocialWeb.API\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+D:\Learn_Programming\React\testproj\FullStackSocial\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\SocialWeb.API\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+D:\Learn_Programming\React\testproj\FullStackSocial\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\SocialWeb.API\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Learn_Programming\React\testproj\FullStackSocial\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\SocialWeb.API\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+D:\Learn_Programming\React\testproj\FullStackSocial\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\SocialWeb.API\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+D:\Learn_Programming\React\testproj\FullStackSocial\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\SocialWeb.API\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+D:\Learn_Programming\React\testproj\FullStackSocial\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\SocialWeb.API\bin\Debug\net5.0\Data.LAYER.dll
+D:\Learn_Programming\React\testproj\FullStackSocial\SOCIAL-BACK\SOCIAL-BACK\SocialWeb.API\SocialWeb.API\bin\Debug\net5.0\Data.LAYER.pdb

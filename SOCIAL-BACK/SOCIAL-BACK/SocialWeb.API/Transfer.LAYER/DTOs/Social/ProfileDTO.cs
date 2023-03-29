@@ -1,8 +1,9 @@
 ﻿using System;
+using Transfer.LAYER.DTOs.Common;
 
 namespace Transfer.LAYER
 {
-    public class ProfileDTO
+    public class ProfileDTO : BaseDto
     {
         public string Id { get; set; }
         public string FirstName { get; set; }

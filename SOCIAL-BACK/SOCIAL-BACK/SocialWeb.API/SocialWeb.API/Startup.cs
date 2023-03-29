@@ -32,7 +32,8 @@ namespace SocialWeb.API
         {
             services.AddControllers();
             services
-               .AddSingleton<IProfileServices, ProfileServices>();
+               .AddTransient<IProfileServices, ProfileServices>()
+               .AddTransient<IAuthService, AuthService>();
             var globalSettingsSection = Configuration.GetSection("GlobalSettings");
             var globalSettings = globalSettingsSection.Get<GlobalSettings>();
             var key = Encoding.ASCII.GetBytes(globalSettings.Secret);
