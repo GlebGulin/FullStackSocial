@@ -63,6 +63,7 @@ const Dialogs = () => {
     let messageElements = messageData.map(mess => 
         (<MessageItem id={mess.id} 
                     message={mess.message} date={mess.date}/>))
+    debugger;
     return (
         <div className={st.dialogsContent}>
             <div className={st.resident}>

@@ -1,6 +1,7 @@
 import React from "react";
 
 const MessageItem = (props) => {
+    debugger;
     let id="message-" + props.id;
     return(<div>
         <p id={id}>{props.message}</p>

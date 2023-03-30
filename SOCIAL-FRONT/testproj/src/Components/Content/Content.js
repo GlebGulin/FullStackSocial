@@ -1,5 +1,5 @@
-import UserPosts from './UserPosts/UserPosts';
-import NewPost from './NewPost/NewPost';
+import UserPosts from './Post/UserPosts/UserPosts';
+import NewPost from './Post/NewPost/NewPost';
 import Profile from './Profile/Profile';
 
 import st from './Content.module.css';
