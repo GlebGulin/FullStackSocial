@@ -10,19 +10,19 @@ let data = {};
 //         this.setState({ persons });
 //     })
 // }
-let fullname = {
-    firstName : 'Henk',
-    lastName : 'Duglas'
-}
 
-const Profile = () => {
+const Profile = (props) => {
+    debugger;
     return (
         <div>
             <div>
-                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF2FqTQbw1nYLs0-rj4_c7vLOhtemYtQtm5m4v-DBTmQ&s' width='100px'/>
+                <img src={props.profileData.preview} width='100px'/>
             </div>
             <div>
-                <p>{fullname.firstName} {fullname.lastName}</p>
+                <p>{props.profileData.firstName} {props.profileData.lastName}</p>
+            </div>
+            <div>
+                <p>{props.profileData.age}</p>
             </div>
         </div>
     )

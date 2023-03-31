@@ -22,45 +22,13 @@ import DialogItem from './DialogItems/DialogItem';
 //     </div>)
 // }
 
-const Dialogs = () => {
-    let dialogData = [
-        {
-            id : 1,
-            name : 'First Name'
-        },
-        {
-            id : 2,
-            name : 'Second Name'
-        },
-        {
-            id : 3,
-            name : 'Third Name'
-        },
-    ];
-
-    let dialogElements = dialogData.map(el => 
+const Dialogs = (props) => {
+    debugger;
+    let dialogElements = props.dialogItems.map(el => 
         (<DialogItem id={el.id} 
                      name={el.name}/>));
 
-    let messageData = [
-        {
-            id : 1,
-            message : 'First message',
-            date: '02-02-1982'
-        },
-        {
-            id : 2,
-            message : 'Second message',
-            date : '03-03-1995'
-        },
-        {
-            id : 3,
-            message : 'Third message',
-            date : '12-12-2005'
-        },
-    ];
-
-    let messageElements = messageData.map(mess => 
+    let messageElements = props.messageData.map(mess => 
         (<MessageItem id={mess.id} 
                     message={mess.message} date={mess.date}/>))
     debugger;

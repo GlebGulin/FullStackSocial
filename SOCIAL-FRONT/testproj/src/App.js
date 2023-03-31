@@ -10,18 +10,20 @@ import {BrowserRouter, Route, Routes } from 'react-router-dom';
 import News from './Components/Content/News/News';
 import Gallery from './Components/Content/Gallery/Gallery';
 
-function App() {
+const App = (props) => {
+  debugger;
   return (
+   
     <BrowserRouter>
       <div className="app-container">
         <Header />
         <SideMenu />
         <div className="content-container">
           <Routes>
-            <Route path="profile" element={<MainContent />} />
-            <Route path="messages/*" element={<Dialogs />} />
+            <Route path="profile" element={<MainContent profileData={props.profileData} posts={props.posts}/>} />
+            <Route path="messages/*" element={<Dialogs dialogItems={props.dialogItems} messageData={props.messageData}/>} />
             <Route path="news" element={<News />} />
-            <Route path="gallery" element={<Gallery />} />
+            <Route path="gallery" element={<Gallery myGalleryImages={props.myGalleryImages}/>} />
           </Routes>
         </div>
         <Footer />
