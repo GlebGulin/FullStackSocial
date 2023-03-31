@@ -20,10 +20,10 @@ const App = (props) => {
         <SideMenu />
         <div className="content-container">
           <Routes>
-            <Route path="profile" element={<MainContent profileData={props.profileData} posts={props.posts}/>} />
-            <Route path="messages/*" element={<Dialogs dialogItems={props.dialogItems} messageData={props.messageData}/>} />
+            <Route path="profile" element={<MainContent profileData={props.state.profileSection.profileData} posts={props.state.profileSection.posts}/>} />
+            <Route path="messages/*" element={<Dialogs dialogItems={props.state.messageSection.dialogItems} messageData={props.state.messageSection.messageData}/>} />
             <Route path="news" element={<News />} />
-            <Route path="gallery" element={<Gallery myGalleryImages={props.myGalleryImages}/>} />
+            <Route path="gallery" element={<Gallery myGalleryImages={props.state.gallerySection.myGalleryImages}/>} />
           </Routes>
         </div>
         <Footer />
