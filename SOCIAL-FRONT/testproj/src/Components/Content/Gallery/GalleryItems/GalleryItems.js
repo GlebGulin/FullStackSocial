@@ -9,4 +9,5 @@ const GalleryItems = (props) => {
     </div>)
 }
 
+
 export default GalleryItems

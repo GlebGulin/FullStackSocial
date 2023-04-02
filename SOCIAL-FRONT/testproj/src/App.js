@@ -9,18 +9,23 @@ import React from 'react';
 import {BrowserRouter, Route, Routes } from 'react-router-dom';
 import News from './Components/Content/News/News';
 import Gallery from './Components/Content/Gallery/Gallery';
+import { addNewPost } from './BLL/State/State';
+import { changeStatePost } from './BLL/State/State';
 
 const App = (props) => {
   debugger;
   return (
-   
-    <BrowserRouter>
+    // <BrowserRouter>
       <div className="app-container">
         <Header />
         <SideMenu />
         <div className="content-container">
           <Routes>
-            <Route path="profile" element={<MainContent profileData={props.state.profileSection.profileData} posts={props.state.profileSection.posts}/>} />
+            <Route path="profile" element={<MainContent profileData={props.state.profileSection.profileData} 
+              posts={props.state.profileSection.posts} 
+              addNewPost={addNewPost} 
+              changeStatePost = {changeStatePost}
+              />} />
             <Route path="messages/*" element={<Dialogs dialogItems={props.state.messageSection.dialogItems} messageData={props.state.messageSection.messageData}/>} />
             <Route path="news" element={<News />} />
             <Route path="gallery" element={<Gallery myGalleryImages={props.state.gallerySection.myGalleryImages}/>} />
@@ -28,7 +33,7 @@ const App = (props) => {
         </div>
         <Footer />
       </div>
-      </BrowserRouter>
+    // </BrowserRouter>
    
   );
 }

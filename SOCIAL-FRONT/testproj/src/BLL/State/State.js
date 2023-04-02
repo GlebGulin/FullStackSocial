@@ -1,3 +1,7 @@
+import ReRender from "../../Render/render";
+
+let baseUrl = 'https://fdhgfhgf'
+
 let state = {
     profileSection : {
         profileData : {
@@ -6,21 +10,22 @@ let state = {
             lastName : "Malkovich",
             preview : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF2FqTQbw1nYLs0-rj4_c7vLOhtemYtQtm5m4v-DBTmQ&s',
             age : 34
-          },
-          posts : [
+        },
+        posts : [
             {
-              id : 1,
+              id : 0,
               text : 'Message number one',
               author: 'Author',
               date : '05-05-1988'
             },
             {
-                id : 2,
+                id : 1,
                 text : 'Message number two',
                 author: 'Author555',
                 date : '05-05-1990'
             }
-        ]
+        ],
+        currentPost : ""
     },
 
     messageSection : {
@@ -71,5 +76,26 @@ let state = {
         ]
     }
 };
+
+export let addNewPost = (message) => {
+    debugger;
+    let count = state.profileSection.posts.length;
+    let id = count - 1;
+    let newPost = {
+        id : id,
+        text : message,
+        author : "Me",
+        date : '05-05-2022'
+    }
+    state.profileSection.posts.push(newPost);
+    // alert('try add post ' + message);
+    ReRender(state);
+}
+
+export let changeStatePost = (message) => {
+    state.profileSection.profileData.currentPost = message;
+}
+
+
 
 export default state;

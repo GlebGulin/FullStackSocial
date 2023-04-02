@@ -4,21 +4,27 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import state from './BLL/State/State';
+import ReRender from './Render/render';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+ReRender(state);
 
-root.render(
-  <React.StrictMode>
-    <App 
-      state = {state}
-      // dialogItems={state.dialogItems} 
-      // messageData={state.messageData} 
-      // myGalleryImages={state.myGalleryImages} 
-      // profileData={state.profileData}
-      // posts = {state.posts}
-      />
-  </React.StrictMode>
-);
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+
+// root.render(
+//   // <React.StrictMode>
+//   // <BrowserRouter>
+
+//     <App 
+//       state = {state} 
+//       // dialogItems={state.dialogItems} 
+//       // messageData={state.messageData} 
+//       // myGalleryImages={state.myGalleryImages} 
+//       // profileData={state.profileData}
+//       // posts = {state.posts}
+//       />
+//       // </BrowserRouter>
+//   // </React.StrictMode>
+// );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

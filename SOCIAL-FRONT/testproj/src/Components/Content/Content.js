@@ -30,7 +30,9 @@ const MainContent = (props) => {
     return(
         <div>
             <Profile profileData={props.profileData}/>
-            <NewPost />
+            <NewPost 
+            addNewPost={props.addNewPost}
+            />
             {postsElement}
         </div>
     );
