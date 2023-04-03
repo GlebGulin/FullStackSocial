@@ -77,25 +77,27 @@ let state = {
     }
 };
 
-export let addNewPost = (message) => {
+export let addNewPost = () => {
     debugger;
     let count = state.profileSection.posts.length;
     let id = count - 1;
     let newPost = {
         id : id,
-        text : message,
+        text : state.profileSection.currentPost,
         author : "Me",
         date : '05-05-2022'
     }
     state.profileSection.posts.push(newPost);
     // alert('try add post ' + message);
+    state.profileSection.currentPost = "";
     ReRender(state);
 }
 
 export let changeStatePost = (message) => {
-    state.profileSection.profileData.currentPost = message;
+    // alert(message)
+    console.log(message);
+    state.profileSection.currentPost = message;
+    ReRender(state);
 }
-
-
 
 export default state;

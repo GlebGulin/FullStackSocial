@@ -23,6 +23,7 @@ const App = (props) => {
           <Routes>
             <Route path="profile" element={<MainContent profileData={props.state.profileSection.profileData} 
               posts={props.state.profileSection.posts} 
+              currentPost = {props.state.profileSection.currentPost}
               addNewPost={addNewPost} 
               changeStatePost = {changeStatePost}
               />} />

@@ -32,6 +32,8 @@ const MainContent = (props) => {
             <Profile profileData={props.profileData}/>
             <NewPost 
             addNewPost={props.addNewPost}
+            changeStatePost = {props.changeStatePost}
+            currentPost = {props.currentPost}
             />
             {postsElement}
         </div>
