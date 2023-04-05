@@ -2,6 +2,10 @@ import ReRender from "../../Render/render";
 
 let baseUrl = 'https://fdhgfhgf'
 
+let ReRenderTree = () => {
+    console.log('Temporary rerender');
+}
+
 let state = {
     profileSection : {
         profileData : {
@@ -90,14 +94,18 @@ export let addNewPost = () => {
     state.profileSection.posts.push(newPost);
     // alert('try add post ' + message);
     state.profileSection.currentPost = "";
-    ReRender(state);
+    ReRenderTree(state);
 }
 
 export let changeStatePost = (message) => {
     // alert(message)
     console.log(message);
     state.profileSection.currentPost = message;
-    ReRender(state);
+    ReRenderTree(state);
+}
+
+export let Subscribe = (observer) => {
+    ReRenderTree = observer;
 }
 
 export default state;
