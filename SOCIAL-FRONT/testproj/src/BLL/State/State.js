@@ -86,7 +86,7 @@ let store = {
         console.log('Temporary rerender. Store was changed');
     },
 
-    addNewPost(){
+    _addNewPost(){
         debugger;
         let count = this._state.profileSection.posts.length;
         let id = count - 1;
@@ -102,13 +102,44 @@ let store = {
         this.ReRenderTree(this._state);
     },
 
-    changeStatePost(message){
+    _changeStatePost(message){
         // alert(message)
         debugger;
         console.log(message);
         console.log(this);
         this._state.profileSection.currentPost = message;
         this.ReRenderTree(this._state);
+    },
+
+    dispatch(action){
+        debugger;
+        switch (action.type) {
+            case "ADD-NEW-POST":
+                this._addNewPost();
+                // debugger;
+                // let count = this._state.profileSection.posts.length;
+                // let id = count - 1;
+                // let newPost = {
+                //     id : id,
+                //     text : this._state.profileSection.currentPost,
+                //     author : "Me",
+                //     date : '05-05-2022'
+                // }
+                // this._state.profileSection.posts.push(newPost);
+                // // alert('try add post ' + message);
+                // this._state.profileSection.currentPost = "";
+                // this.ReRenderTree(this._state);
+                break;
+
+            case "UPDATE-CURRENT-POST":
+                // debugger;
+                // console.log(action.message);
+                // console.log(this);
+                // this._state.profileSection.currentPost = action.message;
+                // this.ReRenderTree(this._state);
+                this._changeStatePost(action.message)
+                break;
+        }
     },
 
     getProfileState(){

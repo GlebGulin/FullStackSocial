@@ -11,14 +11,24 @@ const NewPost = (props) => {
     let addPost = () => {
         debugger;
         newPostElement.current.value = '';
-        props.addNewPost();
+        let action = {
+            type : "ADD-NEW-POST"
+        }
+        // props.addNewPost();
+        props.dispatch(action);
         // alert(newPostText);
     }
     let changePostText = () => {
         debugger;
         let newPostText = newPostElement.current.value;
+        let action = {
+           message : newPostText,
+           type : "UPDATE-CURRENT-POST"
+        };
         // console.log(newPostElement);
-        props.changeStatePost(newPostText);
+
+        // props.changeStatePost(newPostText);
+        props.dispatch(action);
         // alert("Was changed");
     }
 

@@ -9,8 +9,9 @@ import store from './BLL/State/State';
 import ReRender from './Render/render';
 import {BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Subscribe } from './BLL/State/State';
-import { addNewPost } from './BLL/State/State';
-import { changeStatePost } from './BLL/State/State';
+// import { addNewPost } from './BLL/State/State';
+// import { changeStatePost } from './BLL/State/State';
+import { dispatch } from './BLL/State/State';
 
 // ReRender(state);
 
@@ -51,11 +52,15 @@ let ReRenderTree = (st) => {
       state = {store.getAllState()} 
       // addNewPost= {addNewPost}
       // changeStatePost = {changeStatePost}
+
       // addNewPost= {store.addNewPost}
       // changeStatePost = {store.changeStatePost}
+
       //bind with context of store
-      addNewPost= {store.addNewPost.bind(store)}
-      changeStatePost = {store.changeStatePost.bind(store)}
+      // addNewPost= {store.addNewPost.bind(store)}
+      // changeStatePost = {store.changeStatePost.bind(store)}
+
+      dispatch = {store.dispatch.bind(store)}
       />
     </BrowserRouter>, document.getElementById('root'));
 }
