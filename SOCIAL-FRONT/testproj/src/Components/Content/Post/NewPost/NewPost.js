@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './NewPost.module.css';
-
-
+import { addNewPostActionCreator } from './../../../../BLL/State/State';
+import { updateCurrentPostCreator } from './../../../../BLL/State/State';
 
 const NewPost = (props) => {
     debugger;
@@ -11,24 +11,24 @@ const NewPost = (props) => {
     let addPost = () => {
         debugger;
         newPostElement.current.value = '';
-        let action = {
-            type : "ADD-NEW-POST"
-        }
+        // let action = {
+        //     type : "ADD-NEW-POST"
+        // }
         // props.addNewPost();
-        props.dispatch(action);
+        props.dispatch(addNewPostActionCreator());
         // alert(newPostText);
     }
     let changePostText = () => {
         debugger;
         let newPostText = newPostElement.current.value;
-        let action = {
-           message : newPostText,
-           type : "UPDATE-CURRENT-POST"
-        };
+        // let action = {
+        //    message : newPostText,
+        //    type : "UPDATE-CURRENT-POST"
+        // };
         // console.log(newPostElement);
 
         // props.changeStatePost(newPostText);
-        props.dispatch(action);
+        props.dispatch(updateCurrentPostCreator(newPostText));
         // alert("Was changed");
     }
 

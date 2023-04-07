@@ -1,6 +1,17 @@
 import ReRender from "../../Render/render";
+//#region common
+const baseUrl = 'https://fdhgfhgf'
+//#endregion common
 
-let baseUrl = 'https://fdhgfhgf'
+//#region ProfilePage
+const UPDATE_CURRENT_POST = 'UPDATE_CURRENT_POST';
+const ADD_NEW_POST = 'ADD_NEW_POST';
+//#endregion ProfilePage 
+
+//#region DialogPage
+const UPDATE_CURRENT_MESSAGE = 'UPDATE_CURRENT_MESSAGE';
+const ADD_NEW_MESSAGE = 'ADD_NEW_MESSAGE';
+//#endregion DialogPage
 
 // Moved to store
 // let ReRenderTree = () => {
@@ -67,6 +78,7 @@ let store = {
                     date : '12-12-2005'
                 },
             ],
+            currentMessage : ""
         },
         gallerySection : {
             myGalleryImages : [
@@ -89,12 +101,20 @@ let store = {
     _addNewPost(){
         debugger;
         let count = this._state.profileSection.posts.length;
-        let id = count - 1;
+        let id = count;
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+
+        today = mm + '-' + dd + '-' + yyyy;
+        console.log(today);
+
         let newPost = {
             id : id,
-            text : this._state.profileSection.currentPost,
+            message : this._state.profileSection.currentPost,
             author : "Me",
-            date : '05-05-2022'
+            date : today
         }
         this._state.profileSection.posts.push(newPost);
         // alert('try add post ' + message);
@@ -111,10 +131,35 @@ let store = {
         this.ReRenderTree(this._state);
     },
 
+    _addNewMessage(){
+        debugger;
+        let count = this._state.messageSection.messageData.length;
+        let id = count;
+        let dialogMessage = {
+            id : id,
+            message : this._state.messageSection.currentMessage,
+            author : "Me",
+            date : '05-05-2022'
+        }
+        this._state.messageSection.messageData.push(dialogMessage);
+        // alert('try add post ' + message);
+        this._state.messageSection.currentMessage = "";
+        this.ReRenderTree(this._state);
+    },
+
+    _changeStateMessage(message){
+        // alert(message)
+        debugger;
+        console.log(message);
+        console.log(this);
+        this._state.messageSection.currentMessage = message;
+        this.ReRenderTree(this._state);
+    },
+
     dispatch(action){
         debugger;
         switch (action.type) {
-            case "ADD-NEW-POST":
+            case ADD_NEW_POST:
                 this._addNewPost();
                 // debugger;
                 // let count = this._state.profileSection.posts.length;
@@ -131,7 +176,7 @@ let store = {
                 // this.ReRenderTree(this._state);
                 break;
 
-            case "UPDATE-CURRENT-POST":
+            case UPDATE_CURRENT_POST:
                 // debugger;
                 // console.log(action.message);
                 // console.log(this);
@@ -139,6 +184,11 @@ let store = {
                 // this.ReRenderTree(this._state);
                 this._changeStatePost(action.message)
                 break;
+            case ADD_NEW_MESSAGE:
+                this._addNewMessage();
+                break;
+            case UPDATE_CURRENT_MESSAGE:
+                this._changeStateMessage(action.message);
         }
     },
 
@@ -268,5 +318,39 @@ let store = {
 // export let Subscribe = (observer) => {
 //     ReRenderTree = observer;
 // }
+
+//#region ActionCreator
+//#region ProfilePage
+export const addNewPostActionCreator = () => {
+    return {
+        type : ADD_NEW_POST
+    }
+}
+
+export const updateCurrentPostCreator = (message) => {
+    return {
+        type : UPDATE_CURRENT_POST,
+        message : message
+    }
+}
+//#endregion ProfilePage
+
+//#region DialogPage
+export const addNewMessageActionCreator = () => {
+    return {
+        type : ADD_NEW_MESSAGE
+    }
+}
+
+export const updateCurrentMessageCreator = (message) => {
+    debugger;
+    return {
+        type : UPDATE_CURRENT_MESSAGE,
+        message : message
+    }
+}
+//#endregion DialogPage
+
+//#endregion ActionCreator
 
 export default store;

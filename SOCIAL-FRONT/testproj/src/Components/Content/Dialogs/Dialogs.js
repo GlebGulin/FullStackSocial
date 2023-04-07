@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import st from './Dialogs.module.css';
 import MessageItem from './MessagesItems/MessageItem';
 import DialogItem from './DialogItems/DialogItem';
+import NewMessage from './NewMessage/NewMessage';
 
 
 
@@ -23,7 +24,7 @@ import DialogItem from './DialogItems/DialogItem';
 // }
 
 const Dialogs = (props) => {
-    debugger;
+    // debugger;
     let dialogElements = props.dialogItems.map(el => 
         (<DialogItem id={el.id} 
                      name={el.name}/>));
@@ -56,6 +57,7 @@ const Dialogs = (props) => {
                 {/* <MessageItem id='1' message='Hi' />
                 <MessageItem id='2' message='Hi 1' />
                 <MessageItem id='3' message='Hi 2' /> */}
+                < NewMessage dispatch={props.dispatch}/>
             </div>
         </div>
     );

@@ -30,7 +30,11 @@ const App = (props) => {
                 // changeStatePost = {props.changeStatePost}
                 dispatch = {props.dispatch}
               />} />
-            <Route path="messages/*" element={<Dialogs dialogItems={props.state.messageSection.dialogItems} messageData={props.state.messageSection.messageData}/>} />
+            <Route path="messages/*" element={<Dialogs 
+              dialogItems={props.state.messageSection.dialogItems} 
+              messageData={props.state.messageSection.messageData}
+              dispatch = {props.dispatch}
+              />} />
             <Route path="news" element={<News />} />
             <Route path="gallery" element={<Gallery myGalleryImages={props.state.gallerySection.myGalleryImages}/>} />
           </Routes>
