@@ -1,7 +1,7 @@
 import style from './NewMessage.module.css';
 import React from 'react';
-import { addNewMessageActionCreator } from './../../../../BLL/State/State';
-import { updateCurrentMessageCreator } from './../../../../BLL/State/State';
+import { addNewMessageActionCreator } from '../../../../BLL/State/store';
+import { updateCurrentMessageCreator } from '../../../../BLL/State/store';
 
 const NewMessage = (props) => {
     let newMessageElement = React.createRef();

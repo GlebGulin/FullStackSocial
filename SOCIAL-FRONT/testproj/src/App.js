@@ -9,8 +9,8 @@ import React from 'react';
 import {BrowserRouter, Route, Routes } from 'react-router-dom';
 import News from './Components/Content/News/News';
 import Gallery from './Components/Content/Gallery/Gallery';
-import { addNewPost } from './BLL/State/State';
-import { changeStatePost } from './BLL/State/State';
+import { addNewPost } from './BLL/State/store';
+import { changeStatePost } from './BLL/State/store';
 
 const App = (props) => {
   debugger;
@@ -23,20 +23,20 @@ const App = (props) => {
           <Routes>
             <Route path="profile" 
               element={<MainContent 
-                profileData={props.state.profileSection.profileData} 
-                posts={props.state.profileSection.posts} 
-                currentPost = {props.state.profileSection.currentPost}
+                profileData={props.state.profilePage.profileData} 
+                posts={props.state.profilePage.posts} 
+                currentPost = {props.state.profilePage.currentPost}
                 // addNewPost={props.addNewPost} 
                 // changeStatePost = {props.changeStatePost}
                 dispatch = {props.dispatch}
               />} />
             <Route path="messages/*" element={<Dialogs 
-              dialogItems={props.state.messageSection.dialogItems} 
-              messageData={props.state.messageSection.messageData}
+              dialogItems={props.state.dialogPage.dialogItems} 
+              messageData={props.state.dialogPage.messageData}
               dispatch = {props.dispatch}
               />} />
             <Route path="news" element={<News />} />
-            <Route path="gallery" element={<Gallery myGalleryImages={props.state.gallerySection.myGalleryImages}/>} />
+            <Route path="gallery" element={<Gallery myGalleryImages={props.state.galleryPage.myGalleryImages}/>} />
           </Routes>
         </div>
         <Footer />

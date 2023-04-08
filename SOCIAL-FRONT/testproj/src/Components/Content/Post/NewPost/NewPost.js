@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './NewPost.module.css';
-import { addNewPostActionCreator } from './../../../../BLL/State/State';
-import { updateCurrentPostCreator } from './../../../../BLL/State/State';
+import { addNewPostActionCreator } from '../../../../BLL/State/store';
+import { updateCurrentPostCreator } from '../../../../BLL/State/store';
 
 const NewPost = (props) => {
     debugger;

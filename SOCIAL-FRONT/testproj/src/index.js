@@ -5,13 +5,19 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 //state moved to store
 // import state from './BLL/State/State';
-import store from './BLL/State/State';
+
+//Custom Store. Now we get redux store
+// import store from './BLL/State/store';
+
+//Use redux-store
+import store from './BLL/Store/redux-store';
+
 import ReRender from './Render/render';
 import {BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Subscribe } from './BLL/State/State';
+import { Subscribe } from './BLL/State/store';
 // import { addNewPost } from './BLL/State/State';
 // import { changeStatePost } from './BLL/State/State';
-import { dispatch } from './BLL/State/State';
+import { dispatch } from './BLL/State/store';
 
 // ReRender(state);
 
@@ -49,7 +55,7 @@ let ReRenderTree = (st) => {
     
     <BrowserRouter>
      <App 
-      state = {store.getAllState()} 
+      state = {st} 
       // addNewPost= {addNewPost}
       // changeStatePost = {changeStatePost}
 
@@ -65,6 +71,10 @@ let ReRenderTree = (st) => {
     </BrowserRouter>, document.getElementById('root'));
 }
 
-ReRenderTree(store.getAllState());
-store.Subscribe(ReRenderTree);
+ReRenderTree(store.getState());
+store.subscribe(() => 
+{
+  let state = store.getState();
+  ReRenderTree(state);
+});
 reportWebVitals();
