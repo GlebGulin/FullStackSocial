@@ -4,6 +4,7 @@ const baseUrl = 'https://fdhgfhgf'
 //#endregion common
 
 //#region ProfilePage
+//wib be removed to resuced
 const UPDATE_CURRENT_POST = 'UPDATE_CURRENT_POST';
 const ADD_NEW_POST = 'ADD_NEW_POST';
 //#endregion ProfilePage 
