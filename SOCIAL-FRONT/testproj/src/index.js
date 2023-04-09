@@ -56,6 +56,7 @@ let ReRenderTree = (st) => {
     <BrowserRouter>
      <App 
       state = {st} 
+      store = {store}
       // addNewPost= {addNewPost}
       // changeStatePost = {changeStatePost}
 

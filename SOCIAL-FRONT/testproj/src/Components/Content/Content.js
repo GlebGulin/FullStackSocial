@@ -3,6 +3,7 @@ import NewPost from './Post/NewPost/NewPost';
 import Profile from './Profile/Profile';
 
 import st from './Content.module.css';
+import NewPostContainer from './Post/NewPost/NewPostContainer';
 
 // let posts = [
 //     {
@@ -30,11 +31,12 @@ const MainContent = (props) => {
     return(
         <div>
             <Profile profileData={props.profileData}/>
-            <NewPost 
+            <NewPostContainer 
             // addNewPost={props.addNewPost}
             // changeStatePost = {props.changeStatePost}
             dispatch = { props.dispatch }
             currentPost = {props.currentPost}
+            store = {props.store}
             />
             {postsElement}
         </div>

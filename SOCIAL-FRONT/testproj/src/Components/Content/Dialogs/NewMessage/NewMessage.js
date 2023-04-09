@@ -5,22 +5,24 @@ import { updateCurrentMessageCreator } from '../../../../BLL/State/store';
 
 const NewMessage = (props) => {
     let newMessageElement = React.createRef();
-    let addNewMesage = () => {
+    let onAddNewMesage = () => {
         debugger;
         newMessageElement.current.value = '';
-        props.dispatch(addNewMessageActionCreator());
+        // props.dispatch(addNewMessageActionCreator());
+        props.addNewMesage();
     }
 
-    let changeCurrentMessage = () => {
+    let onChangeCurrentMessage = () => {
         debugger;
         let messageCurrent = newMessageElement.current.value;
-        props.dispatch(updateCurrentMessageCreator(messageCurrent));
+        // props.dispatch(updateCurrentMessageCreator(messageCurrent));
+        props.changeCurrentMessage(messageCurrent);
     }
 
     return (
     <div>
-        <textarea ref={newMessageElement} onChange={changeCurrentMessage}></textarea> <br></br>
-        <button onClick={addNewMesage}>Add message</button>
+        <textarea ref={newMessageElement} onChange={onChangeCurrentMessage}></textarea> <br></br>
+        <button onClick={onAddNewMesage}>Add message</button>
     </div>)
 }
 

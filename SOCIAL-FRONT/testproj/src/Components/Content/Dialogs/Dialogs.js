@@ -3,6 +3,7 @@ import st from './Dialogs.module.css';
 import MessageItem from './MessagesItems/MessageItem';
 import DialogItem from './DialogItems/DialogItem';
 import NewMessage from './NewMessage/NewMessage';
+import NewMessageContainer from './NewMessage/NewMessageContainer';
 
 
 
@@ -24,7 +25,7 @@ import NewMessage from './NewMessage/NewMessage';
 // }
 
 const Dialogs = (props) => {
-    // debugger;
+    debugger;
     let dialogElements = props.dialogItems.map(el => 
         (<DialogItem id={el.id} 
                      name={el.name}/>));
@@ -57,7 +58,8 @@ const Dialogs = (props) => {
                 {/* <MessageItem id='1' message='Hi' />
                 <MessageItem id='2' message='Hi 1' />
                 <MessageItem id='3' message='Hi 2' /> */}
-                < NewMessage dispatch={props.dispatch}/>
+                {/* < NewMessage dispatch={props.dispatch}/> */}
+                < NewMessageContainer dispatch={props.dispatch} store={props.store}/>
             </div>
         </div>
     );

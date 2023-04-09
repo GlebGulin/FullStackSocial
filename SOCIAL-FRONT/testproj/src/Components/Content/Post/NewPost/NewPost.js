@@ -1,24 +1,23 @@
 import React from 'react';
 import classes from './NewPost.module.css';
-import { addNewPostActionCreator } from '../../../../BLL/State/store';
-import { updateCurrentPostCreator } from '../../../../BLL/State/store';
 
 const NewPost = (props) => {
     debugger;
     let newPostElement = React.createRef();
     console.log(newPostElement);
     
-    let addPost = () => {
+    let onAddPost = () => {
         debugger;
         newPostElement.current.value = '';
         // let action = {
         //     type : "ADD-NEW-POST"
         // }
         // props.addNewPost();
-        props.dispatch(addNewPostActionCreator());
+        // props.dispatch(addNewPostActionCreator());
         // alert(newPostText);
+        props.addPost();
     }
-    let changePostText = () => {
+    let onChangePostText = () => {
         debugger;
         let newPostText = newPostElement.current.value;
         // let action = {
@@ -28,14 +27,15 @@ const NewPost = (props) => {
         // console.log(newPostElement);
 
         // props.changeStatePost(newPostText);
-        props.dispatch(updateCurrentPostCreator(newPostText));
+        // props.dispatch(updateCurrentPostCreator(newPostText));
         // alert("Was changed");
+        props.changePostText(newPostText);
     }
 
     return (
        <div>
-            <textarea ref = { newPostElement } onChange={changePostText} value={props.currentPost}></textarea><br />
-            <button onClick={addPost}>Post</button>
+            <textarea ref = { newPostElement } onChange={onChangePostText} value={props.currentPost}></textarea><br />
+            <button onClick={onAddPost}>Post</button>
         </div>
     );
 }

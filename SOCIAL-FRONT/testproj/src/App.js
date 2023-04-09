@@ -29,11 +29,13 @@ const App = (props) => {
                 // addNewPost={props.addNewPost} 
                 // changeStatePost = {props.changeStatePost}
                 dispatch = {props.dispatch}
+                store = {props.store}
               />} />
             <Route path="messages/*" element={<Dialogs 
               dialogItems={props.state.dialogPage.dialogItems} 
               messageData={props.state.dialogPage.messageData}
               dispatch = {props.dispatch}
+              store = {props.store}
               />} />
             <Route path="news" element={<News />} />
             <Route path="gallery" element={<Gallery myGalleryImages={props.state.galleryPage.myGalleryImages}/>} />
