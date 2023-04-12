@@ -19,6 +19,7 @@ import { Subscribe } from './BLL/State/store';
 // import { changeStatePost } from './BLL/State/State';
 import { dispatch } from './BLL/State/store';
 import { Provider } from 'react-redux';
+import MyCustomContext from './BLL/CustomContext/MyCustomContext';
 
 // ReRender(state);
 
@@ -52,26 +53,43 @@ let ReRenderTree = (st) => {
     //   addNewPost= {addNewPost}
     //   changeStatePost = {changeStatePost}/>
     // </BrowserRouter>);
+
+
+    // using React and Redux
+    // ReactDOM.render(
+    
+    // <BrowserRouter>
+    //   {/* <Provider> */}
+    //     <App 
+    //       state = {st} 
+    //       store = {store}
+    //       // addNewPost= {addNewPost}
+    //       // changeStatePost = {changeStatePost}
+
+    //       // addNewPost= {store.addNewPost}
+    //       // changeStatePost = {store.changeStatePost}
+
+    //       //bind with context of store
+    //       // addNewPost= {store.addNewPost.bind(store)}
+    //       // changeStatePost = {store.changeStatePost.bind(store)}
+
+    //       dispatch = {store.dispatch.bind(store)}
+    //       />
+    //   {/* </Provider> */}
+    // </BrowserRouter>, document.getElementById('root'));
+
+    //using Custom Context
     ReactDOM.render(
     
     <BrowserRouter>
-      {/* <Provider> */}
-        <App 
+      <MyCustomContext.Provider value={store}>
+        {/* <App 
           state = {st} 
           store = {store}
-          // addNewPost= {addNewPost}
-          // changeStatePost = {changeStatePost}
-
-          // addNewPost= {store.addNewPost}
-          // changeStatePost = {store.changeStatePost}
-
-          //bind with context of store
-          // addNewPost= {store.addNewPost.bind(store)}
-          // changeStatePost = {store.changeStatePost.bind(store)}
-
           dispatch = {store.dispatch.bind(store)}
-          />
-      {/* </Provider> */}
+          /> */}
+          <App />
+      </MyCustomContext.Provider>
     </BrowserRouter>, document.getElementById('root'));
 }
 

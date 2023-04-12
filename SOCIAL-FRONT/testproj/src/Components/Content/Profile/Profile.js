@@ -13,16 +13,17 @@ let data = {};
 
 const Profile = (props) => {
     debugger;
+    console.log(props);
     return (
         <div>
             <div>
-                <img src={props.profileData.preview} width='100px'/>
+                <img src={props.profileData.profileData.preview} width='100px'/>
             </div>
             <div>
-                <p>{props.profileData.firstName} {props.profileData.lastName}</p>
+                <p>{props.profileData.profileData.firstName} {props.profileData.profileData.lastName}</p>
             </div>
             <div>
-                <p>{props.profileData.age}</p>
+                <p>{props.profileData.profileData.age}</p>
             </div>
         </div>
     )
