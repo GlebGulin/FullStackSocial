@@ -18,6 +18,7 @@ import { Subscribe } from './BLL/State/store';
 // import { addNewPost } from './BLL/State/State';
 // import { changeStatePost } from './BLL/State/State';
 import { dispatch } from './BLL/State/store';
+import { Provider } from 'react-redux';
 
 // ReRender(state);
 
@@ -54,21 +55,23 @@ let ReRenderTree = (st) => {
     ReactDOM.render(
     
     <BrowserRouter>
-     <App 
-      state = {st} 
-      store = {store}
-      // addNewPost= {addNewPost}
-      // changeStatePost = {changeStatePost}
+      {/* <Provider> */}
+        <App 
+          state = {st} 
+          store = {store}
+          // addNewPost= {addNewPost}
+          // changeStatePost = {changeStatePost}
 
-      // addNewPost= {store.addNewPost}
-      // changeStatePost = {store.changeStatePost}
+          // addNewPost= {store.addNewPost}
+          // changeStatePost = {store.changeStatePost}
 
-      //bind with context of store
-      // addNewPost= {store.addNewPost.bind(store)}
-      // changeStatePost = {store.changeStatePost.bind(store)}
+          //bind with context of store
+          // addNewPost= {store.addNewPost.bind(store)}
+          // changeStatePost = {store.changeStatePost.bind(store)}
 
-      dispatch = {store.dispatch.bind(store)}
-      />
+          dispatch = {store.dispatch.bind(store)}
+          />
+      {/* </Provider> */}
     </BrowserRouter>, document.getElementById('root'));
 }
 

@@ -4,6 +4,7 @@ import MessageItem from './MessagesItems/MessageItem';
 import DialogItem from './DialogItems/DialogItem';
 import NewMessage from './NewMessage/NewMessage';
 import NewMessageContainer from './NewMessage/NewMessageContainer';
+import React from 'react';
 
 
 
@@ -24,13 +25,30 @@ import NewMessageContainer from './NewMessage/NewMessageContainer';
 //     </div>)
 // }
 
-const Dialogs = (props) => {
+const Dialog = (props) => {
     debugger;
-    let dialogElements = props.dialogItems.map(el => 
+    let newMessageElement = React.createRef();
+
+    let onAddNewMesage = () => {
+        debugger;
+        newMessageElement.current.value = '';
+        // props.dispatch(addNewMessageActionCreator());
+        props.addNewMesage();
+    }
+
+    let onChangeCurrentMessage = () => {
+        debugger;
+        let messageCurrent = newMessageElement.current.value;
+        // props.dispatch(updateCurrentMessageCreator(messageCurrent));
+        props.changeCurrentMessage(messageCurrent);
+    }
+
+
+    let dialogElements = props.dialogPage.dialogItems.map(el => 
         (<DialogItem id={el.id} 
                      name={el.name}/>));
 
-    let messageElements = props.messageData.map(mess => 
+    let messageElements = props.dialogPage.messageData.map(mess => 
         (<MessageItem id={mess.id} 
                     message={mess.message} date={mess.date}/>))
     debugger;
@@ -38,6 +56,7 @@ const Dialogs = (props) => {
         <div className={st.dialogsContent}>
             <div className={st.resident}>
                 {dialogElements}
+
            
                 {/* <DailogItem id='1' name='First Name'/>
                 <DailogItem id='2' name='Second Name'/>
@@ -59,10 +78,14 @@ const Dialogs = (props) => {
                 <MessageItem id='2' message='Hi 1' />
                 <MessageItem id='3' message='Hi 2' /> */}
                 {/* < NewMessage dispatch={props.dispatch}/> */}
-                < NewMessageContainer dispatch={props.dispatch} store={props.store}/>
+                {/* < NewMessageContainer dispatch={props.dispatch} store={props.store}/> */}
+                <div>
+                    <textarea ref={newMessageElement} onChange={onChangeCurrentMessage}></textarea> <br></br>
+                    <button onClick={onAddNewMesage}>Add message</button>
+                </div>
             </div>
         </div>
     );
 }
 
-export default Dialogs;
+export default Dialog;

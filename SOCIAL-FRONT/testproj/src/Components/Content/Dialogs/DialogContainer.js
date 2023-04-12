@@ -1,12 +1,10 @@
-import style from './NewMessage.module.css';
 import React from 'react';
-import { addNewMessageActionCreator } from '../../../../BLL/State/store';
-import { updateCurrentMessageCreator } from '../../../../BLL/State/store';
-import NewMessage from './NewMessage';
+import { addNewMessageActionCreator } from '../../../BLL/State/store';
+import { updateCurrentMessageCreator } from '../../../BLL/State/store';
+import Dialog from './Dialog';
 import { connect } from 'react-redux';
 
-const NewMessageContainer = (props) => {
-    // let newMessageElement = React.createRef();
+const DialogContainer = (props) => {
     let addNewMesage = () => {
         debugger;
         // newMessageElement.current.value = '';
@@ -23,25 +21,11 @@ const NewMessageContainer = (props) => {
     <div>
         {/* <textarea ref={newMessageElement} onChange={changeCurrentMessage}></textarea> <br></br>
         <button onClick={addNewMesage}>Add message</button> */}
-        <NewMessage 
+        <Dialog 
             changeCurrentMessage={changeCurrentMessage} 
             addNewMesage={addNewMesage} 
-            />
+            dialogPage={props.store.getState().dialogPage }/>
     </div>)
 }
 
-let mapStateToProps = () => {
-    return{
-
-    };
-};
-
-let f2 = () => {
-    return {
-
-    }
-}
-
-const ProviderNewMessageContainer = connect()(NewMessage);
-
-export default NewMessageContainer;
+export default DialogContainer;
