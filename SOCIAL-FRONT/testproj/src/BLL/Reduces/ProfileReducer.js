@@ -31,13 +31,16 @@ const ProfileReducer = (state = initialState, action) => {
     debugger;
     switch(action.type){
         
-        case UPDATE_CURRENT_POST:
+        case UPDATE_CURRENT_POST:{
             debugger;
             console.log(action.message);
-            state.currentPost = action.message;
-            return state;
+            let copyState = {...state};
+            copyState.currentPost = action.message;
+            return copyState;
+        }
 
         case ADD_NEW_POST:
+            {
             let count = state.posts.length;
             let id = count + 1 ;
             var today = new Date();
@@ -53,9 +56,15 @@ const ProfileReducer = (state = initialState, action) => {
                 author : "Me",
                 date : today
             }
-            state.posts.push(newPost);
-            state.currentPost = "";
-            return state;
+
+            let copyState = {...state};
+            copyState.posts = [...state.posts];
+            // state.posts.push(newPost);
+            copyState.posts.push(newPost);
+            //state.currentPost = "";
+            copyState.currentPost = "";
+            return copyState;
+        }
 
         default:
             return state;

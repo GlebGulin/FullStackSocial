@@ -42,32 +42,40 @@ const DialogReducer = (state = initialState, action) => {
     debugger;
     switch(action.type){
         case UPDATE_CURRENT_MESSAGE:
-            debugger;
-            console.log(action.message);
-            state.currentMessage = action.message;
-            return state;
+            {
+                debugger;
+                console.log(action.message);
+                let copyState = {...state};
+                copyState.currentMessage = action.message;
+                return copyState;
+            }
 
         case ADD_NEW_MESSAGE:
-            debugger;
-            let count = state.messageData.length;
-            let id = count + 1;
-            var today = new Date();
-            var dd = String(today.getDate()).padStart(2, '0');
-            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-            var yyyy = today.getFullYear();
-    
-            today = mm + '-' + dd + '-' + yyyy;
-            console.log(today);
-            debugger;
-            let dialogMessage = {
-                id : id,
-                message : state.currentMessage,
-                author : "Me",
-                date : today
+            {
+                debugger;
+                let count = state.messageData.length;
+                let id = count + 1;
+                var today = new Date();
+                var dd = String(today.getDate()).padStart(2, '0');
+                var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                var yyyy = today.getFullYear();
+        
+                today = mm + '-' + dd + '-' + yyyy;
+                console.log(today);
+                debugger;
+                let dialogMessage = {
+                    id : id,
+                    message : state.currentMessage,
+                    author : "Me",
+                    date : today
+                }
+
+                let copyState = {...state};
+                copyState.messageData = [...state.messageData]
+                copyState.messageData.push(dialogMessage);
+                copyState.currentMessage = "";
+                return copyState;
             }
-            state.messageData.push(dialogMessage);
-            state.currentMessage = "";
-            return state;
 
         default:
             return state; 

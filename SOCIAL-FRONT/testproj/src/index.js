@@ -43,69 +43,69 @@ import MyCustomContext from './BLL/CustomContext/MyCustomContext';
 // );
 
 
-let ReRenderTree = () => {
-   debugger;
-    // debugger;
-    // const root = ReactDOM.createRoot(document.getElementById('root'));
-    // root.render(
-    // <BrowserRouter>
-    //  <App 
-    //   state = {st} 
-    //   addNewPost= {addNewPost}
-    //   changeStatePost = {changeStatePost}/>
-    // </BrowserRouter>);
+// let ReRenderTree = () => {
+//    debugger;
+//     // debugger;
+//     // const root = ReactDOM.createRoot(document.getElementById('root'));
+//     // root.render(
+//     // <BrowserRouter>
+//     //  <App 
+//     //   state = {st} 
+//     //   addNewPost= {addNewPost}
+//     //   changeStatePost = {changeStatePost}/>
+//     // </BrowserRouter>);
 
 
-    // using React and Redux
-    // ReactDOM.render(
+//     // using React and Redux
+//     // ReactDOM.render(
     
-    // <BrowserRouter>
-    //   {/* <Provider> */}
-    //     <App 
-    //       state = {st} 
-    //       store = {store}
-    //       // addNewPost= {addNewPost}
-    //       // changeStatePost = {changeStatePost}
+//     // <BrowserRouter>
+//     //   {/* <Provider> */}
+//     //     <App 
+//     //       state = {st} 
+//     //       store = {store}
+//     //       // addNewPost= {addNewPost}
+//     //       // changeStatePost = {changeStatePost}
 
-    //       // addNewPost= {store.addNewPost}
-    //       // changeStatePost = {store.changeStatePost}
+//     //       // addNewPost= {store.addNewPost}
+//     //       // changeStatePost = {store.changeStatePost}
 
-    //       //bind with context of store
-    //       // addNewPost= {store.addNewPost.bind(store)}
-    //       // changeStatePost = {store.changeStatePost.bind(store)}
+//     //       //bind with context of store
+//     //       // addNewPost= {store.addNewPost.bind(store)}
+//     //       // changeStatePost = {store.changeStatePost.bind(store)}
 
-    //       dispatch = {store.dispatch.bind(store)}
-    //       />
-    //   {/* </Provider> */}
-    // </BrowserRouter>, document.getElementById('root'));
+//     //       dispatch = {store.dispatch.bind(store)}
+//     //       />
+//     //   {/* </Provider> */}
+//     // </BrowserRouter>, document.getElementById('root'));
 
-    //using Custom Context
-    // ReactDOM.render(
-    // <BrowserRouter>
-    //   <MyCustomContext.Provider value={store}>
-    //     {/* <App 
-    //       state = {st} 
-    //       store = {store}
-    //       dispatch = {store.dispatch.bind(store)}
-    //       /> */}
-    //       <App />
-    //   </MyCustomContext.Provider>
-    // </BrowserRouter>, document.getElementById('root'));
+//     //using Custom Context
+//     // ReactDOM.render(
+//     // <BrowserRouter>
+//     //   <MyCustomContext.Provider value={store}>
+//     //     {/* <App 
+//     //       state = {st} 
+//     //       store = {store}
+//     //       dispatch = {store.dispatch.bind(store)}
+//     //       /> */}
+//     //       <App />
+//     //   </MyCustomContext.Provider>
+//     // </BrowserRouter>, document.getElementById('root'));
 
-    //Use Context from library react-redux
-    ReactDOM.render(
-      <BrowserRouter>
-        <Provider store={store}>
-          {/* <App 
-            state = {st} 
-            store = {store}
-            dispatch = {store.dispatch.bind(store)}
-            /> */}
-            <App />
-        </Provider>
-      </BrowserRouter>, document.getElementById('root'));
+//     //Use Context from library react-redux
+//     ReactDOM.render(
+//       <BrowserRouter>
+//         <Provider store={store}>
+//           {/* <App 
+//             state = {st} 
+//             store = {store}
+//             dispatch = {store.dispatch.bind(store)}
+//             /> */}
+//             <App />
+//         </Provider>
+//       </BrowserRouter>, document.getElementById('root'));
 
-}
+// }
 
 
 
@@ -116,10 +116,24 @@ let ReRenderTree = () => {
 //   ReRenderTree(state);
 // });
 
-ReRenderTree();
-store.subscribe(() => 
-{
-  // let state = store.getState();
-  ReRenderTree();
-});
+// ReRenderTree();
+// store.subscribe(() => 
+// {
+//   // let state = store.getState();
+//   ReRenderTree();
+// });
+
+
+ReactDOM.render(
+<BrowserRouter>
+        <Provider store={store}>
+          {/* <App 
+            state = {st} 
+            store = {store}
+            dispatch = {store.dispatch.bind(store)}
+            /> */}
+            <App />
+        </Provider>
+      </BrowserRouter>, document.getElementById('root'));
+
 reportWebVitals();
