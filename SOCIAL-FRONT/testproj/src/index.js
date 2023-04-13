@@ -42,7 +42,7 @@ import MyCustomContext from './BLL/CustomContext/MyCustomContext';
 // );
 
 
-let ReRenderTree = (st) => {
+let ReRenderTree = () => {
    debugger;
     // debugger;
     // const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -79,24 +79,46 @@ let ReRenderTree = (st) => {
     // </BrowserRouter>, document.getElementById('root'));
 
     //using Custom Context
+    // ReactDOM.render(
+    // <BrowserRouter>
+    //   <MyCustomContext.Provider value={store}>
+    //     {/* <App 
+    //       state = {st} 
+    //       store = {store}
+    //       dispatch = {store.dispatch.bind(store)}
+    //       /> */}
+    //       <App />
+    //   </MyCustomContext.Provider>
+    // </BrowserRouter>, document.getElementById('root'));
+
+    //Use Context from library react-redux
     ReactDOM.render(
-    
-    <BrowserRouter>
-      <MyCustomContext.Provider value={store}>
-        {/* <App 
-          state = {st} 
-          store = {store}
-          dispatch = {store.dispatch.bind(store)}
-          /> */}
-          <App />
-      </MyCustomContext.Provider>
-    </BrowserRouter>, document.getElementById('root'));
+      <BrowserRouter>
+        <Provider value={store}>
+          {/* <App 
+            state = {st} 
+            store = {store}
+            dispatch = {store.dispatch.bind(store)}
+            /> */}
+            <App />
+        </Provider>
+      </BrowserRouter>, document.getElementById('root'));
+
 }
 
-ReRenderTree(store.getState());
+
+
+// ReRenderTree(store.getState());
+// store.subscribe(() => 
+// {
+//   let state = store.getState();
+//   ReRenderTree(state);
+// });
+
+ReRenderTree();
 store.subscribe(() => 
 {
-  let state = store.getState();
-  ReRenderTree(state);
+  // let state = store.getState();
+  ReRenderTree();
 });
 reportWebVitals();

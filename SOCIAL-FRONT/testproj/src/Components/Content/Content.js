@@ -5,6 +5,7 @@ import Profile from './Profile/Profile';
 import st from './Content.module.css';
 import NewPostContainer from './Post/NewPost/NewPostContainer';
 import MyCustomContext from '../../BLL/CustomContext/MyCustomContext';
+import { Provider } from 'react-redux';
 
 // let posts = [
 //     {
@@ -48,7 +49,8 @@ const MainContent = (props) => {
     // );
 
     return(
-        <MyCustomContext.Consumer>{
+        // <MyCustomContext.Consumer>{
+        <Provider>{
                 (store) => {
                     let state = store.getState().profilePage;
                     let postsElement = state.posts.map(post => 
@@ -65,10 +67,10 @@ const MainContent = (props) => {
                         {postsElement}
                     </div>
                 )
-                }
             }
-            
-        </MyCustomContext.Consumer>
+        }
+        {/* </MyCustomContext.Consumer> */}
+        </Provider>
     );
 }
 
