@@ -1,17 +1,19 @@
 import logo from './logo.svg';
 import './Styles/App.css';
 import Header from './Components/Header/Header';
-import MainContent from './Components/Content/Content';
+import MainContent from './Components/Content/Profile/ProfileContainer';
 import SideMenu from './Components/NavBar/SideMenu';
 import Footer from './Components/Footer/Footer';
 import Dialogs from './Components/Content/Dialogs/Dialog';
 import React from 'react';
 import {BrowserRouter, Route, Routes } from 'react-router-dom';
 import News from './Components/Content/News/News';
-import Gallery from './Components/Content/Gallery/Gallery';
+import GalleryContainer from './Components/Content/Gallery/GalleryContainer';
 import { addNewPost } from './BLL/State/store';
 import { changeStatePost } from './BLL/State/store';
 import DialogContainer from './Components/Content/Dialogs/DialogContainer';
+import ProfileContainer from './Components/Content/Profile/ProfileContainer';
+// import ProviderDialogContainer from './Components/Content/Dialogs/DialogContainer;'
 
 
 //Using Redux store and props
@@ -52,7 +54,7 @@ import DialogContainer from './Components/Content/Dialogs/DialogContainer';
 // }
 
 //Using Custom Context without react-redux library
-const App = (props) => {
+const App = () => {
   debugger;
   return (
     // <BrowserRouter>
@@ -62,12 +64,14 @@ const App = (props) => {
         <div className="content-container">
           <Routes>
             <Route path="profile" 
-              element={<MainContent 
-              />} />
+              element={<ProfileContainer />} />
+            {/* <Route path="messages/*" element={<DialogContainer
+              />} /> */}
+            {/* After include react-redux library */}
             <Route path="messages/*" element={<DialogContainer
               />} />
             <Route path="news" element={<News />} />
-            <Route path="gallery" element={<Gallery />} />
+            <Route path="gallery" element={<GalleryContainer />} />
           </Routes>
         </div>
         <Footer />

@@ -19,6 +19,7 @@ import { Subscribe } from './BLL/State/store';
 // import { changeStatePost } from './BLL/State/State';
 import { dispatch } from './BLL/State/store';
 import { Provider } from 'react-redux';
+// import { Provider } from './BLL/CustomContext/MyCustomContext';
 import MyCustomContext from './BLL/CustomContext/MyCustomContext';
 
 // ReRender(state);
@@ -94,7 +95,7 @@ let ReRenderTree = () => {
     //Use Context from library react-redux
     ReactDOM.render(
       <BrowserRouter>
-        <Provider value={store}>
+        <Provider store={store}>
           {/* <App 
             state = {st} 
             store = {store}

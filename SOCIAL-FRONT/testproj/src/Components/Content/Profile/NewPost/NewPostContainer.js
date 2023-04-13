@@ -11,19 +11,11 @@ const NewPostContainer = (props) => {
     
     let addPost = () => {
         debugger;
-        // newPostElement.current.value = '';
-        // let action = {
-        //     type : "ADD-NEW-POST"
-        // }
-        // props.addNewPost();
         props.dispatch(addNewPostActionCreator());
-        // alert(newPostText);
     }
     let changePostText = (text) => {
         debugger;
-        // let newPostText = newPostElement.current.value;
         props.dispatch(updateCurrentPostCreator(text));
-        // alert("Was changed");
     }
 
     return (

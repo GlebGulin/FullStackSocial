@@ -1,32 +1,14 @@
-import React from 'react';
-import st from './Gallery.module.css';
-import GalleryItems from './GalleryItems/GalleryItems';
-import MyCustomContext from './../../../BLL/CustomContext/MyCustomContext';
+import GalleryItems from "./GalleryItems/GalleryItems";
 
-const Gallery = () => {
-
-    // let imagesItems = props.myGalleryImages.map(el =>
-    //     (<GalleryItems key={el.id} id={el.id} url={el.url} />))
-
+const Gallery = (props) => {
     debugger;
-    return(
-        <MyCustomContext.Consumer>{
-            (store) => {
-                let state = store.getState().galleryPage;
-                debugger;
-                let imagesItems = state.myGalleryImages.map(el =>
-                    (<GalleryItems key={el.id} id={el.id} url={el.url} />))
-                return(
-                    <div>
-                        {imagesItems}
-                    </div>)
-            }
-            
-        }
-            
-        </MyCustomContext.Consumer>
-        
-    )
-} 
+    let imagesItems = props.galleryPage.myGalleryImages.map(el =>
+        (<GalleryItems key={el.id} id={el.id} url={el.url} />));
+        return(
+            <div>
+                {imagesItems}
+            </div>
+        )
+}
 
 export default Gallery;

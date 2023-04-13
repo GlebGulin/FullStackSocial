@@ -1,7 +1,8 @@
-import classes from './UserPosts.module.css';
+import classes from './UserPost.module.css';
 
-const UserPosts = (props) => {
+const UserPost = (props) => {
     let id='post-'+ props.id;
+    debugger;
     return (
         <div id={id}>
             <p className={classes.author}>{props.author}</p>
@@ -11,4 +12,4 @@ const UserPosts = (props) => {
     );
 }
 
-export default UserPosts;
+export default UserPost;

@@ -1,30 +1,21 @@
 import React from 'react';
 import axios from 'axios';
+import ProfilePart from './ProfilePart/ProfilePart';
+import NewPostContainer from './NewPost/NewPost';
+import UserPosts from './UserPosts/UserPosts';
 
-let data = {};
-
-// componentDidMount() {
-//     axios.get(`https://jsonplaceholder.typicode.com/users`)
-//       .then(res => {
-//         const persons = res.data;
-//         this.setState({ persons });
-//     })
-// }
 
 const Profile = (props) => {
     debugger;
     console.log(props);
     return (
         <div>
-            <div>
-                <img src={props.profileData.profileData.preview} width='100px'/>
-            </div>
-            <div>
-                <p>{props.profileData.profileData.firstName} {props.profileData.profileData.lastName}</p>
-            </div>
-            <div>
-                <p>{props.profileData.profileData.age}</p>
-            </div>
+            <ProfilePart state={ props.profilePage.profileData }/>
+            <NewPostContainer state={ props.profilePage } 
+                addPost={props.addPost} 
+                changePostText={props.changePostText}
+            />
+            <UserPosts state= {props.profilePage.posts} />
         </div>
     )
 }
