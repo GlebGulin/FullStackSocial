@@ -81,4 +81,16 @@ const ProfileReducer = (state = initialState, action) => {
     }
 }
 
+export const addNewPostActionCreator = () => {
+    return {
+        type : ADD_NEW_POST
+    }
+}
+
+export const updateCurrentPostCreator = (message) => {
+    return {
+        type : UPDATE_CURRENT_POST,
+        message : message
+    }
+}
 export default ProfileReducer;

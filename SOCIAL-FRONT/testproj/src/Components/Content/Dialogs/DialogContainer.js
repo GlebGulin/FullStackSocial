@@ -1,6 +1,6 @@
 import React from 'react';
-import { addNewMessageActionCreator } from '../../../BLL/State/store';
-import { updateCurrentMessageCreator } from '../../../BLL/State/store';
+import { addNewMessageActionCreator } from '../../../BLL/Reduces/DialogReducer';
+import { updateCurrentMessageCreator } from '../../../BLL/Reduces/DialogReducer';
 import Dialog from './Dialog';
 import { Provider, connect } from 'react-redux';
 import MyCustomContext from './../../../BLL/CustomContext/MyCustomContext';

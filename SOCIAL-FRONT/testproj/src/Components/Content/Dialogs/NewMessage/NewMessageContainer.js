@@ -1,7 +1,7 @@
 import style from './NewMessage.module.css';
 import React from 'react';
-import { addNewMessageActionCreator } from '../../../../BLL/State/store';
-import { updateCurrentMessageCreator } from '../../../../BLL/State/store';
+import { addNewMessageActionCreator } from '../../../../BLL/Reduces/DialogReducer';
+import { updateCurrentMessageCreator } from '../../../../BLL/Reduces/DialogReducer';
 import NewMessage from './NewMessage';
 import { connect } from 'react-redux';
 

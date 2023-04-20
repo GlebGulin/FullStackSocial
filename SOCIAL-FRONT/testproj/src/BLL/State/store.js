@@ -350,19 +350,20 @@ export const updateCurrentPostCreator = (message) => {
 //#endregion ProfilePage
 
 //#region DialogPage
-export const addNewMessageActionCreator = () => {
-    return {
-        type : ADD_NEW_MESSAGE
-    }
-}
+//moved to reducer
+// export const addNewMessageActionCreator = () => {
+//     return {
+//         type : ADD_NEW_MESSAGE
+//     }
+// }
 
-export const updateCurrentMessageCreator = (message) => {
-    debugger;
-    return {
-        type : UPDATE_CURRENT_MESSAGE,
-        message : message
-    }
-}
+// export const updateCurrentMessageCreator = (message) => {
+//     debugger;
+//     return {
+//         type : UPDATE_CURRENT_MESSAGE,
+//         message : message
+//     }
+// }
 //#endregion DialogPage
 
 //#endregion ActionCreator
