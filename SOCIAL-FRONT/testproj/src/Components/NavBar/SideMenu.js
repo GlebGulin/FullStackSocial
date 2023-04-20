@@ -33,6 +33,13 @@ const SideMenu = () => {
                         My photos
                 </NavLink>
             </div>
+
+            <div className={classes.item}>
+                <NavLink to="/users" 
+                    className = { navData => navData.isActive ? classes.activeLink : classes.item }>
+                        Users
+                </NavLink>
+            </div>
         </div>
     );
 };

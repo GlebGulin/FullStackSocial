@@ -40,14 +40,20 @@ let initialState = {
 
 const DialogReducer = (state = initialState, action) => {
     debugger;
+    let stateCopy =  {};
     switch(action.type){
         case UPDATE_CURRENT_MESSAGE:
             {
                 debugger;
                 console.log(action.message);
-                let copyState = {...state};
-                copyState.currentMessage = action.message;
-                return copyState;
+                // let copyState = {...state};
+                // copyState.currentMessage = action.message;
+                // return copyState;
+                stateCopy = {
+                    ...state
+                }
+                stateCopy.currentMessage = action.message;
+                return stateCopy;
             }
 
         case ADD_NEW_MESSAGE:
@@ -70,11 +76,19 @@ const DialogReducer = (state = initialState, action) => {
                     date : today
                 }
 
-                let copyState = {...state};
-                copyState.messageData = [...state.messageData]
-                copyState.messageData.push(dialogMessage);
-                copyState.currentMessage = "";
-                return copyState;
+                // let copyState = {...state};
+                // copyState.messageData = [...state.messageData]
+                // copyState.messageData.push(dialogMessage);
+                // copyState.currentMessage = "";
+                stateCopy = {
+                    ...state,
+                    messageData : [...state.messageData],
+                    // dialogItems : [...state.dialogItems]
+                };
+                stateCopy.messageData = [...state.messageData]
+                stateCopy.messageData.push(dialogMessage);
+                stateCopy.currentMessage = "";
+                return stateCopy;
             }
 
         default:

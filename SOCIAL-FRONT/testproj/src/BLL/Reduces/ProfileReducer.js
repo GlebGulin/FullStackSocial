@@ -29,14 +29,18 @@ let initialState = {
 
 const ProfileReducer = (state = initialState, action) => {
     debugger;
+    let stateCopy = {};
     switch(action.type){
         
         case UPDATE_CURRENT_POST:{
             debugger;
+            stateCopy = {
+                ...state
+            };
             console.log(action.message);
-            let copyState = {...state};
-            copyState.currentPost = action.message;
-            return copyState;
+            // let copyState = {...state};
+            stateCopy.currentPost = action.message;
+            return stateCopy;
         }
 
         case ADD_NEW_POST:
@@ -56,14 +60,20 @@ const ProfileReducer = (state = initialState, action) => {
                 author : "Me",
                 date : today
             }
+            stateCopy = {
+                ...state,
+                posts : [...state.posts, {id:newPost.id, text:newPost.text, author: newPost.author, date : newPost.date}]
+            };
+            // let copyState = {
+            //     ...state,
 
-            let copyState = {...state};
-            copyState.posts = [...state.posts];
+            // };
+            // copyState.posts = [...state.posts];
             // state.posts.push(newPost);
-            copyState.posts.push(newPost);
+            // stateCopy.posts.push(newPost);
             //state.currentPost = "";
-            copyState.currentPost = "";
-            return copyState;
+            stateCopy.currentPost = "";
+            return stateCopy;
         }
 
         default:
