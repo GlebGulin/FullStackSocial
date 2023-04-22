@@ -1,0 +1,12 @@
+.avatar {
+    width: 200px;
+}
+
+.anketItem {
+    margin-bottom: 20px;
+}
+
+.usersContent {
+    display: grid;
+    grid-template-columns: 3fr 4fr 5fr;
+}

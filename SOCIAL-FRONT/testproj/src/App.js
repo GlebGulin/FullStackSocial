@@ -14,6 +14,7 @@ import { changeStatePost } from './BLL/State/store';
 import DialogContainer from './Components/Content/Dialogs/DialogContainer';
 import ProfileContainer from './Components/Content/Profile/ProfileContainer';
 import UsersProfile from './Components/Content/UsersProfile/UsersProfile';
+import UsersProfileContainer from './Components/Content/UsersProfile/UsersProfileContainer';
 // import ProviderDialogContainer from './Components/Content/Dialogs/DialogContainer;'
 
 
@@ -73,7 +74,7 @@ const App = () => {
               />} />
             <Route path="news" element={<News />} />
             <Route path="gallery" element={<GalleryContainer />} />
-            <Route path="users" element={<UsersProfile />} />
+            <Route path="users" element={<UsersProfileContainer />} />
           </Routes>
         </div>
         <Footer />
