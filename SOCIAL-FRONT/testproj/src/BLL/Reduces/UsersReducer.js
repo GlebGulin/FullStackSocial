@@ -5,7 +5,7 @@ const SET_STAE = "SET_STATE";
 //Start initialize profileState after including Redux
 let initialState = {
     users : [
-        {
+        /*{
             id : "456345325665464",
             country : "Ukraine",
             city : "Kiev",
@@ -40,7 +40,7 @@ let initialState = {
             followed : false,
             avat : "https://ic-tt-lm.xhcdn.com/a/ZjkzYjA4NmUzZmYzZWU3MmM0ZjdlM2E0MTY0N2U3MTU/webp/000/098/443/avatar2.jpg.v1643986017",
             status : "Where are you"
-        }
+        }*/
     ]
 }
 

@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using Data.LAYER.Model.Global;
+using Microsoft.AspNetCore.Mvc;
 
 namespace SocialWeb.API
 {
@@ -33,6 +34,7 @@ namespace SocialWeb.API
             services.AddControllers();
             services
                .AddTransient<IProfileServices, ProfileServices>()
+               .AddTransient<IUsersService, UsersService>()
                .AddTransient<IAuthService, AuthService>();
             var globalSettingsSection = Configuration.GetSection("GlobalSettings");
             var globalSettings = globalSettingsSection.Get<GlobalSettings>();
@@ -63,6 +65,13 @@ namespace SocialWeb.API
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(builder => builder
+             .AllowAnyOrigin()
+             .AllowAnyMethod()
+             .AllowAnyHeader());
+            
+            //app.UseMvc();
 
             app.UseRouting();
 
