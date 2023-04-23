@@ -1,7 +1,7 @@
 import React from "react";
 import UsersProfile from "./UsersProfile";
 import { connect } from 'react-redux';
-import { followUser, unfollowUser,  set_State} from "../../../BLL/Reduces/UsersReducer";
+import { followUser, unfollowUser,  set_State, set_Data_Local_Server} from "../../../BLL/Reduces/UsersReducer";
 
 
 let mapStateToProps = (state) => {
@@ -21,6 +21,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         onSetState : (users) => {
             dispatch(set_State(users));
+        },
+        onSetStateFromLocalServer : (users) => {
+            dispatch(set_Data_Local_Server(users));
         }
     };
 }

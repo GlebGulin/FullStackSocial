@@ -1,5 +1,6 @@
 import React from "react";
 import style from './UserProfile.module.css';
+import noname from './../../../../../src/assets/images/noname.png'
 
 const UserProfile = (props) => {
     
@@ -16,7 +17,8 @@ const UserProfile = (props) => {
         <div className={style.usersContent}>
             <div>
                 <div>
-                    <img src={props.avatar} className={style.avatar}/>
+                    { props.avatar != null ? <img src={props.avatar} className={style.avatar}/> : <img src={noname} className={style.avatar}/>}
+                    
                 </div>
                 {props.followed ?  <button onClick={clickUnfollowUser}>Unfollow</button> : <button onClick={clickFollowUser}>Follow</button>}
                 

@@ -37,29 +37,50 @@ let usersNew = [
         city : "Kisineu",
         name : "Savannah Watson",
         followed : false,
-        avat : "https://ic-tt-lm.xhcdn.com/a/ZjkzYjA4NmUzZmYzZWU3MmM0ZjdlM2E0MTY0N2U3MTU/webp/000/098/443/avatar2.jpg.v1643986017",
+        avat : null,
         status : "Where are you"
     }
 ]
 
-const UsersProfile = (props) =>{
-    let resp;
-    if (props.usersPage.users.length === 0){
-        debugger;
-        // React.useEffect(()=>{
-            axios.get(`https://localhost:44367/users`)
-            .then((response) => {
-                console.log(response);
-                props.onSetState(response.data.users);
 
-            });
+
+const UsersProfile = (props) =>{
+
+    
+        // React.useEffect(()=>{
+            let showUsers = () => {
+                if (props.usersPage.users.length === 0){
+                    debugger;
+                try{
+                    axios.get(`https://localhost:44367/users`)
+                    .then((response) => {
+                        console.log(response.status);
+                        if(response.status === 200){
+                            
+                            props.onSetStateFromLocalServer(response.data.users);
+                        }
+                        else{
+                            alert("Error");
+                        }
+                        
+    
+                    }).catch(()=>{
+                        props.onSetState(usersNew)
+                    });
+                }
+                catch{
+                    props.onSetState(usersNew);
+                }
+            }
+            
+            
             // fetch('https://localhost:44367/users')
             //     .then(response => response.json())
             //     .then(data => { console.log(data) });
         // }, []);
         
         // axios.get("https://social-network.samuraijs.com/api/1.0/users");
-        //props.onSetState(usersNew);
+        //
     }
     debugger;
     let usersItems = props.usersPage.users.map(el =>
@@ -67,7 +88,9 @@ const UsersProfile = (props) =>{
             onFollowUser={props.onFollowUser} 
             onUnfollowUser={props.onUnfollowUser}/>));
         return(
+
             <div>
+                <button onClick={showUsers}>Show Users</button>
                 {usersItems}
             </div>
         )

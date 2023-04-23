@@ -32,7 +32,7 @@ namespace Business.LAYER.Services
                 Country = "Canada",
                 Age = 31,
                 UserStatus = "Write me",
-                Avatar = "https://ru.pinterest.com/pin/410953534731183468/",
+                Avatar = "https://mymodernmet.com/wp/wp-content/uploads/2018/10/Mou-Aysha-portrait-photography-3.jpg",
                 Followed = true
             });
 

@@ -1,6 +1,7 @@
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_STAE = "SET_STATE";
+const SET_DATA_LOCAL_SERVER = "SET_DATA_LOCAL_SERVER";
 
 //Start initialize profileState after including Redux
 let initialState = {
@@ -77,6 +78,21 @@ const UsersReducer = (state = initialState, action) => {
         case SET_STAE :
             //Merge new and old arrays
             return {...state, users : [...state.users, ...action.users]}
+        case SET_DATA_LOCAL_SERVER:
+            debugger;
+            stateCopy = {...state};
+            for (var i = 0; i < action.users.length; i++){
+                var itemUser = {
+                    id : action.users[i].id,
+                    avat : action.users[i].avatar,
+                    name : action.users[i].name,
+                    status : action.users[i].userStatus,
+                    city : action.users[i].city,
+                    country : action.users[i].country
+                };
+                stateCopy.users.push(itemUser);
+            }
+            return stateCopy
         default:
             return state;
     }
@@ -101,6 +117,13 @@ export const unfollowUser = (id) => {
 export const set_State = (users) => {
     return {
         type : SET_STAE,
+        users : users
+    }
+}
+
+export const set_Data_Local_Server = (users) =>{
+    return {
+        type : SET_DATA_LOCAL_SERVER,
         users : users
     }
 }
