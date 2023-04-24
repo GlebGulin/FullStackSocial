@@ -1,0 +1,9 @@
+.headerApp {
+    grid-area: header;
+    background-color: cadetblue;
+}
+
+.mainMenu a {
+    margin-right: 40px;
+    text-decoration: none;
+}
