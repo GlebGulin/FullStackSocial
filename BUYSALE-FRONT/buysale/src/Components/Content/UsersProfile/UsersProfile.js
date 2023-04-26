@@ -44,11 +44,11 @@ let usersNew = [
 ]
 
 class UsersProfile extends React.Component{
-    constructor(props){
-        super(props)
-        // this.porps = props;
-        this.showUsers();
-    }
+    // constructor(props){
+    //     super(props)
+    //     // this.porps = props;
+    //     this.showUsers();
+    // }
 
     clickFollowUser = (id) => {
         this.props.onFollowUser(id);
@@ -56,6 +56,10 @@ class UsersProfile extends React.Component{
 
     clickUnfollowUser = (id) => {
         this.props.onUnfollowUser(id);
+    }
+
+    componentDidMount(){
+        this.showUsers();
     }
     
     showUsers = () => {
