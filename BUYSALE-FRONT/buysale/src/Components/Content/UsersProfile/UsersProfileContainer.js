@@ -1,7 +1,7 @@
 import React from "react";
 import UsersProfile from "./UsersProfile";
 import { connect } from 'react-redux';
-import { followUser, unfollowUser,  set_State, set_Data_Local_Server, setPageCount} from "../../../BLL/Reduces/UsersReducer";
+import { followUser, unfollowUser,  set_State, set_Data_Local_Server, setPageCount, setCurrentPage, clearUsersList} from "../../../BLL/Reduces/UsersReducer";
 
 
 let mapStateToProps = (state) => {
@@ -28,6 +28,12 @@ let mapDispatchToProps = (dispatch) => {
         },
         onSetPageCount : (count) =>{
             dispatch(setPageCount(count));
+        },
+        onChangePage : (page) =>{
+            dispatch(setCurrentPage(page));
+        },
+        onClearUsersList : () => {
+            dispatch(clearUsersList());
         }
     };
 }

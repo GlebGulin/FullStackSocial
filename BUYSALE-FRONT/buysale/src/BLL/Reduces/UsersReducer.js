@@ -3,6 +3,7 @@ const UNFOLLOW = "UNFOLLOW";
 const SET_STAE = "SET_STATE";
 const SET_DATA_LOCAL_SERVER = "SET_DATA_LOCAL_SERVER";
 const SET_PAGECOUNT = "SET_PAGECOUNT";
+const CLEAR_LIST_USER = "CLEAR_LIST_USER";
 const SET_CURRENTPAGE = "SET_CURRENTPAGE";
 
 //Start initialize profileState after including Redux
@@ -46,8 +47,9 @@ let initialState = {
         }*/
     ],
     pageCount : 0,
-    currentPage : 2,
-    totalCount : 0
+    currentPage : 1,
+    totalCount : 0,
+    pageSize: 5
 }
 
 const UsersReducer = (state = initialState, action) => {
@@ -107,13 +109,17 @@ const UsersReducer = (state = initialState, action) => {
             stateCopy.pageCount = action.pageCount;
             return stateCopy;
 
-        // case SET_CURRENTPAGE :
-        //     debugger;
-        //     stateCopy = {
-        //         ...state
-        //     };
-        //     stateCopy.currentPage = action.pageNumber
-        //     return stateCopy;
+        case SET_CURRENTPAGE :
+            debugger;
+            // alert(action.pageNumber);
+            stateCopy = {
+                ...state
+            };
+            stateCopy.currentPage = action.pageNumber
+            return stateCopy;
+        case CLEAR_LIST_USER :
+            stateCopy = {...state, users : []};
+            return stateCopy;
         default:
             return state;
     }
@@ -164,8 +170,15 @@ export const setPageCount = (count) => {
 export const setCurrentPage = (page) => {
     debugger;
     return {
-        type : SET_PAGECOUNT,
+        type : SET_CURRENTPAGE,
         pageNumber   : page
+    }
+}
+
+export const clearUsersList = () => {
+    debugger;
+    return {
+        type : CLEAR_LIST_USER
     }
 }
 

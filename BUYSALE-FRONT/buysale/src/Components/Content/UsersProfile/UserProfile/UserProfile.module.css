@@ -17,6 +17,7 @@
 
 .paginationItems span {
     margin-right: 30px;
+    cursor: pointer;
 }
 
 .paginationItems span.activePagin{

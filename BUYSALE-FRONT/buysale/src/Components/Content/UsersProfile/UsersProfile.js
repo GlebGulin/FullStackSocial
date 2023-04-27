@@ -43,6 +43,8 @@ let usersNew = [
     }
 ]
 
+let pageTestCount = Math.ceil(usersNew / 10);
+
 class UsersProfile extends React.Component{
     // constructor(props){
     //     super(props)
@@ -56,11 +58,27 @@ class UsersProfile extends React.Component{
 
     clickUnfollowUser = (id) => {
         this.props.onUnfollowUser(id);
-    }
+    };
+
+    clickChangePage = (number) => {
+        this.props.onChangePage(number);
+        axios.get(`https://localhost:44367/users?limit=${this.props.usersPage.pageSize}&page=${number}`)
+                    .then((response) => {
+                        console.log(response.status);
+                        if(response.status === 200){
+                            console.log(response.data);
+                            this.props.onClearUsersList();
+                            this.props.onSetStateFromLocalServer(response.data.users);
+                            this.props.onSetPageCount(response.data.pageCount);
+                        }
+                        else{
+                            alert("Error");
+                        }});
+    };
 
     componentDidMount(){
         this.showUsers();
-    }
+    };
     
     showUsers = () => {
         debugger;
@@ -69,7 +87,7 @@ class UsersProfile extends React.Component{
             debugger;
             console.log(this.props);
                 try{
-                    axios.get(`https://localhost:44367/users?limit=4&page=${this.props.usersPage.currentPage}`)
+                    axios.get(`https://localhost:44367/users?limit=${this.props.usersPage.pageSize}&page=${this.props.usersPage.currentPage}`)
                     // axios.get(`https://social-network.samuraijs.com/api/1.0/users`)
                     .then((response) => {
                         console.log(response.status);
@@ -84,7 +102,8 @@ class UsersProfile extends React.Component{
                         
     
                     }).catch(()=>{
-                        this.props.onSetState(usersNew)
+                        this.props.onSetState(usersNew);
+                        this.props.onSetPageCount(pageTestCount);
                     });
                 }
                 catch{
@@ -102,6 +121,8 @@ class UsersProfile extends React.Component{
         // axios.get("https://social-network.samuraijs.com/api/1.0/users");
         //
     }
+
+
     debugger;
     
     //Why doesn't compile with this
@@ -167,7 +188,7 @@ class UsersProfile extends React.Component{
                         <span>3</span> */}
                         {
                             arrPaginItem.map(el => 
-                                (<span key={el} className={(el==this.props.usersPage.currentPage) ? style.activePagin : style.unactivePagin}>{el}{console.log(el)}</span>))
+                                (<span key={el} onClick={()=>{this.clickChangePage(el)}} className={(el==this.props.usersPage.currentPage) ? style.activePagin : style.unactivePagin}>{el}{console.log(el)}</span>))
                         }
                     </div>
                     {/* <div className={style.paginationItems}>
