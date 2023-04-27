@@ -6,7 +6,8 @@ namespace Transfer.LAYER
     public class UsersDTO : BaseDto
     {
         public List<UserDTO> Users { get; set; }
-        public int           Count { get; set; }
+        public int       PageCount { get; set; }
+        public int      TotalCount { get; set; }
         public UsersDTO()
         {
             Users = new List<UserDTO>();

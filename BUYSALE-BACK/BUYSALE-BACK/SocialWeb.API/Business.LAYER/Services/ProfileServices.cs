@@ -43,12 +43,17 @@ namespace Business.LAYER.Services
             try
             {
                 var profileModel = new ProfileModel() {
+                    Id = Guid.NewGuid().ToString(),
                     FirstName   = profile.FirstName,
                     LastName    = profile.LastName,
-                    AvatarImg   = profile.AvatarImg,
                     Description = profile.Description,
-                    Id          = Guid.NewGuid().ToString()
+                    Age         = profile.Age,
+                    UserStatus  = profile.UserStatus
                 };
+                profileModel.Location.City    = profile.City; 
+                profileModel.Location.Country = profile.Country;
+                profileModel.Avatar.Small     = profile.AvatarImg;
+                profileModel.Avatar.Large     = profile.AvatarImg;
 
                 var check = await _profileDBService.CheckExistAsync(profileModel.FirstName, profileModel.LastName);
                 if (check is not null)

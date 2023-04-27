@@ -18,7 +18,13 @@ namespace DL.DB
         }
 
         public async Task<List<ProfileModel>> GetAsync() =>
-        await _profileCollection.Find(_ => true).ToListAsync();
+            await _profileCollection.Find(_ => true).ToListAsync();
+
+        public async Task<long> GetTotalQuantityAsync() =>
+            await _profileCollection.Find(_ => true).CountDocumentsAsync();
+
+        public async Task<List<ProfileModel>> GetPartDataAsync(int page, int quantity) =>
+            await _profileCollection.Find(_ => true).Limit(quantity).Skip((page-1)*quantity).ToListAsync();
 
         public async Task<ProfileModel?> GetAsync(string id) =>
             await _profileCollection.Find(x => x.Id == id).FirstOrDefaultAsync();

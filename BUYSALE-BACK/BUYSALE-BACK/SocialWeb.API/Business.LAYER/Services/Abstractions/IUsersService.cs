@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Transfer.LAYER;
+using Transfer.LAYER.DTOs.Social.Commands;
 
 namespace Business.LAYER.Services.Abstractions
 {
     public interface IUsersService
     {
-        Task<UsersDTO> GetUsers();
+        Task<UsersDTO> GetUsers(UsersCommand users);
     }
 }

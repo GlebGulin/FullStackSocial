@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Transfer.LAYER;
+using Transfer.LAYER.DTOs.Social.Commands;
 
 namespace SocialWeb.API.Controllers
 {
@@ -20,9 +21,13 @@ namespace SocialWeb.API.Controllers
         }
 
         [HttpGet]
-        public async Task<UsersDTO> GetUsers()
+        public async Task<UsersDTO> GetUsers([FromQuery] UsersCommand users)
         {
-            var result = await _usersService.GetUsers();
+            if (users.Limit == 0)
+                users.Limit = 10;
+            if (users.Page == 0)
+                users.Page = 1;
+            var result = await _usersService.GetUsers(users);
             return result;
         }
     }

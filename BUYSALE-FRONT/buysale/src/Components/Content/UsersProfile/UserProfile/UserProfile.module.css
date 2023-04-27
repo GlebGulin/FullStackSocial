@@ -10,3 +10,20 @@
     display: grid;
     grid-template-columns: 3fr 4fr 5fr;
 }
+
+.paginationItems{
+    padding: auto;
+}
+
+.paginationItems span {
+    margin-right: 30px;
+}
+
+.paginationItems span.activePagin{
+    font-weight: bold;
+    color: brown;
+}
+
+.paginationItems span.unactivePagin{
+    font-weight: normal;
+}

@@ -2,6 +2,8 @@ const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_STAE = "SET_STATE";
 const SET_DATA_LOCAL_SERVER = "SET_DATA_LOCAL_SERVER";
+const SET_PAGECOUNT = "SET_PAGECOUNT";
+const SET_CURRENTPAGE = "SET_CURRENTPAGE";
 
 //Start initialize profileState after including Redux
 let initialState = {
@@ -42,7 +44,10 @@ let initialState = {
             avat : "https://ic-tt-lm.xhcdn.com/a/ZjkzYjA4NmUzZmYzZWU3MmM0ZjdlM2E0MTY0N2U3MTU/webp/000/098/443/avatar2.jpg.v1643986017",
             status : "Where are you"
         }*/
-    ]
+    ],
+    pageCount : 0,
+    currentPage : 2,
+    totalCount : 0
 }
 
 const UsersReducer = (state = initialState, action) => {
@@ -94,6 +99,21 @@ const UsersReducer = (state = initialState, action) => {
                 stateCopy.users.push(itemUser);
             }
             return stateCopy
+        case SET_PAGECOUNT:
+            debugger;
+            stateCopy = {
+                ...state
+            };
+            stateCopy.pageCount = action.pageCount;
+            return stateCopy;
+
+        // case SET_CURRENTPAGE :
+        //     debugger;
+        //     stateCopy = {
+        //         ...state
+        //     };
+        //     stateCopy.currentPage = action.pageNumber
+        //     return stateCopy;
         default:
             return state;
     }
@@ -115,6 +135,8 @@ export const unfollowUser = (id) => {
     }
 }
 
+
+
 export const set_State = (users) => {
     debugger;
     return {
@@ -128,6 +150,22 @@ export const set_Data_Local_Server = (users) =>{
     return {
         type : SET_DATA_LOCAL_SERVER,
         users : users
+    }
+}
+
+export const setPageCount = (count) => {
+    debugger;
+    return {
+        type : SET_PAGECOUNT,
+        pageCount   : count
+    }
+}
+
+export const setCurrentPage = (page) => {
+    debugger;
+    return {
+        type : SET_PAGECOUNT,
+        pageNumber   : page
     }
 }
 

@@ -69,13 +69,14 @@ class UsersProfile extends React.Component{
             debugger;
             console.log(this.props);
                 try{
-                    axios.get(`https://localhost:44367/users`)
+                    axios.get(`https://localhost:44367/users?limit=4&page=${this.props.usersPage.currentPage}`)
                     // axios.get(`https://social-network.samuraijs.com/api/1.0/users`)
                     .then((response) => {
                         console.log(response.status);
                         if(response.status === 200){
                             console.log(response.data);
                             this.props.onSetStateFromLocalServer(response.data.users);
+                            this.props.onSetPageCount(response.data.pageCount);
                         }
                         else{
                             alert("Error");
@@ -110,8 +111,17 @@ class UsersProfile extends React.Component{
             onFollowUser={this.props.onFollowUser} 
             onUnfollowUser={this.props.onUnfollowUser}/>));
     debugger;
+    
     render(){ 
         // return <h1>Text</h1>
+        // alert(this.props.usersPage.pageCount);
+        console.log(this.props);
+        let arrPaginItem = [];
+        for (let i = 0; i < this.props.usersPage.pageCount; i++){
+            arrPaginItem.push(i+1);
+        }
+        console.log("Temp arr: " + arrPaginItem);
+        console.log("Current page: " + this.props.usersPage.currentPage);
         return (<div>
                     {/* <button onClick={this.showUsers}>Show Users</button> */}
                     {/* {this.usersItems} */}
@@ -149,6 +159,19 @@ class UsersProfile extends React.Component{
                             //     onFollowUser={this.props.onFollowUser} 
                             //     onUnfollowUser={this.props.onUnfollowUser}/>)
                             ))}
+                    </div> */}
+                    
+                    <div className={style.paginationItems}>
+                        {/* <span>1</span>
+                        <span className={style.activePagin}>2</span>
+                        <span>3</span> */}
+                        {
+                            arrPaginItem.map(el => 
+                                (<span key={el} className={(el==this.props.usersPage.currentPage) ? style.activePagin : style.unactivePagin}>{el}{console.log(el)}</span>))
+                        }
+                    </div>
+                    {/* <div className={style.paginationItems}>
+                        this
                     </div> */}
                     {
                         this.props.usersPage.users.map(el =>
