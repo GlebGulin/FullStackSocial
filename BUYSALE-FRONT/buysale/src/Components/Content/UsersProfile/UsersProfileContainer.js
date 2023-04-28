@@ -1,5 +1,5 @@
 import React from "react";
-import UsersProfile from "./UsersProfile";
+import UsersProfileAPIComponent from "./UsersProfileAPIComponent";
 import { connect } from 'react-redux';
 import { followUser, unfollowUser,  set_State, set_Data_Local_Server, setPageCount, setCurrentPage, clearUsersList} from "../../../BLL/Reduces/UsersReducer";
 
@@ -38,6 +38,6 @@ let mapDispatchToProps = (dispatch) => {
     };
 }
 
-const UsersProfileContainer = connect(mapStateToProps, mapDispatchToProps)(UsersProfile)
+const UsersProfileContainer = connect(mapStateToProps, mapDispatchToProps)(UsersProfileAPIComponent)
 
-export default UsersProfileContainer; 
+export default UsersProfileContainer;  
