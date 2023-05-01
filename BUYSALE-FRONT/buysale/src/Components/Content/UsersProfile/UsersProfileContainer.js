@@ -1,7 +1,7 @@
 import React from "react";
 import UsersProfileAPIComponent from "./UsersProfileAPIComponent";
 import { connect } from 'react-redux';
-import { followUser, unfollowUser,  set_State, set_Data_Local_Server, setPageCount, setCurrentPage, clearUsersList} from "../../../BLL/Reduces/UsersReducer";
+import { followUser, unfollowUser,  set_State, set_Data_Local_Server, setPageCount, setCurrentPage, clearUsersList, changeFetchingStatus} from "../../../BLL/Reduces/UsersReducer";
 
 
 let mapStateToProps = (state) => {
@@ -34,6 +34,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         onClearUsersList : () => {
             dispatch(clearUsersList());
+        },
+        onChangeFetchingStatus : (status) => {
+            dispatch(changeFetchingStatus(status));
         }
     };
 }

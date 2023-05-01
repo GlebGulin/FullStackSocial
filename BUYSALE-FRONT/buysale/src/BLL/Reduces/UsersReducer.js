@@ -5,6 +5,7 @@ const SET_DATA_LOCAL_SERVER = "SET_DATA_LOCAL_SERVER";
 const SET_PAGECOUNT = "SET_PAGECOUNT";
 const CLEAR_LIST_USER = "CLEAR_LIST_USER";
 const SET_CURRENTPAGE = "SET_CURRENTPAGE";
+const CHANGE_FETCHING_STATUS = "CHANGE_FETCHING_STATUS";
 
 //Start initialize profileState after including Redux
 let initialState = {
@@ -49,7 +50,8 @@ let initialState = {
     pageCount : 0,
     currentPage : 1,
     totalCount : 0,
-    pageSize: 5
+    pageSize: 5,
+    isFetching : false
 }
 
 const UsersReducer = (state = initialState, action) => {
@@ -120,11 +122,15 @@ const UsersReducer = (state = initialState, action) => {
         case CLEAR_LIST_USER :
             stateCopy = {...state, users : []};
             return stateCopy;
+        case CHANGE_FETCHING_STATUS:
+            stateCopy = {
+                ...state
+            };
+            stateCopy.isFetching = action.preloadStatus;
+            return stateCopy;
         default:
             return state;
     }
-    
-    
 }
 
 export const followUser = (id) => {
@@ -179,6 +185,13 @@ export const clearUsersList = () => {
     debugger;
     return {
         type : CLEAR_LIST_USER
+    }
+}
+
+export const changeFetchingStatus = (status) => {
+    return {
+        type : CHANGE_FETCHING_STATUS,
+        preloadStatus : status
     }
 }
 

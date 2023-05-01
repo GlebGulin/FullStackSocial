@@ -1,9 +1,10 @@
 import React from "react";
 import UserProfile from "./UserProfile/UserProfile";
 import style from './UserProfile/UserProfile.module.css';
-import noname from './../../../../src/assets/images/noname.png'
+import preloader from './../../../assets/images/giphy.gif'
 import axios from "axios";
 import UsersProfile from "./UsersProfile";
+import Preloader from "../../Common/Preloader";
 
 let usersNew = [
     {
@@ -56,9 +57,11 @@ class UsersProfileAPIComponent extends React.Component{
     };
 
     clickChangePage = (number) => {
+        this.props.onChangeFetchingStatus(true);
         this.props.onChangePage(number);
         axios.get(`https://localhost:44367/users?limit=${this.props.usersPage.pageSize}&page=${number}`)
                     .then((response) => {
+                        this.props.onChangeFetchingStatus(false);
                         console.log(response.status);
                         if(response.status === 200){
                             console.log(response.data);
@@ -69,13 +72,16 @@ class UsersProfileAPIComponent extends React.Component{
                         else{
                             alert("Error");
                         }});
+        
     };
 
     componentDidMount(){
         this.showUsers();
     };
-    
+
     showUsers = () => {
+        // alert("showUsers function status: " + true);
+        this.props.onChangeFetchingStatus(true);
         debugger;
         console.log("Quantity of users: " + this.props.usersPage.users.length);
         if (this.props.usersPage.users.length === 0){
@@ -85,6 +91,8 @@ class UsersProfileAPIComponent extends React.Component{
                     axios.get(`https://localhost:44367/users?limit=${this.props.usersPage.pageSize}&page=${this.props.usersPage.currentPage}`)
                     // axios.get(`https://social-network.samuraijs.com/api/1.0/users`)
                     .then((response) => {
+                        // alert("showUsers function status: " + false);
+                        this.props.onChangeFetchingStatus(false);
                         console.log(response.status);
                         if(response.status === 200){
                             console.log(response.data);
@@ -97,6 +105,7 @@ class UsersProfileAPIComponent extends React.Component{
                         
     
                     }).catch(()=>{
+                        this.props.onChangeFetchingStatus(false);
                         this.props.onSetState(usersNew);
                         this.props.onSetPageCount(pageTestCount);
                     });
@@ -106,7 +115,11 @@ class UsersProfileAPIComponent extends React.Component{
                     this.props.onSetState(usersNew);
                 }
             }
+            else{
+                this.props.onChangeFetchingStatus(false);
+            }
         // axios.get("https://social-network.samuraijs.com/api/1.0/users");
+        
     }
 
 
@@ -116,36 +129,18 @@ class UsersProfileAPIComponent extends React.Component{
     render(){ 
         // return <h1>Text</h1>
         // alert(this.props.usersPage.pageCount);
+        console.log("Props in API Compoment: ");
+        
         console.log(this.props);
-        let arrPaginItem = [];
-        for (let i = 0; i < this.props.usersPage.pageCount; i++){
-            arrPaginItem.push(i+1);
-        }
-        console.log("Temp arr: " + arrPaginItem);
-        console.log("Current page: " + this.props.usersPage.currentPage);
-        return (<div>
-                    <UsersProfile clickFollowUser={this.clickFollowUser}
+        return (
+        <div>
+            {this.props.usersPage.isFetching ? <Preloader /> : null}
+            <UsersProfile clickFollowUser={this.clickFollowUser}
                                   clickUnfollowUser={this.clickUnfollowUser}
                                   clickChangePage={this.clickChangePage}
-                                  arrPaginItem={arrPaginItem}/>
-                    <div className={style.paginationItems}>
-                        {/* <span>1</span>
-                        <span className={style.activePagin}>2</span>
-                        <span>3</span> */}
-                        {
-                            arrPaginItem.map(el => 
-                                (<span key={el} onClick={()=>{this.clickChangePage(el)}} className={(el==this.props.usersPage.currentPage) ? style.activePagin : style.unactivePagin}>{el}{console.log(el)}</span>))
-                        }
-                    </div>
-                    {/* <div className={style.paginationItems}>
-                        this
-                    </div> */}
-                    {
-                        this.props.usersPage.users.map(el =>
-                            (<UserProfile key={el.id} id={el.id} avatar={el.avat} name={el.name} status={el.status} country={el.country} city={el.city} followed={el.followed}
-                                onFollowUser={this.props.onFollowUser} 
-                                onUnfollowUser={this.props.onUnfollowUser}/>))
-                    }
+                                  users = {this.props.usersPage.users}
+                                  currentPage={this.props.usersPage.currentPage}
+                                  pageCount={this.props.usersPage.pageCount}/>
             </div>)
     }
 }

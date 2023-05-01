@@ -14,6 +14,7 @@ using System.Text;
 using Microsoft.Extensions.Configuration;
 using Data.LAYER.Model.Global;
 using DL.DB;
+using DL.Model.Identity;
 
 namespace SocialWeb.API
 {
@@ -30,6 +31,14 @@ namespace SocialWeb.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<SocialStoreDatabaseSettings>(Configuration.GetSection("SocialStoreDatabase"));
+            //mongo.AddIdentity<ApplicationUser, ApplicationRole>();
+            //services.AddScoped(mongo);
+            var mongoDBSettings2 = Configuration.GetSection("SocialStoreDatabase").Get<SocialStoreDatabaseSettings>();
+            services.AddIdentity<ApplicationUser, ApplicationRole>()
+                .AddMongoDbStores<ApplicationUser, ApplicationRole, Guid>
+                (
+                    mongoDBSettings2.ConnectionString, mongoDBSettings2.DatabaseName
+                );
             services.AddControllers();
             services
                 //Managers
