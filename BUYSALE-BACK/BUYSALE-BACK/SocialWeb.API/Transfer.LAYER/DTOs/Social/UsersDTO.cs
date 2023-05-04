@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Transfer.LAYER.DTOs.Common;
+using Transfer.LAYER.DTOs.Social;
 
 namespace Transfer.LAYER
 {
@@ -24,6 +25,10 @@ namespace Transfer.LAYER
         public int    Age        { get; set; }
         public bool   Followed   { get; set; }
         public List<PostDTO> Posts { get; set; }
+        public UserDTO()
+        {
+            Posts = new List<PostDTO>();
+        }
     }
 
 }

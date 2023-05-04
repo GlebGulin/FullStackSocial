@@ -10,5 +10,6 @@ namespace DL.DB
 
         public string UserCollectionName    { get; set; } = null!;
         public string ProfileCollectionName { get; set; } = null!;
+        public string PostCollectionName    { get; set; } = null!;
     }
 }

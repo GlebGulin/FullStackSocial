@@ -2,20 +2,18 @@ using Business.LAYER.Services;
 using Business.LAYER.Services.Abstractions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System;
-using System.Collections.Generic;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using Data.LAYER.Model.Global;
 using DL.DB;
 using DL.Model.Identity;
 using Microsoft.OpenApi.Models;
+using DL.DB.Sevices;
 
 namespace SocialWeb.API
 {
@@ -45,9 +43,11 @@ namespace SocialWeb.API
                 //Managers
                .AddTransient<IProfileServices, ProfileServices>()
                .AddTransient<IUsersService, UsersService>()
+               .AddTransient<IPostService, PostService>()
                .AddTransient<IAuthService, AuthService>()
                //DB Services
-               .AddTransient<ProfileDBService>();
+               .AddTransient<ProfileDBService>()
+               .AddTransient<PostDBService>();
             var globalSettingsSection = Configuration.GetSection("GlobalSettings");
             var globalSettings = globalSettingsSection.Get<GlobalSettings>();
             var key = Encoding.ASCII.GetBytes(globalSettings.Secret);

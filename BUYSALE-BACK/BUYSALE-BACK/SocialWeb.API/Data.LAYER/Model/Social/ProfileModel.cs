@@ -15,12 +15,14 @@ namespace DL.Model
         public Avatar Avatar                  { get; set; }  
         public List<string> SubscribedToUsers { get; set; }
         public List<string> SubscribedToGroup { get; set; }
+        public List<string> Friends           { get; set; }
         public ProfileModel()
         {
             Location = new Location();
             Avatar   = new Avatar();
             SubscribedToUsers = new List<string>();
             SubscribedToGroup = new List<string>();
+            Friends           = new List<string>();
         }
     }
 

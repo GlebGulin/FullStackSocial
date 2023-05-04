@@ -1,4 +1,5 @@
-﻿using Business.LAYER.Services.Abstractions;
+﻿using Business.LAYER.Services;
+using Business.LAYER.Services.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -13,9 +14,11 @@ namespace SocialWeb.API.Controllers
     public class ProfileController : Controller
     {
         private readonly IProfileServices _profileService;
-        public ProfileController(IProfileServices profileServices)
+        private readonly IPostService _postService;
+        public ProfileController(IProfileServices profileServices, IPostService postService)
         {
             _profileService = profileServices;
+            _postService    = postService;
         }
 
         [Route("get-profile")]

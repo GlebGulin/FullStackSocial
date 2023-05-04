@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Transfer.LAYER.DTOs.Social.Commands
+﻿namespace Transfer.LAYER.DTOs.Social.Commands
 {
     public class UsersCommand
     {

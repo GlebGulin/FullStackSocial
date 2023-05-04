@@ -15,9 +15,11 @@ namespace SocialWeb.API.Controllers
     public class UsersController : Controller
     {
         private readonly IUsersService _usersService;
-        public UsersController(IUsersService usersService)
+        private readonly IPostService _postService;
+        public UsersController(IUsersService usersService, IPostService postService)
         {
             _usersService = usersService;
+            _postService  = postService;
         }
 
         [HttpGet]
@@ -30,8 +32,5 @@ namespace SocialWeb.API.Controllers
             var result = await _usersService.GetUsers(users);
             return result;
         }
-
-        [HttpGet]
-        public async Task
     }
 }

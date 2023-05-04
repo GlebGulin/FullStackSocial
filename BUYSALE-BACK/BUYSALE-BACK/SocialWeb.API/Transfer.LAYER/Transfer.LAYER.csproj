@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\Social\Results\" />
     <Folder Include="DTOs\Store\" />
   </ItemGroup>
 

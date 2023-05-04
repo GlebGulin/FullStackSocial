@@ -18,6 +18,14 @@ namespace Transfer.LAYER.Enums
         Ok = 0,
         BadRequest, 
         NotFound,
-        Exists
+        Exists,
+        Empty,
+        Exception
+    }
+
+    public enum PostType
+    {
+        FromMe = 0,
+        FromFriend
     }
 }

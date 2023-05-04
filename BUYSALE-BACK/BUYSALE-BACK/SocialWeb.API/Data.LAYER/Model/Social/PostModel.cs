@@ -10,12 +10,17 @@ namespace DL.Model
 {
     public class PostModel
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string? Id          { get; set; }
-        [BsonElement("Name")]
-        public string PostContent { get; set; }
-        public string UserId      { get; set; }
-        public DateTime CreateOn  { get; set; }
+        public string Id                  { get; set; }
+        public string PostContent         { get; set; }
+        public string UserId              { get; set; }
+        public string AuthorId            { get; set; }
+        public DateTime CreateOn          { get; set; }
+        public List<string> MoviesContent { get; set; }
+        public List<string> PhotosContent { get; set; }
+        public PostModel()
+        {
+            MoviesContent = new List<string>();
+            PhotosContent = new List<string>();
+        }
     }
 }
