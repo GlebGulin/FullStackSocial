@@ -23,5 +23,7 @@ namespace Transfer.LAYER
         public string UserStatus { get; set; }
         public int    Age        { get; set; }
         public bool   Followed   { get; set; }
+        public List<PostDTO> Posts { get; set; }
     }
+
 }

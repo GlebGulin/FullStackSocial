@@ -30,5 +30,8 @@ namespace SocialWeb.API.Controllers
             var result = await _usersService.GetUsers(users);
             return result;
         }
+
+        [HttpGet]
+        public async Task
     }
 }
