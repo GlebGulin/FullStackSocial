@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Transfer.LAYER;
 using Transfer.LAYER.DTOs.Social.Commands;
+using Transfer.LAYER.DTOs.Social.Results;
 
 namespace SocialWeb.API.Controllers
 {
@@ -23,7 +24,7 @@ namespace SocialWeb.API.Controllers
         }
 
         [HttpGet]
-        public async Task<UsersDTO> GetUsers([FromQuery] UsersCommand users)
+        public async Task<UsersResult> GetUsers([FromQuery] UsersCommand users)
         {
             if (users.Limit == 0)
                 users.Limit = 10;

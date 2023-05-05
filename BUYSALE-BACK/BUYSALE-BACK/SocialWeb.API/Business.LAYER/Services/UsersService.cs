@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Transfer.LAYER;
 using Transfer.LAYER.DTOs.Social.Commands;
+using Transfer.LAYER.DTOs.Social.Results;
 
 namespace Business.LAYER.Services
 {
@@ -15,9 +16,9 @@ namespace Business.LAYER.Services
             _profileDBService = profileDBService;
         }
 
-        public async Task<UsersDTO> GetUsers(UsersCommand users)
+        public async Task<UsersResult> GetUsers(UsersCommand users)
         {
-            var result = new UsersDTO();
+            var result = new UsersResult();
             
             long total = await _profileDBService.GetTotalQuantityAsync();
             double t = Convert.ToDouble(total);
@@ -25,7 +26,7 @@ namespace Business.LAYER.Services
             var res = await _profileDBService.GetPartDataAsync(users.Page, users.Limit);
             foreach (var model in res)
             {
-                result.Users.Add(new UserDTO() {
+                result.Users.Add(new UserResult() {
                     Id = model.Id,
                     Name = String.Format("{0} {1}", model.FirstName, model.LastName),
                     City = model.Location.City,

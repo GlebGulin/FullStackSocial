@@ -7,6 +7,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Transfer.LAYER;
 using Transfer.LAYER.DTOs.Social;
+using Transfer.LAYER.DTOs.Social.Commands;
+using Transfer.LAYER.DTOs.Social.Results;
 
 namespace SocialWeb.API.Controllers
 {
@@ -23,23 +25,23 @@ namespace SocialWeb.API.Controllers
 
         [Route("get-profile")]
         [HttpGet]
-        public async Task<JsonResult> GetProfile()
+        public async Task<GetProfileResult> GetProfile()
         {
             var result = await _profileService.GetProfile();
-            return Json(result);
+            return result;
         }
 
         [Route("set-profile")]
         [HttpPost]
-        public async Task<JsonResult> SetProfile([FromBody]ProfileDTO profile)
+        public async Task<SetProfileResult> SetProfile([FromBody]SetProfileCommand profile)
         {
             var result = await _profileService.SetProfile(profile);
-            return Json(result);
+            return result;
         }
 
         [Route("my-gallery")]
         [HttpGet]
-        public async Task<GalleryDTO> GetMyGallery()
+        public async Task<GetGalleryResult> GetMyGallery()
         {
             var result = await _profileService.GetMyGallery();
             return result;

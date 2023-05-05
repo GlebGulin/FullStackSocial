@@ -49,6 +49,7 @@ namespace SocialWeb.API
                .AddTransient<ProfileDBService>()
                .AddTransient<PostDBService>();
             var globalSettingsSection = Configuration.GetSection("GlobalSettings");
+            services.Configure<GlobalSettings>(globalSettingsSection);
             var globalSettings = globalSettingsSection.Get<GlobalSettings>();
             var key = Encoding.ASCII.GetBytes(globalSettings.Secret);
             services.AddAuthentication(x =>
@@ -87,7 +88,7 @@ namespace SocialWeb.API
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseAuthentication();
             app.UseCors(builder => builder
              .AllowAnyOrigin()
              .AllowAnyMethod()

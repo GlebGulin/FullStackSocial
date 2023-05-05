@@ -1,11 +1,12 @@
 ﻿using System.Threading.Tasks;
 using Transfer.LAYER;
 using Transfer.LAYER.DTOs.Social.Commands;
+using Transfer.LAYER.DTOs.Social.Results;
 
 namespace Business.LAYER.Services.Abstractions
 {
     public interface IUsersService
     {
-        Task<UsersDTO> GetUsers(UsersCommand users);
+        Task<UsersResult> GetUsers(UsersCommand users);
     }
 }

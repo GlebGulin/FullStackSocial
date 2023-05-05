@@ -1,9 +1,8 @@
-﻿using System;
-using Transfer.LAYER.DTOs.Common;
+﻿using Transfer.LAYER.DTOs.Common;
 
-namespace Transfer.LAYER
+namespace Transfer.LAYER.DTOs.Social.Commands
 {
-    public class ProfileDTO : BaseDto
+    public class SetProfileCommand : BaseCommand
     {
         public string Id          { get; set; }
         public string FirstName   { get; set; }

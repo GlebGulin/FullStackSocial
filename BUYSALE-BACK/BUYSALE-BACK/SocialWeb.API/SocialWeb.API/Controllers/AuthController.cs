@@ -1,12 +1,11 @@
-﻿using Business.LAYER.Services;
-using Business.LAYER.Services.Abstractions;
+﻿using Business.LAYER.Services.Abstractions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 using Transfer.LAYER.DTOs.Social;
+using Transfer.LAYER.DTOs.Social.Commands;
+using Transfer.LAYER.DTOs.Social.Results;
 
 namespace SocialWeb.API.Controllers
 {
@@ -19,12 +18,13 @@ namespace SocialWeb.API.Controllers
             _authService = authService;
         }
 
+        [AllowAnonymous]
         [Route("login")]
         [HttpPost]
-        public async Task<JsonResult> Login([FromBody]LoginDTO login)
+        public async Task<AuthResult> Login([FromBody]AuthCommand login)
         {
             var result = await _authService.Login(login);
-            return Json(result);
+            return result;
         }
     }
 }

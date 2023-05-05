@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using Transfer.LAYER;
 using Transfer.LAYER.DTOs.Common;
 using Transfer.LAYER.DTOs.Social;
+using Transfer.LAYER.DTOs.Social.Commands;
+using Transfer.LAYER.DTOs.Social.Results;
 using Transfer.LAYER.Enums;
 
 namespace Business.LAYER.Services
@@ -20,9 +22,9 @@ namespace Business.LAYER.Services
         {
             _profileDBService = profileDBService;
         }
-        public Task<ProfileDTO> GetProfile()
+        public Task<GetProfileResult> GetProfile()
         {
-            ProfileDTO profile = new ProfileDTO()
+            var profile = new GetProfileResult()
             {
                 Id = Guid.NewGuid().ToString(),
                 FirstName = "Test",
@@ -32,14 +34,22 @@ namespace Business.LAYER.Services
             return Task.FromResult(profile);
         }
 
-        public Task<GalleryDTO> GetMyGallery()
+        public Task<GetGalleryResult> GetMyGallery()
         {
-            throw new NotImplementedException();
+            var result = new GetGalleryResult()
+            {
+                Images = new List<string>()
+                {
+                    "https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832_960_720.jpg",
+                    "https://cdn.pixabay.com/photo/2012/03/01/00/55/flowers-19830_960_720.jpg"
+                }
+            };
+            return Task.FromResult(result);
         }
 
-        public async Task<ProfileDTO> SetProfile(ProfileDTO profile)
+        public async Task<SetProfileResult> SetProfile(SetProfileCommand profile)
         {
-            ProfileDTO result = new ProfileDTO();
+            var result = new SetProfileResult();
             try
             {
                 var profileModel = new ProfileModel() {
@@ -58,19 +68,19 @@ namespace Business.LAYER.Services
                 var check = await _profileDBService.CheckExistAsync(profileModel.FirstName, profileModel.LastName);
                 if (check is not null)
                 {
-                    result.Result = Result.Exists;
+                    result.ResultStatus = Result.Exists;
                     result.ErrorMessage = "User exists";
                     return result;
                 }
 
                 await _profileDBService.CreateAsync(profileModel);
                 result.Id = profileModel.Id;
-                result.Result = Result.Ok;
+                result.ResultStatus = Result.Ok;
                 return result;
             }
             catch(Exception e)
             {
-                result.Result = Result.BadRequest;
+                result.ResultStatus = Result.BadRequest;
                 result.ErrorMessage = e.Message;
                 return result;
             }

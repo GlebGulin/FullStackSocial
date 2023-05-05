@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 using Transfer.LAYER;
 using Transfer.LAYER.DTOs.Common;
 using Transfer.LAYER.DTOs.Social;
+using Transfer.LAYER.DTOs.Social.Commands;
+using Transfer.LAYER.DTOs.Social.Results;
 
 namespace Business.LAYER.Services.Abstractions
 {
     public interface IProfileServices
     {
-        Task<ProfileDTO> GetProfile();
-        Task<ProfileDTO> SetProfile(ProfileDTO profile);
-        Task<GalleryDTO> GetMyGallery();
+        Task<GetProfileResult> GetProfile();
+        Task<SetProfileResult> SetProfile(SetProfileCommand profile);
+        Task<GetGalleryResult> GetMyGallery();
     }
 }

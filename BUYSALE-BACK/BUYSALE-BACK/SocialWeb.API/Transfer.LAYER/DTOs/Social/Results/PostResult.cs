@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using Transfer.LAYER.DTOs.Common;
 
-namespace Transfer.LAYER.DTOs.Social
+namespace Transfer.LAYER.DTOs.Social.Results
 {
-    public class PostDTO : BaseDto
+    public class PostResult : BaseResult
     {
         public string Id { get; set; }
         public string PostContent { get; set; }
@@ -13,7 +13,7 @@ namespace Transfer.LAYER.DTOs.Social
         public DateTime CreateOn { get; set; }
         public List<string> MoviesContent { get; set; }
         public List<string> PhotosContent { get; set; }
-        public PostDTO()
+        public PostResult()
         {
             MoviesContent = new List<string>();
             PhotosContent = new List<string>();

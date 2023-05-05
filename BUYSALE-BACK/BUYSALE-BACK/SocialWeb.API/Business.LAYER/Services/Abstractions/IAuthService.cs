@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using DL.Model.Identity;
 using System.Threading.Tasks;
-using Transfer.LAYER.DTOs.Social;
+using Transfer.LAYER.DTOs.Social.Commands;
+using Transfer.LAYER.DTOs.Social.Results;
 
 namespace Business.LAYER.Services.Abstractions
 {
     public interface IAuthService
     {
-        Task<AuthKeyDto> Login(LoginDTO login);
+        Task<AuthResult> Login(AuthCommand login);
     }
 }

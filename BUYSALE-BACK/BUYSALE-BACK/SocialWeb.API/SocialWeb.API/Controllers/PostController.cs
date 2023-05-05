@@ -30,5 +30,18 @@ namespace SocialWeb.API.Controllers
             var result = await _postService.SetPost(post);
             return result;
         }
+
+        //[Authorize]
+        [Route("posts")]
+        public async Task<GetPostsResult> GetPosts([FromQuery] GetPostsCommand post)
+        {
+            if (String.IsNullOrEmpty(post.UserId))
+            {
+                //TODO : UserId From userManager
+                post.UserId = "f119e9b7-1125-4809-a157-ddaae54831b1";
+            }
+            var result = await _postService.GetLists(post);
+            return result;
+        }
     }
 }

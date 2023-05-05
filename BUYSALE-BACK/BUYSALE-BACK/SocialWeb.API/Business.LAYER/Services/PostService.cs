@@ -18,6 +18,34 @@ namespace Business.LAYER.Services
         {
             _postDBService = postDBService;
         }
+
+        public async Task<GetPostsResult> GetLists(GetPostsCommand posts)
+        {
+            var result = new GetPostsResult();
+            try
+            {
+                //TODO Pagination 
+                posts.Quantity = (posts.Quantity == 0) ? 20 : posts.Quantity;
+                posts.Start = (posts.Start == 0) ? 1 : posts.Start;
+                var postsModel = await _postDBService.GetPostsListAsync(posts.UserId, posts.Start, posts.Quantity);
+                if (postsModel.Count == 0)
+                {
+                    return new GetPostsResult() { ResultStatus = Result.NotFound, ErrorMessage = "Posts not found" };
+                }
+                foreach (var postModel in postsModel)
+                {
+                    
+                }
+                result.ResultStatus = Result.Ok;
+                result.ErrorMessage = "Quantity of posts " + postsModel.Count.ToString();
+                return result;
+            }
+            catch(Exception ex)
+            {
+                return new GetPostsResult() { ResultStatus = Result.Exception, ErrorMessage = ex.Message };
+            }
+        }
+
         public async Task<SetPostResult> SetPost(SetPostCommand post)
         {
             try
@@ -42,5 +70,7 @@ namespace Business.LAYER.Services
                 return new SetPostResult() { ErrorMessage = ex.Message, ResultStatus = Result.Exception };
             }
         }
+
+        
     }
 }
