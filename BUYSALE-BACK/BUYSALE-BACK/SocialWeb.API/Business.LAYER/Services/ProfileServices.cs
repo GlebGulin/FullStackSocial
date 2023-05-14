@@ -22,16 +22,35 @@ namespace Business.LAYER.Services
         {
             _profileDBService = profileDBService;
         }
-        public Task<GetProfileResult> GetProfile()
+        public async Task<GetProfileResult> GetProfile(GetProfileCommand profile)
         {
-            var profile = new GetProfileResult()
+            var prMod = new GetProfileResult();
+            //TODO: Check Id by userManager
+            if (String.IsNullOrEmpty(profile.Id))
             {
-                Id = Guid.NewGuid().ToString(),
-                FirstName = "Test",
-                LastName  = "Test"
 
-            };
-            return Task.FromResult(profile);
+                prMod.Id = Guid.NewGuid().ToString();
+                prMod.FirstName = "Test";
+                prMod.LastName = "Test";
+                prMod.Description = "TODO UserManager";
+                return prMod;
+            }
+            var prDB = await _profileDBService.GetAsync(profile.Id);
+            if(prDB is null)
+            {
+                return new GetProfileResult() { ResultStatus = Result.NotFound, ErrorMessage = "User Profile not found" };
+            }
+
+            prMod.Country = prDB.Location.Country;
+            prMod.City    = prDB.Location.City;
+            prMod.FirstName = prDB.FirstName;
+            prMod.LastName = prDB.LastName;
+            prMod.UserStatus = prDB.UserStatus;
+            prMod.Description = prDB.Description;
+            prMod.Age = prDB.Age;
+            prMod.AvatarImg = prDB.Avatar.Large;
+
+            return prMod;
         }
 
         public Task<GetGalleryResult> GetMyGallery()

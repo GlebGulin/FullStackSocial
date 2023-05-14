@@ -6,8 +6,11 @@ import st from './ProfileContainer.module.css';
 // import NewPostContainer from './NewPost/NewPostContainer';
 // import MyCustomContext from '../../../BLL/CustomContext/MyCustomContext';
 import { Provider, connect } from 'react-redux';
-import { addNewPostActionCreator } from './../../../BLL/State/store';
-import { updateCurrentPostCreator } from './../../../BLL/State/store';
+import { useParams } from 'react-router-dom';
+import { addNewPostActionCreator } from './../../../BLL/Reduces/ProfileReducer';
+import { updateCurrentPostCreator } from './../../../BLL/Reduces/ProfileReducer';
+import { setProfileInfo } from './../../../BLL/Reduces/ProfileReducer';
+import ProfileAPIComponent from './ProfileAPIComponents';
 
 // let posts = [
 //     {
@@ -93,10 +96,22 @@ let mapDispatchToProps = (dispatch) => {
         addPost : () => {
             debugger;
             dispatch(addNewPostActionCreator());
+        },
+        setprofile : (profile) => {
+            dispatch(setProfileInfo(profile));
         }
     };
 }
 
-const ProfileContainer = connect(mapStateToProps, mapDispatchToProps)(Profile);
+// const ProfileContainer = connect(mapStateToProps, mapDispatchToProps)(Profile);
+// withRouter(ProfileAPIComponent);
+export function withRouter(ProfileAPIComponent){
+    return(props)=>{
+       const match  = {params: useParams()};
+       return <ProfileAPIComponent {...props}  match = {match}/>
+   }
+ }
+let withR = withRouter(ProfileAPIComponent);
+const ProfileContainer = connect(mapStateToProps, mapDispatchToProps)(withR);
 
 export default ProfileContainer;

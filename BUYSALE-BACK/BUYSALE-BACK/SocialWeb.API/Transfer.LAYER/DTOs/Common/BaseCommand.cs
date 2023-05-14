@@ -2,5 +2,6 @@
 {
     public class BaseCommand
     {
+        public string Id { get; set; }
     }
 }

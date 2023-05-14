@@ -25,9 +25,9 @@ namespace SocialWeb.API.Controllers
 
         [Route("get-profile")]
         [HttpGet]
-        public async Task<GetProfileResult> GetProfile()
+        public async Task<GetProfileResult> GetProfile([FromQuery]GetProfileCommand profile)
         {
-            var result = await _profileService.GetProfile();
+            var result = await _profileService.GetProfile(profile);
             return result;
         }
 

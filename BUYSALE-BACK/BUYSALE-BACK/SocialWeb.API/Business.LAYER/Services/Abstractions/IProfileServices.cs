@@ -13,7 +13,7 @@ namespace Business.LAYER.Services.Abstractions
 {
     public interface IProfileServices
     {
-        Task<GetProfileResult> GetProfile();
+        Task<GetProfileResult> GetProfile(GetProfileCommand profile);
         Task<SetProfileResult> SetProfile(SetProfileCommand profile);
         Task<GetGalleryResult> GetMyGallery();
     }

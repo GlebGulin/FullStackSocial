@@ -64,8 +64,19 @@ const App = () => {
         <SideMenu />
         <div className="content-container">
           <Routes>
-            <Route path="profile" 
+          {/* <Route exact path="/profile/:id" element={<ProfileContainer />}>
+          </Route>
+          <Route exact path="/profile/" element={<ProfileContainer />}>
+          </Route> */}
+          <Route path="/profile">
+            <Route index element={<ProfileContainer />} />
+            <Route path=":id" element={<ProfileContainer />} />
+          </Route>
+            {/* <Route exact path="/profile/:id" 
               element={<ProfileContainer />} />
+            <Route exact path="/profile" 
+              element={<ProfileContainer />} /> */}
+              
             {/* <Route path="messages/*" element={<DialogContainer
               />} /> */}
             {/* After include react-redux library */}

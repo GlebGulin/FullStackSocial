@@ -1,5 +1,6 @@
 const UPDATE_CURRENT_POST = 'UPDATE_CURRENT_POST';
 const ADD_NEW_POST = 'ADD_NEW_POST';
+const SET_PROFILE_INFO = 'SET_PROFILE_INFO';
 
 //Start initialize profileState after including Redux
 let initialState = {
@@ -8,7 +9,9 @@ let initialState = {
         firstName : "Demo",
         lastName : "Demo",
         preview : 'https://daveywankenobie.files.wordpress.com/2016/09/img_8562.jpg',
-        age : 34
+        age : 34,
+        city : "Test",
+        country : "Country"
     },
     posts : [
         {
@@ -76,6 +79,21 @@ const ProfileReducer = (state = initialState, action) => {
             return stateCopy;
         }
 
+        case SET_PROFILE_INFO:{
+            stateCopy = {...state};
+            stateCopy.profileData = {...state.profileData};
+            stateCopy.profileData.age = action.profile.age;
+            stateCopy.profileData.firstName = action.profile.firstName;
+            stateCopy.profileData.lastName = action.profile.lastName;
+            stateCopy.profileData.preview = action.profile.avatarImg;
+            stateCopy.profileData.city = action.profile.city;
+            stateCopy.profileData.country = action.profile.country;
+            stateCopy.profileData.userStatus = action.profile.userStatus;
+            console.log("Updated state of profile");
+            console.log(stateCopy.profileData);
+            return stateCopy;
+        }
+
         default:
             return state;
     }
@@ -93,4 +111,12 @@ export const updateCurrentPostCreator = (message) => {
         message : message
     }
 }
+
+export const setProfileInfo = (profile) => {
+    return {
+        type : SET_PROFILE_INFO,
+        profile : profile
+    }
+}
+
 export default ProfileReducer;

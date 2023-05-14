@@ -1,6 +1,7 @@
 import React from "react";
 import style from './UserProfile.module.css';
-import noname from './../../../../../src/assets/images/noname.png'
+import noname from './../../../../../src/assets/images/noname.png';
+import { NavLink } from 'react-router-dom';
 
 class UserProfile extends React.Component {
     
@@ -18,8 +19,9 @@ class UserProfile extends React.Component {
         <div className={style.usersContent}>
             <div>
                 <div>
-                    { this.props.avatar != null ? <img src={this.props.avatar} className={style.avatar}/> : <img src={noname} className={style.avatar}/>}
-                    
+                    <NavLink to={"/profile/"+this.props.id}>
+                        { this.props.avatar != null ? <img src={this.props.avatar} className={style.avatar}/> : <img src={noname} className={style.avatar}/>}
+                    </NavLink>
                 </div>
                 {this.props.followed ?  <button onClick={this.clickUnfollowUser}>Unfollow</button> : <button onClick={this.clickFollowUser}>Follow</button>}
                 
