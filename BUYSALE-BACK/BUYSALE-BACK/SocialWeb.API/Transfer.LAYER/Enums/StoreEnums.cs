@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Transfer.LAYER.Enums
+﻿namespace Transfer.LAYER.Enums
 {
     public enum ProductEnums
     {
@@ -27,5 +21,12 @@ namespace Transfer.LAYER.Enums
     {
         FromMe = 0,
         FromFriend
+    }
+
+    public enum MediaType
+    {
+        Photo = 0,
+        Video,
+        Sound
     }
 }
