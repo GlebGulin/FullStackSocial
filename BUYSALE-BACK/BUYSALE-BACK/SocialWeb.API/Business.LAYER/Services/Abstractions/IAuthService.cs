@@ -8,5 +8,6 @@ namespace Business.LAYER.Services.Abstractions
     public interface IAuthService
     {
         Task<AuthResult> Login(AuthCommand login);
+        Task<RegisterResult> Registration(RegisterCommand login);
     }
 }

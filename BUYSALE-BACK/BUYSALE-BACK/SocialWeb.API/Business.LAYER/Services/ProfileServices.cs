@@ -77,7 +77,8 @@ namespace Business.LAYER.Services
                     LastName    = profile.LastName,
                     Description = profile.Description,
                     Age         = profile.Age,
-                    UserStatus  = profile.UserStatus
+                    UserStatus  = profile.UserStatus,
+                    UserId      = profile.UserId
                 };
                 profileModel.Location.City    = profile.City; 
                 profileModel.Location.Country = profile.Country;

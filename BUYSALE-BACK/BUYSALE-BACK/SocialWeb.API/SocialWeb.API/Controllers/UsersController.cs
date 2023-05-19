@@ -37,12 +37,12 @@ namespace SocialWeb.API.Controllers
                 ApplicationUser appUser = new ApplicationUser
                 {
                     UserName = auth.Login,
-                    Email = "glepsgulin@gmail.com"
+                    Email = auth.Login
                 };
                 appUser.Id = Guid.NewGuid();
                 appUser.SecurityStamp = appUser.Id.ToString();
                 IdentityResult result = await _userManager.CreateAsync(appUser, auth.Password);
-                await _userManager.AddToRoleAsync(appUser, "testRole");
+                await _userManager.AddToRoleAsync(appUser, "Customer");
                 if (result.Succeeded)
                     return Json("Succeed");
                 else
@@ -80,6 +80,7 @@ namespace SocialWeb.API.Controllers
             }
             return Json(new { error = "Role already exist" });
         }
+
 
         [HttpGet]
         public async Task<UsersResult> GetUsers([FromQuery] UsersCommand users)

@@ -14,6 +14,10 @@ using DL.DB;
 using DL.Model.Identity;
 using Microsoft.OpenApi.Models;
 using DL.DB.Sevices;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Collections.Generic;
+using SocialWeb.API.Services;
 
 namespace SocialWeb.API
 {
@@ -40,17 +44,20 @@ namespace SocialWeb.API
                 );
             services.AddControllers();
             services
-                //Managers
+               //Managers
                .AddTransient<IProfileServices, ProfileServices>()
                .AddTransient<IUsersService, UsersService>()
                .AddTransient<IPostService, PostService>()
                .AddTransient<IAuthService, AuthService>()
                //DB Services
                .AddTransient<ProfileDBService>()
-               .AddTransient<PostDBService>();
+               .AddTransient<PostDBService>()
+               //Seed Services
+               .AddTransient<ISeedStartDataService, SeedStartDataService>();
             var globalSettingsSection = Configuration.GetSection("GlobalSettings");
             services.Configure<GlobalSettings>(globalSettingsSection);
             var globalSettings = globalSettingsSection.Get<GlobalSettings>();
+            
             var key = Encoding.ASCII.GetBytes(globalSettings.Secret);
             services.AddAuthentication(x =>
             {
@@ -79,6 +86,7 @@ namespace SocialWeb.API
                     Description = "A simple example to Implement Swagger UI for project BuySale",
                 });
             });
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -88,24 +96,38 @@ namespace SocialWeb.API
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseAuthentication();
             app.UseCors(builder => builder
              .AllowAnyOrigin()
              .AllowAnyMethod()
              .AllowAnyHeader());
-            
-            //app.UseMvc();
-
             app.UseRouting();
-
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+            
             app.UseSwagger();
             app.UseSwaggerUI(c => {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Showing API V1");
             });
+            //app.Use(async (context, next) =>
+            //{
+            //    // you could get from token or get from session. 
+            //    string token = context.Request.Headers["Authorization"];
+            //    if (!string.IsNullOrEmpty(token))
+            //    {
+            //        var tok = token.Replace("Bearer ", "");
+            //        var jwttoken = new JwtSecurityTokenHandler().ReadJwtToken(tok);
+            //        var claims = new List<Claim> { /* add claims */ };
+            //        var userIdentity = new ClaimsIdentity(claims, ClaimTypes.Name);
+            //        context.User = new ClaimsPrincipal(userIdentity);
+            //    }
+
+            //    await next();
+
+            //});
         }
     }
 }

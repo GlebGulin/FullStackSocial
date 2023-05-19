@@ -14,7 +14,9 @@
         NotFound,
         Exists,
         Empty,
-        Exception
+        Exception,
+        NotRegisteredUser,
+        RegistrationError
     }
 
     public enum PostType
@@ -28,5 +30,14 @@
         Photo = 0,
         Video,
         Sound
+    }
+
+    public enum PlatformRoles
+    {
+        Admin = 0, 
+        Buyer,
+        Customer, 
+        Saler,
+        Service
     }
 }
