@@ -14,6 +14,7 @@ namespace Business.LAYER.Services.Abstractions
     public interface IProfileServices
     {
         Task<GetProfileResult> GetProfile(GetProfileCommand profile);
+        Task<GetProfileResult> GetProfileByUserId(string userId);
         Task<SetProfileResult> SetProfile(SetProfileCommand profile);
         Task<GetGalleryResult> GetMyGallery();
     }

@@ -58,7 +58,7 @@ namespace Business.LAYER.Services
                         new Claim(ClaimTypes.Name, user.UserName),
                         new Claim(ClaimTypes.Email, login.Login),
                         new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                        new Claim(ClaimTypes.Role, "testRole")
+                        new Claim(ClaimTypes.Role, PlatformRoles.Customer.ToString())
                     }),
                     Expires = DateTime.UtcNow.AddDays(7),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

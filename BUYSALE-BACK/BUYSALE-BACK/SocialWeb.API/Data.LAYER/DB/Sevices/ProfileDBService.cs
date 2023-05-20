@@ -29,6 +29,9 @@ namespace DL.DB
         public async Task<ProfileModel?> GetAsync(string id) =>
             await _profileCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
 
+        public async Task<ProfileModel?> GetByUserIdAsync(string userId) =>
+            await _profileCollection.Find(x => x.UserId == userId).FirstOrDefaultAsync();
+
         public async Task<ProfileModel?> CheckExistAsync(string firstName, string lastName) =>
             await _profileCollection.Find(x => x.FirstName == firstName && x.LastName == lastName).FirstOrDefaultAsync();
 

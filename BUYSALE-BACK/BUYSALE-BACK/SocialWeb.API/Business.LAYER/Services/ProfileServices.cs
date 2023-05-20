@@ -53,6 +53,27 @@ namespace Business.LAYER.Services
             return prMod;
         }
 
+        public async Task<GetProfileResult> GetProfileByUserId(string userId)
+        {
+            var prMod = new GetProfileResult();
+            var prDB = await _profileDBService.GetByUserIdAsync(userId);
+            if (prDB is null)
+            {
+                return new GetProfileResult() { ResultStatus = Result.NotFound, ErrorMessage = "User Profile not found" };
+            }
+
+            prMod.Country = prDB.Location.Country;
+            prMod.City = prDB.Location.City;
+            prMod.FirstName = prDB.FirstName;
+            prMod.LastName = prDB.LastName;
+            prMod.UserStatus = prDB.UserStatus;
+            prMod.Description = prDB.Description;
+            prMod.Age = prDB.Age;
+            prMod.AvatarImg = prDB.Avatar.Large;
+
+            return prMod;
+        }
+
         public Task<GetGalleryResult> GetMyGallery()
         {
             var result = new GetGalleryResult()
@@ -105,5 +126,7 @@ namespace Business.LAYER.Services
                 return result;
             }
         }
+
+        
     }
 }

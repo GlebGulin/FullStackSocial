@@ -1,9 +1,11 @@
 ﻿using Business.LAYER.Services;
 using Business.LAYER.Services.Abstractions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Transfer.LAYER;
 using Transfer.LAYER.DTOs.Social;
@@ -28,6 +30,16 @@ namespace SocialWeb.API.Controllers
         public async Task<GetProfileResult> GetProfile([FromQuery]GetProfileCommand profile)
         {
             var result = await _profileService.GetProfile(profile);
+            return result;
+        }
+
+        [Authorize(Roles = "Customer")]
+        [Route("my-profile")]
+        [HttpGet]
+        public async Task<GetProfileResult> MyProfile([FromQuery] GetProfileCommand profile)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var result = await _profileService.GetProfileByUserId(userId);
             return result;
         }
 
