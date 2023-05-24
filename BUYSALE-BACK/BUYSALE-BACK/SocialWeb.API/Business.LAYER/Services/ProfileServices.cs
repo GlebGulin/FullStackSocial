@@ -3,12 +3,7 @@ using DL.DB;
 using DL.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Transfer.LAYER;
-using Transfer.LAYER.DTOs.Common;
-using Transfer.LAYER.DTOs.Social;
 using Transfer.LAYER.DTOs.Social.Commands;
 using Transfer.LAYER.DTOs.Social.Results;
 using Transfer.LAYER.Enums;
@@ -106,13 +101,13 @@ namespace Business.LAYER.Services
                 profileModel.Avatar.Small     = profile.AvatarImg;
                 profileModel.Avatar.Large     = profile.AvatarImg;
 
-                var check = await _profileDBService.CheckExistAsync(profileModel.FirstName, profileModel.LastName);
-                if (check is not null)
-                {
-                    result.ResultStatus = Result.Exists;
-                    result.ErrorMessage = "User exists";
-                    return result;
-                }
+                //var check = await _profileDBService.CheckExistAsync(profileModel.FirstName, profileModel.LastName);
+                //if (check is not null)
+                //{
+                //    result.ResultStatus = Result.Exists;
+                //    result.ErrorMessage = "User exists";
+                //    return result;
+                //}
 
                 await _profileDBService.CreateAsync(profileModel);
                 result.Id = profileModel.Id;

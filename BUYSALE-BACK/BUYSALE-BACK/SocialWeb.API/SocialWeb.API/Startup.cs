@@ -18,6 +18,8 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Collections.Generic;
 using SocialWeb.API.Services;
+using Microsoft.Extensions.Logging;
+using DL.Notifications.Email;
 
 namespace SocialWeb.API
 {
@@ -34,8 +36,8 @@ namespace SocialWeb.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<SocialStoreDatabaseSettings>(Configuration.GetSection("SocialStoreDatabase"));
-            //mongo.AddIdentity<ApplicationUser, ApplicationRole>();
-            //services.AddScoped(mongo);
+            services.Configure<SMPTEmail>(Configuration.GetSection("SMPTEmail"));
+            
             var mongoDBSettings2 = Configuration.GetSection("SocialStoreDatabase").Get<SocialStoreDatabaseSettings>();
             services.AddIdentity<ApplicationUser, ApplicationRole>()
                 .AddMongoDbStores<ApplicationUser, ApplicationRole, Guid>
@@ -49,11 +51,19 @@ namespace SocialWeb.API
                .AddTransient<IUsersService, UsersService>()
                .AddTransient<IPostService, PostService>()
                .AddTransient<IAuthService, AuthService>()
+
                //DB Services
                .AddTransient<ProfileDBService>()
                .AddTransient<PostDBService>()
+
                //Seed Services
-               .AddTransient<ISeedStartDataService, SeedStartDataService>();
+               .AddTransient<ISeedStartDataService, SeedStartDataService>()
+
+               //Notification Services
+               .AddTransient<IEmailService, EmailService>();
+
+            services.AddLogging(builder => builder.SetMinimumLevel(LogLevel.Information));
+
             var globalSettingsSection = Configuration.GetSection("GlobalSettings");
             services.Configure<GlobalSettings>(globalSettingsSection);
             var globalSettings = globalSettingsSection.Get<GlobalSettings>();

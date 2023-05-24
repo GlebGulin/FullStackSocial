@@ -2,6 +2,7 @@
 using DL.DB;
 using DL.DB.Sevices;
 using DL.Model;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Globalization;
 using System.Threading.Tasks;
@@ -13,10 +14,16 @@ namespace Business.LAYER.Services
 {
     public class PostService : IPostService
     {
-        private readonly PostDBService _postDBService;
-        public PostService(PostDBService postDBService)
+        private readonly PostDBService    _postDBService;
+        private readonly ProfileDBService _profileDBService;
+        private readonly ILogger<PostService> _logger;
+        public PostService(PostDBService postDBService, 
+                           ProfileDBService profileDBService,
+                           ILogger<PostService> logger)
         {
-            _postDBService = postDBService;
+            _postDBService    = postDBService;
+            _profileDBService = profileDBService;
+            _logger           = logger;
         }
 
         public async Task<GetPostsResult> GetLists(GetPostsCommand posts)
@@ -71,6 +78,35 @@ namespace Business.LAYER.Services
             }
         }
 
-        
+        public async Task<SetPostResult> SetPostAsRegistered(SetPostCommand post)
+        {
+            var result = new SetPostResult();
+            try
+            {
+                var profile = await _profileDBService.GetAsync(post.ProfileId);
+                _logger.LogInformation($"Adding post ti page of user {profile.UserId} by author {post.AuthorId}");
+
+                var postModel = new PostModel()
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    AuthorId = post.AuthorId,
+                    UserId = profile.UserId,
+                    PostContent = post.TextContent,
+                    AuthorType = (profile.UserId == post.AuthorId) ? PostType.MeAuthor : PostType.AnotherAuthor,
+                    CreateOn = DateTime.ParseExact(post.CreateOn, "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture)
+                };
+
+                await _postDBService.CreateAsync(postModel);
+                result.ResultStatus = Result.Ok;
+                return result;
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError($"Fail to add new post by user {post.AuthorId}");
+                result.ErrorMessage = ex.Message;
+                result.ResultStatus = Result.Exception;
+                return result;
+            }
+        }
     }
 }

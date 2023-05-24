@@ -1,6 +1,7 @@
 ﻿using Business.LAYER.Services.Abstractions;
 using Data.LAYER.Model.Global;
 using DL.Model.Identity;
+using DL.Notifications.Email;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -19,6 +20,7 @@ namespace Business.LAYER.Services
     public class AuthService : IAuthService
     {
         private readonly RoleManager<ApplicationRole>   _roleManager;
+        private readonly IEmailService                  _emailService;
         private readonly UserManager<ApplicationUser>   _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly GlobalSettings                 _globalSettings;
@@ -30,6 +32,7 @@ namespace Business.LAYER.Services
                            UserManager<ApplicationUser>   userManager,
                            SignInManager<ApplicationUser> signInManager,
                            ILogger<AuthService>           logger,
+                           IEmailService                  emailService,
                            IProfileServices               profileService)
         {
             _globalSettings = globalSettings.Value;
@@ -38,6 +41,7 @@ namespace Business.LAYER.Services
             _signInManager  = signInManager;
             _logger         = logger;
             _profileService = profileService;
+            _emailService   = emailService;
         }
         public async Task<AuthResult> Login(AuthCommand login)
         {
@@ -121,6 +125,9 @@ namespace Business.LAYER.Services
                     await _userManager.DeleteAsync(appUser);
                     return result;
                 }
+                var message = "<div><img src='https://platy.sk/c/images/cms/2021/09/making_money_online_cover.png' style='width:60%;'/></div>" + 
+                    "<div><p style='color:#D2691E; size: 200%;'>" + "Hello, dear " + profileCommand.FirstName + ". You have successfully registered on our BuySale platform." + "</p></div>";
+                await _emailService.SendEmailCustomerRegistAsync(regist.Email, "BuySale Welcome", message);
                 result.ResultStatus = Result.Ok;
                 return result;
             }

@@ -21,8 +21,8 @@
 
     public enum PostType
     {
-        FromMe = 0,
-        FromFriend
+        MeAuthor = 0,
+        AnotherAuthor
     }
 
     public enum MediaType

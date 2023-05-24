@@ -19,8 +19,11 @@ namespace SocialWeb.API
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                })
+                .ConfigureLogging((hostingContext, builder) =>
+                {
+                    builder.AddFile($"logs/socials-{DateTime.Now.Date.ToShortDateString()}.txt", isJson: true);
                 });
-
             hostBuilder
                 .Build()
                 .RunBasicRoles()

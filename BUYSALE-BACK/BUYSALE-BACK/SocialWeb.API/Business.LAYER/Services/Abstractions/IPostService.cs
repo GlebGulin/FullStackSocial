@@ -7,6 +7,7 @@ namespace Business.LAYER.Services.Abstractions
     public interface IPostService
     {
         Task<SetPostResult> SetPost(SetPostCommand post);
+        Task<SetPostResult> SetPostAsRegistered(SetPostCommand post);
         Task<GetPostsResult> GetLists(GetPostsCommand posts);
     }
 }
