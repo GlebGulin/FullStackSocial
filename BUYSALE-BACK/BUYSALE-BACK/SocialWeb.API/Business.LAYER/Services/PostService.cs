@@ -41,10 +41,18 @@ namespace Business.LAYER.Services
                 }
                 foreach (var postModel in postsModel)
                 {
-                    
+                    var post = new PostResult()
+                    {
+                        Id          = postModel.Id,
+                        AuthorId    = postModel.AuthorId,
+                        UserId      = postModel.UserId,
+                        PostContent = postModel.PostContent,
+                        CreateOn    = postModel.CreateOn
+                    };
+                    result.Posts.Add(post);
                 }
                 result.ResultStatus = Result.Ok;
-                result.ErrorMessage = "Quantity of posts " + postsModel.Count.ToString();
+                result.Quantity = postsModel.Count;
                 return result;
             }
             catch(Exception ex)
@@ -84,6 +92,13 @@ namespace Business.LAYER.Services
             try
             {
                 var profile = await _profileDBService.GetAsync(post.ProfileId);
+                if(profile is null)
+                {
+                    _logger.LogError($"Profile info was not found for profile with id {post.ProfileId}");
+                    result.ErrorMessage = "Profile info was not found";
+                    result.ResultStatus = Result.NotFound;
+                    return result;
+                }
                 _logger.LogInformation($"Adding post ti page of user {profile.UserId} by author {post.AuthorId}");
 
                 var postModel = new PostModel()

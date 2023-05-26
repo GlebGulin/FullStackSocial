@@ -27,7 +27,7 @@ namespace SocialWeb.API.Controllers
 
         [Route("get-profile")]
         [HttpGet]
-        public async Task<GetProfileResult> GetProfile([FromQuery]GetProfileCommand profile)
+        public async Task<GetProfileResult> GetProfile([FromQuery] GetProfileCommand profile)
         {
             var result = await _profileService.GetProfile(profile);
             return result;
@@ -45,7 +45,7 @@ namespace SocialWeb.API.Controllers
 
         [Route("set-profile")]
         [HttpPost]
-        public async Task<SetProfileResult> SetProfile([FromBody]SetProfileCommand profile)
+        public async Task<SetProfileResult> SetProfile([FromBody] SetProfileCommand profile)
         {
             var result = await _profileService.SetProfile(profile);
             return result;

@@ -31,11 +31,11 @@ namespace SocialWeb.API.Controllers
         [AllowAnonymous]
         [HttpPost]
         [Route("login")]
-        public async Task<AuthResult> Login([FromBody]AuthCommand login)
+        public async Task<AuthResult> Login([FromBody] AuthCommand login)
         {
             var signIn = await _signInManager.PasswordSignInAsync(login.Login,
                            login.Password, true, lockoutOnFailure: true);
-            
+
             var signRes = signIn;
             var result = await _authService.Login(login);
             return result;
@@ -50,8 +50,17 @@ namespace SocialWeb.API.Controllers
             return result;
         }
 
+        [Authorize(Roles = "Customer")]
+        [HttpGet]
+        [Route("check-auth")]
+        public async Task<CheckAuthResult> CheckAuth([FromQuery] CheckAuthCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            command.UserId = userId;
+            var result = await _authService.CheckAuth(command);
+            return result;
+        }
 
-        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [Authorize(Roles = "Customer")]
         [HttpGet]
         [Route("test-get-user")]

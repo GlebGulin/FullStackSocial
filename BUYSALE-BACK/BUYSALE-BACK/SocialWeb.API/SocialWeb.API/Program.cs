@@ -23,6 +23,7 @@ namespace SocialWeb.API
                 .ConfigureLogging((hostingContext, builder) =>
                 {
                     builder.AddFile($"logs/socials-{DateTime.Now.Date.ToShortDateString()}.txt", isJson: true);
+                    builder.AddConsole();
                 });
             hostBuilder
                 .Build()

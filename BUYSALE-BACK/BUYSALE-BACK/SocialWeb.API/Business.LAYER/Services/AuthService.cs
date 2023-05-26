@@ -11,6 +11,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Transfer.LAYER;
 using Transfer.LAYER.DTOs.Social.Commands;
 using Transfer.LAYER.DTOs.Social.Results;
 using Transfer.LAYER.Enums;
@@ -43,6 +44,35 @@ namespace Business.LAYER.Services
             _profileService = profileService;
             _emailService   = emailService;
         }
+
+        public async Task<CheckAuthResult> CheckAuth(CheckAuthCommand check)
+        {
+            var result = new CheckAuthResult();
+            _logger.LogInformation($"AuthService. Checking auth of user {check.UserId}");
+            try
+            {
+                var user = await _userManager.FindByIdAsync(check.UserId);
+                if (user is null)
+                {
+                    _logger.LogError($"AuthService. Failed auth of user {check.UserId}. {Constants.UserNotFound}");
+                    result.ResultStatus = Result.NotFound;
+                    result.ErrorMessage = Constants.UserNotFound;
+                    return result;
+                }
+                result.UserId = user.Id.ToString();
+                result.ResultStatus = Result.Ok;
+                result.UserName = user.NormalizedUserName;
+                return result;
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError($"AuthService. Exception to auth for user {check.UserId}");
+                result.ErrorMessage = ex.Message;
+                result.ResultStatus = Result.Exception;
+                return result;
+            }
+        }
+
         public async Task<AuthResult> Login(AuthCommand login)
         {
             var result = new AuthResult();
@@ -69,6 +99,10 @@ namespace Business.LAYER.Services
                 };
                 var token = tokenHandler.CreateToken(tokenDescriptor);
                 result.Token = tokenHandler.WriteToken(token);
+                result.Email = user.Email;
+                result.Login = user.NormalizedUserName;
+                result.Id    = user.Id.ToString();
+                result.UserId = user.Id.ToString();
                 result.ResultStatus = Result.Ok;
 
                 return result;

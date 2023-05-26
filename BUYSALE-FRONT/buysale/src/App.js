@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './Styles/App.css';
 import Header from './Components/Header/Header';
+import HeaderContainer from './Components/Header/HeaderContainer';
 import MainContent from './Components/Content/Profile/ProfileContainer';
 import SideMenu from './Components/NavBar/SideMenu';
 import Footer from './Components/Footer/Footer';
@@ -14,6 +15,8 @@ import { changeStatePost } from './BLL/State/store';
 import DialogContainer from './Components/Content/Dialogs/DialogContainer';
 import ProfileContainer from './Components/Content/Profile/ProfileContainer';
 import UsersProfileContainer from './Components/Content/UsersProfile/UsersProfileContainer';
+import Login from './Components/Login/Login/Login';
+import LoginAPIContainer from './Components/Login/Login/LoginContainer';
 // import ProviderDialogContainer from './Components/Content/Dialogs/DialogContainer;'
 
 
@@ -60,7 +63,7 @@ const App = () => {
   return (
     // <BrowserRouter>
       <div className="app-container">
-        <Header />
+        <HeaderContainer />
         <SideMenu />
         <div className="content-container">
           <Routes>
@@ -85,6 +88,8 @@ const App = () => {
             <Route path="news" element={<News />} />
             <Route path="gallery" element={<GalleryContainer />} />
             <Route path="users" element={<UsersProfileContainer />} />
+
+            <Route path="login" element={<LoginAPIContainer/>}></Route>
           </Routes>
         </div>
         <Footer />

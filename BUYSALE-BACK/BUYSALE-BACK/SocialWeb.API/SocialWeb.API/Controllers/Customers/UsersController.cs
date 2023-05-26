@@ -50,7 +50,7 @@ namespace SocialWeb.API.Controllers
                     return Json(result.Errors);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return Json(ex.Message);
             }

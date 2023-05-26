@@ -86,17 +86,18 @@ namespace SocialWeb.API
                         ValidateAudience = false
                     };
                 });
-            services.AddSwaggerGen();
+            //services.AddSwaggerGen();
+            
+            services.AddMvc();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo
+                c.SwaggerDoc("v2", new OpenApiInfo
                 {
-                    Version = "v1",
+                    Version = "v2",
                     Title = "Implement Swagger UI for project BuySale",
                     Description = "A simple example to Implement Swagger UI for project BuySale",
                 });
             });
-            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -117,27 +118,12 @@ namespace SocialWeb.API
             {
                 endpoints.MapControllers();
             });
-            
+
             app.UseSwagger();
             app.UseSwaggerUI(c => {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Showing API V1");
+                c.SwaggerEndpoint("/swagger/v2/swagger.json", "Showing API V2");
             });
-            //app.Use(async (context, next) =>
-            //{
-            //    // you could get from token or get from session. 
-            //    string token = context.Request.Headers["Authorization"];
-            //    if (!string.IsNullOrEmpty(token))
-            //    {
-            //        var tok = token.Replace("Bearer ", "");
-            //        var jwttoken = new JwtSecurityTokenHandler().ReadJwtToken(tok);
-            //        var claims = new List<Claim> { /* add claims */ };
-            //        var userIdentity = new ClaimsIdentity(claims, ClaimTypes.Name);
-            //        context.User = new ClaimsPrincipal(userIdentity);
-            //    }
-
-            //    await next();
-
-            //});
+            app.UseDeveloperExceptionPage();
         }
     }
 }

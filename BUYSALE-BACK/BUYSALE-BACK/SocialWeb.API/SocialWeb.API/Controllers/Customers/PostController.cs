@@ -22,7 +22,6 @@ namespace SocialWeb.API.Controllers
             _postService = postService;
         }
 
-        //[Authorize]
         [Route("post")]
         [HttpPost]
         public async Task<SetPostResult> SetPost([FromBody] SetPostCommand post)
@@ -43,8 +42,8 @@ namespace SocialWeb.API.Controllers
             return result;
         }
 
-        //[Authorize]
         [Route("posts")]
+        [HttpGet]
         public async Task<GetPostsResult> GetPosts([FromQuery] GetPostsCommand post)
         {
             if (String.IsNullOrEmpty(post.UserId))

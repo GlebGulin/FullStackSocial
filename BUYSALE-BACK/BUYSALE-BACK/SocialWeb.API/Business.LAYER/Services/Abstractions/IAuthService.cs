@@ -1,5 +1,4 @@
-﻿using DL.Model.Identity;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Transfer.LAYER.DTOs.Social.Commands;
 using Transfer.LAYER.DTOs.Social.Results;
 
@@ -9,5 +8,6 @@ namespace Business.LAYER.Services.Abstractions
     {
         Task<AuthResult> Login(AuthCommand login);
         Task<RegisterResult> Registration(RegisterCommand login);
+        Task<CheckAuthResult> CheckAuth(CheckAuthCommand check);
     }
 }
