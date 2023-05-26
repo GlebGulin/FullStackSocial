@@ -2,10 +2,6 @@
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using SocialWeb.API.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SocialWeb.API.Extensions
 {
@@ -21,11 +17,11 @@ namespace SocialWeb.API.Extensions
                 var basicUpload = scope.ServiceProvider.GetService<ISeedStartDataService>();
 
                 var logger = logFac.CreateLogger("Seeding");
-                logger.LogInformation("Uploading basic prices and settings started.");
+                logger.LogInformation("Uploading start roles.");
 
                 basicUpload.SeedBasicRoles().Wait();
 
-                logger.LogInformation("Uploading basic prices finished.");
+                logger.LogInformation("Uploading start roles finished.");
             }
             return host;
         }

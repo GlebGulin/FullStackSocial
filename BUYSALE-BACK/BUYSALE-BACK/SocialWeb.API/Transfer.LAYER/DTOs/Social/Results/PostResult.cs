@@ -6,7 +6,6 @@ namespace Transfer.LAYER.DTOs.Social.Results
 {
     public class PostResult : BaseResult
     {
-        public string Id { get; set; }
         public string PostContent { get; set; }
         public string UserId { get; set; }
         public string AuthorId { get; set; }

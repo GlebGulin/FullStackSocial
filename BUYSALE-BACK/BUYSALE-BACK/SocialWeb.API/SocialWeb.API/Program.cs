@@ -1,12 +1,8 @@
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using SocialWeb.API.Extensions;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SocialWeb.API
 {
@@ -24,6 +20,7 @@ namespace SocialWeb.API
                 {
                     builder.AddFile($"logs/socials-{DateTime.Now.Date.ToShortDateString()}.txt", isJson: true);
                     builder.AddConsole();
+                    builder.AddDebug();
                 });
             hostBuilder
                 .Build()

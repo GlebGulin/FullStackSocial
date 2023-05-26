@@ -43,6 +43,19 @@ namespace SocialWeb.API.Controllers
             return result;
         }
 
+        [Authorize(Roles = "Customer")]
+        [Route("follow-unfollow")]
+        [HttpPost]
+        public async Task<FollowUnfollowResult> FollowUnfollow([FromBody] FollowUnfollowCommand follow)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            follow.UserId = userId;
+            var result = await _profileService.FollowUnfollow(follow);
+            return result;
+        }
+
+
+
         [Route("set-profile")]
         [HttpPost]
         public async Task<SetProfileResult> SetProfile([FromBody] SetProfileCommand profile)
