@@ -16,7 +16,7 @@ import DialogContainer from './Components/Content/Dialogs/DialogContainer';
 import ProfileContainer from './Components/Content/Profile/ProfileContainer';
 import UsersProfileContainer from './Components/Content/UsersProfile/UsersProfileContainer';
 import Login from './Components/Login/Login/Login';
-import LoginAPIContainer from './Components/Login/Login/LoginContainer';
+import LoginContainer from './Components/Login/Login/LoginContainer';
 // import ProviderDialogContainer from './Components/Content/Dialogs/DialogContainer;'
 
 
@@ -89,7 +89,7 @@ const App = () => {
             <Route path="gallery" element={<GalleryContainer />} />
             <Route path="users" element={<UsersProfileContainer />} />
 
-            <Route path="login" element={<LoginAPIContainer/>}></Route>
+            <Route path="login" element={<LoginContainer/>} />
           </Routes>
         </div>
         <Footer />

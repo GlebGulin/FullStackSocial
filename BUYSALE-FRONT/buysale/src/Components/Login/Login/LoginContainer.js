@@ -2,9 +2,12 @@ import React from "react";
 import Login from "./Login";
 import axios from "axios";
 import { connect } from "react-redux";
+import { setAuthToken, setUserData } from "../../../BLL/Reduces/AuthReducer";
+import { findRenderedDOMComponentWithClass } from "react-dom/test-utils";
 
 class LoginAPIContainer extends React.Component{
     componentDidMount =() =>{
+        console.log("");
         console.log(this.props);
     }
     tryLoginPass(log, pass){
@@ -16,7 +19,9 @@ class LoginAPIContainer extends React.Component{
             .then(function (response) {
                 console.log(response);
                 if (response.data.resultStatus === 0){
-                    alert(response.data.token);
+                    console.log(response.data.token);
+                    alert(this);
+                    // this.props.setAuthToken(response.data.token);
                 }
                 else{
                     alert(response.data.errorMessage);
@@ -28,13 +33,33 @@ class LoginAPIContainer extends React.Component{
     }
     render(){
         return(<div>
-            <Login tryLoginPass ={this.tryLoginPass}/>
+            <Login tryLoginPass ={this.tryLoginPass} props={this.props}/>
         </div>);
     }
 }
 
- 
+let mapStateToProps = (state) => {
+    debugger;
+    console.log("print state");
+    console.log(state);
+    return {
+        auth : state.auth
+    };
+}
 
-// const LoginContainer = connect(mapStateToProps, mapDispatchToProps)(LoginAPIContainer)
-export default LoginAPIContainer;
+let mapDispatchToProps = (dispatch) => {
+    console.log("print dispatch");
+    console.log(dispatch);
+    return {
+        setAuthToken : (token) => {
+            dispatch(setAuthToken(token));
+        },
+        setUserData : (userData) => {
+            dispatch(setUserData(userData));
+        }
+    };
+}
+
+const LoginContainer = connect(mapStateToProps, mapDispatchToProps)(LoginAPIContainer)
+export default LoginContainer;
 
