@@ -8,5 +8,6 @@ namespace Business.LAYER.Services.Abstractions
     public interface IUsersService
     {
         Task<UsersResult> GetUsers(UsersCommand users);
+        Task<UsersResult> GetUsersWithoutOwner(UsersCommand users, string userId);
     }
 }

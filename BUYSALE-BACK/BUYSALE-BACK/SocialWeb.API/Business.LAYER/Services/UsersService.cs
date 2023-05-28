@@ -40,5 +40,31 @@ namespace Business.LAYER.Services
             result.TotalCount = (int)total;
             return result;
         }
+
+        public async Task<UsersResult> GetUsersWithoutOwner(UsersCommand users, string userId)
+        {
+            var result = new UsersResult();
+
+            long total = await _profileDBService.GetTotalQuantityAsync();
+            double t = Convert.ToDouble(total);
+            result.PageCount = (int)Math.Ceiling(t / (users.Limit));
+            var res = await _profileDBService.GetPartDataWithoutOwnerAsync(users.Page, users.Limit, userId);
+            foreach (var model in res)
+            {
+                result.Users.Add(new UserResult()
+                {
+                    Id = model.Id,
+                    Name = String.Format("{0} {1}", model.FirstName, model.LastName),
+                    City = model.Location.City,
+                    Country = model.Location.Country,
+                    Age = model.Age,
+                    UserStatus = "Come to me",
+                    Avatar = model.Avatar.Small,
+                    Followed = false
+                });
+            }
+            result.TotalCount = (int)total;
+            return result;
+        }
     }
 }

@@ -26,6 +26,9 @@ namespace DL.DB
         public async Task<List<ProfileModel>> GetPartDataAsync(int page, int quantity) =>
             await _profileCollection.Find(_ => true).Limit(quantity).Skip((page-1)*quantity).ToListAsync();
 
+        public async Task<List<ProfileModel>> GetPartDataWithoutOwnerAsync(int page, int quantity, string userId) =>
+            await _profileCollection.Find(x => x.UserId != userId).Limit(quantity).Skip((page - 1) * quantity).ToListAsync();
+
         public async Task<ProfileModel?> GetAsync(string id) =>
             await _profileCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
 

@@ -1,8 +1,10 @@
 ﻿using Business.LAYER.Services.Abstractions;
 using DL.Model.Identity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Transfer.LAYER.DTOs.Social.Commands;
 using Transfer.LAYER.DTOs.Social.Results;
@@ -90,6 +92,21 @@ namespace SocialWeb.API.Controllers
             if (users.Page == 0)
                 users.Page = 1;
             var result = await _usersService.GetUsers(users);
+            return result;
+        }
+
+
+        [Authorize(Roles = "Customer")]
+        [Route("other-users")]
+        [HttpGet]
+        public async Task<UsersResult> GetOtherUsers([FromQuery] UsersCommand users)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (users.Limit == 0)
+                users.Limit = 10;
+            if (users.Page == 0)
+                users.Page = 1;
+            var result = await _usersService.GetUsersWithoutOwner(users, userId);
             return result;
         }
     }
