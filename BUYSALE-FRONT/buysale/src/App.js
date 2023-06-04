@@ -17,6 +17,7 @@ import ProfileContainer from './Components/Content/Profile/ProfileContainer';
 import UsersProfileContainer from './Components/Content/UsersProfile/UsersProfileContainer';
 import Login from './Components/Login/Login/Login';
 import LoginContainer from './Components/Login/Login/LoginContainer';
+import Registration from './Components/Login/Registration/Registration';
 // import ProviderDialogContainer from './Components/Content/Dialogs/DialogContainer;'
 
 
@@ -90,6 +91,7 @@ const App = () => {
             <Route path="users" element={<UsersProfileContainer />} />
 
             <Route path="login" element={<LoginContainer/>} />
+            <Route path="register" element={<Registration/>} />
           </Routes>
         </div>
         <Footer />

@@ -82,6 +82,11 @@ const Login = (props) => {
                     console.log(error);
                 })}
             }>Login</button></div>
+            <div>
+                <button onClick={()=>{
+                    navigate('/register');
+                }}>Register</button>
+            </div>
     </div>);
 }
 
