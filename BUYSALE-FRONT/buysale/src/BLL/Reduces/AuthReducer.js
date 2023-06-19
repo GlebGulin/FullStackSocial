@@ -3,7 +3,7 @@ const SET_AUTH_TOKEN = "SET_AUTH_TOKEN";
 
 
 let initialState = {
-    token  : "yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImdsZXBzZ3VsaW5AZ21haWwuY29tIiwiZW1haWwiOiJnbGVwc2d1bGluQGdtYWlsLmNvbSIsIm5hbWVpZCI6IjQ4ZjBmNmExLTBlY2YtNDJmNi1hMTg2LThhMzdkMTI0MjQ2ZCIsInJvbGUiOiJDdXN0b21lciIsIm5iZiI6MTY4NTIwMjY4NSwiZXhwIjoxNjg1ODA3NDg1LCJpYXQiOjE2ODUyMDI2ODV9.OdEuKmuE2EAsPVmA1pPaqZJxcuRt1gBk1INZH5HytmA",
+    token  : null,
     userId : null,
     email  : null,
     login  : null,

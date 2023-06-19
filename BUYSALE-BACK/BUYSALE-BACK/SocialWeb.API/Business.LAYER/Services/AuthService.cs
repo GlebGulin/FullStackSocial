@@ -75,6 +75,7 @@ namespace Business.LAYER.Services
 
         public async Task<AuthResult> Login(AuthCommand login)
         {
+            _logger.LogInformation($"Login of user {login.Login}");
             var result = new AuthResult();
             try
             {
@@ -104,11 +105,12 @@ namespace Business.LAYER.Services
                 result.Id    = user.Id.ToString();
                 result.UserId = user.Id.ToString();
                 result.ResultStatus = Result.Ok;
-
+                _logger.LogInformation($"Success login of user {login.Login}");
                 return result;
             }
             catch(Exception ex)
             {
+                _logger.LogError($"Failed of user's login {login.Login}. Cause: {ex.Message}");
                 return new AuthResult() { ErrorMessage = ex.Message, ResultStatus = Result.Exception };
             }
         }

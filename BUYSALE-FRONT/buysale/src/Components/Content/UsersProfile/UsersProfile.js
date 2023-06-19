@@ -20,6 +20,7 @@ const UsersProfile = (props) => {
                         props.users.map(el =>
                             (<UserProfile key={el.id} id={el.id} avatar={el.avat} name={el.name} status={el.status} country={el.country} city={el.city} followed={el.followed}
                                 onFollowUser={props.clickFollowUser} 
+                                token={props.token}
                                 onUnfollowUser={props.clickUnfollowUser}/>))
                     }
             </div>

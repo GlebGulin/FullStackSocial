@@ -5,6 +5,7 @@ import preloader from './../../../assets/images/giphy.gif'
 import axios from "axios";
 import UsersProfile from "./UsersProfile";
 import Preloader from "../../Common/Preloader";
+import { useNavigate } from "react-router-dom";
 
 let usersNew = [
     {
@@ -45,9 +46,13 @@ let usersNew = [
     }
 ]
 
+
+
 let pageTestCount = Math.ceil(usersNew / 10);
+// const navigate = useNavigate();
 
 class UsersProfileAPIComponent extends React.Component{
+    
     clickFollowUser = (id) => {
         this.props.onFollowUser(id);
     };
@@ -62,6 +67,11 @@ class UsersProfileAPIComponent extends React.Component{
                Authorization: "Bearer " + this.props.auth.token
             }
         }
+        alert(this.props.auth.token);
+        console.log("Test login");
+        console.log(this.props.auth.token);
+        
+
         this.props.onChangeFetchingStatus(true);
         this.props.onChangePage(number);
         axios.get(`https://localhost:44367/users/other-users?limit=${this.props.usersPage.pageSize}&page=${number}`, yourConfig)
@@ -85,7 +95,14 @@ class UsersProfileAPIComponent extends React.Component{
     };
 
     showUsers = () => {
+        alert(this.props.auth.token);
         // alert("showUsers function status: " + true);
+        if(this.props.auth.token === null || this.props.auth.token === ""){
+            // navigate('/login');
+            //TODO redirect to login
+            alert("Please, login");
+        }
+        else{
         this.props.onChangeFetchingStatus(true);
         debugger;
         console.log("Quantity of users: " + this.props.usersPage.users.length);
@@ -93,10 +110,13 @@ class UsersProfileAPIComponent extends React.Component{
             debugger;
             console.log(this.props);
                 try{
+                    alert(this.props.auth.token);
+                    console.log("Test login");
+                    console.log(this.props.auth.token);
                     var yourConfig = {
                         headers: {
                         //    Authorization: "Bearer " + this.props.auth.token
-                           Authorization: "Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImdsZXBzZ3VsaW5AZ21haWwuY29tIiwiZW1haWwiOiJnbGVwc2d1bGluQGdtYWlsLmNvbSIsIm5hbWVpZCI6IjkwMzlmNmYxLWQwOGItNDFhZC1iMjIzLTE2MGJjMzFhOTY5YyIsInJvbGUiOiJDdXN0b21lciIsIm5iZiI6MTY4NzE2NzEzNCwiZXhwIjoxNjg3NzcxOTM0LCJpYXQiOjE2ODcxNjcxMzR9.VToGgR-JJTl8usI_YcOWMMw6T-dlSqywXy5f9y2cHr0"
+                           Authorization: "Bearer " + this.props.auth.token
                         }
                     }
                     alert(this.props.auth.token);
@@ -136,7 +156,7 @@ class UsersProfileAPIComponent extends React.Component{
                 this.props.onChangeFetchingStatus(false);
             }
         // axios.get("https://social-network.samuraijs.com/api/1.0/users");
-        
+        }
     }
 
 
@@ -157,6 +177,7 @@ class UsersProfileAPIComponent extends React.Component{
                                   clickChangePage={this.clickChangePage}
                                   users = {this.props.usersPage.users}
                                   currentPage={this.props.usersPage.currentPage}
+                                  token={this.props.auth.token}
                                   pageCount={this.props.usersPage.pageCount}/>
             </div>)
     }

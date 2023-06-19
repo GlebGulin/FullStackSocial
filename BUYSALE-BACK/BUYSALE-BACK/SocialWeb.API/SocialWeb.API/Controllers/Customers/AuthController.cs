@@ -3,6 +3,7 @@ using DL.Model.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Transfer.LAYER.DTOs.Social.Commands;
@@ -17,15 +18,18 @@ namespace SocialWeb.API.Controllers
         private readonly RoleManager<ApplicationRole>   _roleManager;
         private readonly UserManager<ApplicationUser>   _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly ILogger<AuthController>        _logger;
         public AuthController(IAuthService authService, 
                               RoleManager<ApplicationRole>   roleManager,
                               UserManager<ApplicationUser>   userManager,
-                              SignInManager<ApplicationUser> signInManager)
+                              SignInManager<ApplicationUser> signInManager,
+                              ILogger<AuthController>        logger)
         {
             _authService   = authService;
             _roleManager   = roleManager;
             _userManager   = userManager;
             _signInManager = signInManager;
+            _logger        = logger;
         }
 
         [AllowAnonymous]
@@ -33,6 +37,7 @@ namespace SocialWeb.API.Controllers
         [Route("login")]
         public async Task<AuthResult> Login([FromBody] AuthCommand login)
         {
+            _logger.LogInformation($"Login of user {login.Login}");
             var signIn = await _signInManager.PasswordSignInAsync(login.Login,
                            login.Password, true, lockoutOnFailure: true);
 
