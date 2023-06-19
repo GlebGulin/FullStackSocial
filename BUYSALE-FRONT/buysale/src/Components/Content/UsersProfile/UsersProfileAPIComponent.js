@@ -57,9 +57,14 @@ class UsersProfileAPIComponent extends React.Component{
     };
 
     clickChangePage = (number) => {
+        var yourConfig = {
+            headers: {
+               Authorization: "Bearer " + this.props.auth.token
+            }
+        }
         this.props.onChangeFetchingStatus(true);
         this.props.onChangePage(number);
-        axios.get(`https://localhost:44367/users?limit=${this.props.usersPage.pageSize}&page=${number}`)
+        axios.get(`https://localhost:44367/users/other-users?limit=${this.props.usersPage.pageSize}&page=${number}`, yourConfig)
                     .then((response) => {
                         this.props.onChangeFetchingStatus(false);
                         console.log(response.status);
@@ -88,13 +93,22 @@ class UsersProfileAPIComponent extends React.Component{
             debugger;
             console.log(this.props);
                 try{
-                    axios.get(`https://localhost:44367/users?limit=${this.props.usersPage.pageSize}&page=${this.props.usersPage.currentPage}`)
+                    var yourConfig = {
+                        headers: {
+                        //    Authorization: "Bearer " + this.props.auth.token
+                           Authorization: "Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImdsZXBzZ3VsaW5AZ21haWwuY29tIiwiZW1haWwiOiJnbGVwc2d1bGluQGdtYWlsLmNvbSIsIm5hbWVpZCI6IjkwMzlmNmYxLWQwOGItNDFhZC1iMjIzLTE2MGJjMzFhOTY5YyIsInJvbGUiOiJDdXN0b21lciIsIm5iZiI6MTY4NzE2NzEzNCwiZXhwIjoxNjg3NzcxOTM0LCJpYXQiOjE2ODcxNjcxMzR9.VToGgR-JJTl8usI_YcOWMMw6T-dlSqywXy5f9y2cHr0"
+                        }
+                    }
+                    alert(this.props.auth.token);
+                    axios.get(`https://localhost:44367/users/other-users?limit=${this.props.usersPage.pageSize}&page=${this.props.usersPage.currentPage}`, yourConfig)
                     // axios.get(`https://social-network.samuraijs.com/api/1.0/users`)
                     .then((response) => {
+                        debugger;
                         // alert("showUsers function status: " + false);
                         this.props.onChangeFetchingStatus(false);
                         console.log(response.status);
                         if(response.status === 200){
+                            debugger;
                             console.log(response.data);
                             this.props.onSetStateFromLocalServer(response.data.users);
                             this.props.onSetPageCount(response.data.pageCount);
@@ -104,13 +118,16 @@ class UsersProfileAPIComponent extends React.Component{
                         }
                         
     
-                    }).catch(()=>{
+                    }).catch((error)=>{
+                        alert(error.message);
                         this.props.onChangeFetchingStatus(false);
                         this.props.onSetState(usersNew);
                         this.props.onSetPageCount(pageTestCount);
                     });
                 }
-                catch{
+                catch(error){
+
+                    alert(error.message);
                     console.log(usersNew);
                     this.props.onSetState(usersNew);
                 }

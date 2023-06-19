@@ -2,6 +2,7 @@ import React from "react";
 import style from './UserProfile.module.css';
 import noname from './../../../../../src/assets/images/noname.png';
 import { NavLink } from 'react-router-dom';
+import axios from "axios";
 
 class UserProfile extends React.Component {
     
@@ -23,7 +24,55 @@ class UserProfile extends React.Component {
                         { this.props.avatar != null ? <img src={this.props.avatar} className={style.avatar}/> : <img src={noname} className={style.avatar}/>}
                     </NavLink>
                 </div>
-                {this.props.followed ?  <button onClick={this.clickUnfollowUser}>Unfollow</button> : <button onClick={this.clickFollowUser}>Follow</button>}
+                {this.props.followed ?  <button onClick={()=>{
+                        axios.post("https://localhost:44367/profile/follow-unfollow", {
+                            follow   : false,
+                            id       : this.props.id
+
+                        }).then(function(response){
+                            if(response.status === 200){
+                                if(response.data.resultStatus === 0){
+                                    alert("Success");
+                                    this.clickUnfollowUser();
+                                }
+
+                                else{
+                                    alert(response.data.err5orMessage);
+                                }
+                            }
+                        })
+                        .catch((error)=>{
+                            debugger;
+                            alert("Error " + error.message);
+                        })
+                    }
+                        
+                        // this.clickUnfollowUser
+                    }>Unfollow</button> : <button onClick={()=>{
+                        axios.post("https://localhost:44367/profile/follow-unfollow", {
+                            follow   : true,
+                            id       : this.props.id
+
+                        }).then(function(response){
+                            if(response.status === 200){
+                                if(response.data.resultStatus === 0){
+                                    alert("Success");
+                                    this.clickFollowUser();
+                                }
+
+                                else{
+                                    alert(response.data.err5orMessage);
+                                }
+                            }
+                        })
+                        .catch((error)=>{
+                            debugger;
+                            alert("Error " + error.message);
+                        })
+                    }
+                        
+                        // this.clickFollowUser
+                    }>Follow</button>}
                 
             </div>
             <div>

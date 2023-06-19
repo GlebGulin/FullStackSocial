@@ -7,7 +7,8 @@ import { followUser, unfollowUser,  set_State, set_Data_Local_Server, setPageCou
 let mapStateToProps = (state) => {
     debugger;
     return {
-        usersPage : state.usersPage
+        usersPage : state.usersPage,
+        auth      : state.auth
         //pageSize  : state.pageSize
     };
 }
