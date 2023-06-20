@@ -6,6 +6,7 @@ import axios from "axios";
 import UsersProfile from "./UsersProfile";
 import Preloader from "../../Common/Preloader";
 import { useNavigate } from "react-router-dom";
+import { GetUsers } from "../../../DAL/API/api";
 
 let usersNew = [
     {
@@ -74,8 +75,8 @@ class UsersProfileAPIComponent extends React.Component{
 
         this.props.onChangeFetchingStatus(true);
         this.props.onChangePage(number);
-        axios.get(`https://localhost:44367/users/other-users?limit=${this.props.usersPage.pageSize}&page=${number}`, yourConfig)
-                    .then((response) => {
+        // axios.get(`https://localhost:44367/users/other-users?limit=${this.props.usersPage.pageSize}&page=${number}`, yourConfig)
+            GetUsers(this.props.usersPage.pageSize, number, yourConfig).then((response) => {
                         this.props.onChangeFetchingStatus(false);
                         console.log(response.status);
                         if(response.status === 200){
@@ -115,16 +116,12 @@ class UsersProfileAPIComponent extends React.Component{
                     console.log(this.props.auth.token);
                     var yourConfig = {
                         headers: {
-                        //    Authorization: "Bearer " + this.props.auth.token
                            Authorization: "Bearer " + this.props.auth.token
                         }
                     }
                     alert(this.props.auth.token);
-                    axios.get(`https://localhost:44367/users/other-users?limit=${this.props.usersPage.pageSize}&page=${this.props.usersPage.currentPage}`, yourConfig)
-                    // axios.get(`https://social-network.samuraijs.com/api/1.0/users`)
-                    .then((response) => {
+                    GetUsers(this.props.usersPage.pageSize, this.props.usersPage.currentPage, yourConfig).then((response) => {
                         debugger;
-                        // alert("showUsers function status: " + false);
                         this.props.onChangeFetchingStatus(false);
                         console.log(response.status);
                         if(response.status === 200){
@@ -155,7 +152,6 @@ class UsersProfileAPIComponent extends React.Component{
             else{
                 this.props.onChangeFetchingStatus(false);
             }
-        // axios.get("https://social-network.samuraijs.com/api/1.0/users");
         }
     }
 
