@@ -3,6 +3,7 @@ import axios from "axios";
 import Header from "./Header";
 import { connect } from "react-redux";
 import {setUserData} from './../../BLL/Reduces/AuthReducer';
+import { CheckAuth } from "../../DAL/API/api";
 
 class HeaderAPIContainer extends React.Component{
     yourConfig = {
@@ -12,7 +13,7 @@ class HeaderAPIContainer extends React.Component{
     }
 
     componentDidMount(){
-        axios.get(`https://localhost:44367/auth/check-auth`, this.yourConfig)
+        CheckAuth(this.yourConfig)
                     .then((response) => {
                         // alert("showUsers function status: " + false);
                         // this.props.onChangeFetchingStatus(false);

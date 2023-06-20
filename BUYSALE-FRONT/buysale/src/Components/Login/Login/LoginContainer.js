@@ -4,6 +4,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { setAuthToken, setUserData } from "../../../BLL/Reduces/AuthReducer";
 import { findRenderedDOMComponentWithClass } from "react-dom/test-utils";
+import { LoginUser } from "../../../DAL/API/api";
 
 class LoginAPIContainer extends React.Component{
     componentDidMount =() =>{
@@ -12,10 +13,11 @@ class LoginAPIContainer extends React.Component{
     }
     tryLoginPass(log, pass){
         alert(log + "and" + pass);
-        axios.post("https://localhost:44367/auth/login", {
-            login: log,
-            password : pass
-        })
+        // axios.post("https://localhost:44367/auth/login", {
+        //     login: log,
+        //     password : pass
+        // })
+        LoginUser(log, pass)
             .then(function (response) {
                 console.log(response);
                 if (response.data.resultStatus === 0){

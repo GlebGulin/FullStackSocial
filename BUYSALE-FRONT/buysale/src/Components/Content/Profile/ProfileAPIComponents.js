@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import ProfilePart from './ProfilePart/ProfilePart';
+import { GetUser } from "../../../DAL/API/api";
 
 let baseURL = "https://localhost:44367/profile/get-profile";
 
@@ -21,7 +22,8 @@ class ProfileAPIComponent extends React.Component{
         // var url = `${baseURL}`;
         console.log("URL");
         console.log(url);
-        axios.get(url)
+        // axios.get(url)
+        GetUser(this.props.match.params.id)
                     // axios.get(`https://social-network.samuraijs.com/api/1.0/users`)
                     .then((response) => {
                         // alert("showUsers function status: " + false);

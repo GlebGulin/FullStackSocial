@@ -2,6 +2,7 @@ import React from 'react';
 import style from './Registration.module.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { RegistrationUser } from '../../../DAL/API/api';
 
 const Registration = () => {
     const navigate  = useNavigate();
@@ -50,18 +51,29 @@ const Registration = () => {
                         alert("Passwords do not match");
                     }
                     else{
-                        alert("clicked");
-                        axios.post("https://localhost:44367/auth/registration", {
-                            firstName: firstName.current.value,
-                            lastName : lastName.current.value,
-                            email    : email.current.value,
-                            password : password.current.value,
-                            country  : country.current.value,
-                            city     : city.current.value,
-                            born     : born.current.value,
-                            avatar   : img.current.value
+                        // alert("clicked");
+                        // axios.post("https://localhost:44367/auth/registration", {
+                        //     firstName: firstName.current.value,
+                        //     lastName : lastName.current.value,
+                        //     email    : email.current.value,
+                        //     password : password.current.value,
+                        //     country  : country.current.value,
+                        //     city     : city.current.value,
+                        //     born     : born.current.value,
+                        //     avatar   : img.current.value
 
-                        }).then(function(response){
+                        // })
+                        RegistrationUser(
+                                firstName.current.value, 
+                                lastName.current.value, 
+                                email.current.value,
+                                password.current.value,
+                                country.current.value,
+                                city.current.value,
+                                born.current.value,
+                                img.current.value
+                            )
+                        .then(function(response){
                             if(response.status === 200){
                                 if(response.data.resultStatus === 0){
                                     navigate('/login');

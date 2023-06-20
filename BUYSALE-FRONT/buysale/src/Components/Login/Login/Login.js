@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { CheckAuth, LoginUser } from "../../../DAL/API/api";
 
 
 
@@ -20,10 +21,11 @@ const Login = (props) => {
         <div><input type="password" placeholder="Password" ref={valuePassword}/></div>
         <div><button onClick={()=> {
             
-            axios.post("https://localhost:44367/auth/login", {
-                login: valueLogin.current.value,
-                password : valuePassword.current.value
-            })
+            // axios.post("https://localhost:44367/auth/login", {
+            //     login: valueLogin.current.value,
+            //     password : valuePassword.current.value
+            // })
+            LoginUser(valueLogin.current.value, valuePassword.current.value)
                 .then(function (response) {
                     console.log(response);
                     if (response.data.resultStatus === 0){
@@ -34,7 +36,8 @@ const Login = (props) => {
                                Authorization: "Bearer " + response.data.token
                             }
                         }
-                        axios.get(`https://localhost:44367/auth/check-auth`, yourConfig)
+                        // axios.get(`https://localhost:44367/auth/check-auth`, yourConfig)
+                        CheckAuth(yourConfig)
                         .then(function (response2)  {
                             console.log(response2.status);
                             if(response2.status === 200){
