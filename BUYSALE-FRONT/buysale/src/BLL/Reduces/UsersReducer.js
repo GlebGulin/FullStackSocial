@@ -1,11 +1,12 @@
-const FOLLOW = "FOLLOW";
-const UNFOLLOW = "UNFOLLOW";
-const SET_STAE = "SET_STATE";
-const SET_DATA_LOCAL_SERVER = "SET_DATA_LOCAL_SERVER";
-const SET_PAGECOUNT = "SET_PAGECOUNT";
-const CLEAR_LIST_USER = "CLEAR_LIST_USER";
-const SET_CURRENTPAGE = "SET_CURRENTPAGE";
-const CHANGE_FETCHING_STATUS = "CHANGE_FETCHING_STATUS";
+const FOLLOW                  = "FOLLOW";
+const UNFOLLOW                = "UNFOLLOW";
+const SET_STAE                = "SET_STATE";
+const SET_DATA_LOCAL_SERVER   = "SET_DATA_LOCAL_SERVER";
+const SET_PAGECOUNT           = "SET_PAGECOUNT";
+const CLEAR_LIST_USER         = "CLEAR_LIST_USER";
+const SET_CURRENTPAGE         = "SET_CURRENTPAGE";
+const CHANGE_FETCHING_STATUS  = "CHANGE_FETCHING_STATUS";
+const CHANGE_FOLLOWING_STATUS = "CHANGE_FOLLOWING_STATUS";
 
 //Start initialize profileState after including Redux
 let initialState = {
@@ -47,11 +48,13 @@ let initialState = {
             status : "Where are you"
         }*/
     ],
-    pageCount : 0,
-    currentPage : 1,
-    totalCount : 0,
-    pageSize: 5,
-    isFetching : false
+    pageCount             : 0,
+    currentPage           : 1,
+    totalCount            : 0,
+    pageSize              : 5,
+    isFetching            : false,
+    isFollowingInProgress : false,
+    FollowInProgress      : []
 }
 
 const UsersReducer = (state = initialState, action) => {
@@ -98,7 +101,8 @@ const UsersReducer = (state = initialState, action) => {
                     name : action.users[i].name,
                     status : action.users[i].userStatus,
                     city : action.users[i].city,
-                    country : action.users[i].country
+                    country : action.users[i].country,
+                    followed : action.users[i].followed
                 };
                 stateCopy.users.push(itemUser);
             }
@@ -127,6 +131,17 @@ const UsersReducer = (state = initialState, action) => {
                 ...state
             };
             stateCopy.isFetching = action.preloadStatus;
+            return stateCopy;
+
+        case CHANGE_FOLLOWING_STATUS:
+            stateCopy = {
+                ...state,
+                isFollowInProgress : action.isFollowingInProgress,
+                FollowInProgress : action.isFollowingInProgress ? [...state.FollowInProgress, action.userId] : state.FollowInProgress.filter(id => id != action.userId)
+            }
+            debugger;
+            // stateCopy.isFollowInProgress = action.followingStatus;
+            // alert("Fetching status is " + stateCopy.isFollowInProgress);
             return stateCopy;
         default:
             return state;
@@ -190,8 +205,17 @@ export const clearUsersList = () => {
 
 export const changeFetchingStatus = (status) => {
     return {
-        type : CHANGE_FETCHING_STATUS,
+        type          : CHANGE_FETCHING_STATUS,
         preloadStatus : status
+    }
+}
+
+export const changeFollowingStatus = (status, userId) => {
+    debugger;
+    return{
+        type                  : CHANGE_FOLLOWING_STATUS,
+        isFollowingInProgress : status,
+        userId                : userId
     }
 }
 

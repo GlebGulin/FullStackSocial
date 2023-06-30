@@ -174,6 +174,8 @@ class UsersProfileAPIComponent extends React.Component{
                                   users = {this.props.usersPage.users}
                                   currentPage={this.props.usersPage.currentPage}
                                   token={this.props.auth.token}
+                                  onChangeFollowingStatus = {this.props.onChangeFollowingStatus}
+                                  FollowInProgress = {this.props.usersPage.FollowInProgress}
                                   pageCount={this.props.usersPage.pageCount}/>
             </div>)
     }

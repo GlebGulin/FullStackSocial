@@ -15,6 +15,12 @@ const UserProfile = (props) => {
     let clickUnfollowUser = () => {
         props.onUnfollowUser(props.id);
     };
+
+    let changeStatusFollowing = (status, id) => {
+        debugger;
+        props.onChangeFollowingStatus(status, id);
+        debugger;
+    }
     
     var yourConfig = {
         headers: {
@@ -31,38 +37,53 @@ const UserProfile = (props) => {
                             { props.avatar != null ? <img src={props.avatar} className={style.avatar}/> : <img src={noname} className={style.avatar}/>}
                         </NavLink>
                     </div>
-                    {props.followed ?  <button onClick={()=>{
-                            alert(yourConfig.headers.Authorization);
+                    {props.followed ?  <button disabled={props.FollowInProgress.some(id => id === props.id)} onClick={()=>{
+                            console.log(props);
+                            changeStatusFollowing(true, props.id);
+                            console.log("Followed progress " + props.FollowInProgress);
+
                             FollowUnfollow(false, props.id, yourConfig).then(function(response){
                                 if(response.status === 200){
                                     if(response.data.resultStatus === 0){
                                         alert("Success");
                                         debugger;
                                         clickUnfollowUser();
+                                        changeStatusFollowing(false, props.id);
+                                        console.log("Followed progress " + props.FollowInProgress);
                                         // console.log(this.props);
                                         // this.props.onUnfollowUser(this.props.id);
                                     }
 
                                     else{
                                         alert(response.data.err5orMessage);
+                                        changeStatusFollowing(false, props.id);
                                     }
                                 }
                             })
                             .catch((error)=>{
                                 debugger;
                                 alert("Error " + error.message);
-                            })
+                                changeStatusFollowing(false, props.id);
+                            });
+                            debugger;
+                            // changeStatusFollowing(false);
+                            //alert("Folowed progress " + props.statusFollowing);
                         }
                             
                             // this.clickUnfollowUser
-                        }>Unfollow</button> : <button onClick={()=>{
-                            alert(yourConfig.headers.Authorization);
+                        }>Unfollow</button> : <button disabled={props.FollowInProgress.some(id => id === props.id)} onClick={()=>{
+                            console.log(props);
+                            changeStatusFollowing(true, props.id);
+                            console.log("Followed progress " + props.FollowInProgress);
+                            // alert(yourConfig.headers.Authorization);
                             FollowUnfollow(true, props.id, yourConfig).then(function(response){
                                 if(response.status === 200){
                                     if(response.data.resultStatus === 0){
                                         alert("Success");
                                         debugger;
                                         clickFollowUser();
+                                        changeStatusFollowing(false, props.id);
+                                        console.log("Followed progress " + props.FollowInProgress);
                                         // console.log(this.props);
                                         // this.props.onFollowUser(this.props.id);
                                         
@@ -70,13 +91,18 @@ const UserProfile = (props) => {
 
                                     else{
                                         alert(response.data.err5orMessage);
+                                        changeStatusFollowing(false, props.id);
                                     }
                                 }
                             })
                             .catch((error)=>{
                                 debugger;
                                 alert("Error " + error.message);
-                            })
+                                changeStatusFollowing(false,props.id);
+                            });
+                            debugger;
+                            // changeStatusFollowing(false);
+                            //alert("Folowed progress " + props.statusFollowing);
                         }
                             
                             // this.clickFollowUser

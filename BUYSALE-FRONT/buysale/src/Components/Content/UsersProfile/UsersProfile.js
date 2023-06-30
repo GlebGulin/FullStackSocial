@@ -21,6 +21,8 @@ const UsersProfile = (props) => {
                             (<UserProfile key={el.id} id={el.id} avatar={el.avat} name={el.name} status={el.status} country={el.country} city={el.city} followed={el.followed}
                                 onFollowUser={props.clickFollowUser} 
                                 token={props.token}
+                                FollowInProgress = {props.FollowInProgress}
+                                onChangeFollowingStatus = {props.onChangeFollowingStatus}
                                 onUnfollowUser={props.clickUnfollowUser}/>))
                     }
             </div>
