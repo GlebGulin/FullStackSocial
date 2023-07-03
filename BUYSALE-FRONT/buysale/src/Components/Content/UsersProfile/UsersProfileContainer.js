@@ -1,7 +1,15 @@
 import React from "react";
 import UsersProfileAPIComponent from "./UsersProfileAPIComponent";
 import { connect } from 'react-redux';
-import { followUser, unfollowUser,  set_State, set_Data_Local_Server, setPageCount, setCurrentPage, clearUsersList, changeFetchingStatus, changeFollowingStatus } from "../../../BLL/Reduces/UsersReducer";
+import { followUser, unfollowUser,  
+    set_State, 
+    set_Data_Local_Server, 
+    setPageCount, 
+    setCurrentPage, 
+    clearUsersList, 
+    changeFetchingStatus, 
+    changeFollowingStatus, 
+    getUsersThunkCreator } from "../../../BLL/Reduces/UsersReducer";
 
 
 let mapStateToProps = (state) => {
@@ -15,6 +23,7 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return {
+        //Action Creators
         onFollowUser : (id) => {
             dispatch(followUser(id));
         },
@@ -41,6 +50,10 @@ let mapDispatchToProps = (dispatch) => {
         },
         onChangeFollowingStatus : (status, id) => {
             dispatch(changeFollowingStatus(status, id));
+        },
+        //Thunk creators
+        getUsersThunkCreator : (pageSize, currentPage, yourConfig) =>{
+            dispatch(getUsersThunkCreator(pageSize, currentPage, yourConfig));
         }
 
     };

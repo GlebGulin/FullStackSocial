@@ -120,27 +120,28 @@ class UsersProfileAPIComponent extends React.Component{
                         }
                     }
                     alert(this.props.auth.token);
-                    GetUsers(this.props.usersPage.pageSize, this.props.usersPage.currentPage, yourConfig).then((response) => {
-                        debugger;
-                        this.props.onChangeFetchingStatus(false);
-                        console.log(response.status);
-                        if(response.status === 200){
-                            debugger;
-                            console.log(response.data);
-                            this.props.onSetStateFromLocalServer(response.data.users);
-                            this.props.onSetPageCount(response.data.pageCount);
-                        }
-                        else{
-                            alert("Error");
-                        }
+                    // GetUsers(this.props.usersPage.pageSize, this.props.usersPage.currentPage, yourConfig).then((response) => {
+                    //     debugger;
+                    //     this.props.onChangeFetchingStatus(false);
+                    //     console.log(response.status);
+                    //     if(response.status === 200){
+                    //         debugger;
+                    //         console.log(response.data);
+                    //         this.props.onSetStateFromLocalServer(response.data.users);
+                    //         this.props.onSetPageCount(response.data.pageCount);
+                    //     }
+                    //     else{
+                    //         alert("Error");
+                    //     }
                         
     
-                    }).catch((error)=>{
-                        alert(error.message);
-                        this.props.onChangeFetchingStatus(false);
-                        this.props.onSetState(usersNew);
-                        this.props.onSetPageCount(pageTestCount);
-                    });
+                    // }).catch((error)=>{
+                    //     alert(error.message);
+                    //     this.props.onChangeFetchingStatus(false);
+                    //     this.props.onSetState(usersNew);
+                    //     this.props.onSetPageCount(pageTestCount);
+                    // });
+                    this.props.getUsersThunkCreator(this.props.usersPage.pageSize, this.props.usersPage.currentPage, yourConfig);
                 }
                 catch(error){
 

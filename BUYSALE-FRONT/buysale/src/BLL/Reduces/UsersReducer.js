@@ -1,3 +1,5 @@
+import { GetUsers } from "../../DAL/API/api";
+
 const FOLLOW                  = "FOLLOW";
 const UNFOLLOW                = "UNFOLLOW";
 const SET_STAE                = "SET_STATE";
@@ -216,6 +218,34 @@ export const changeFollowingStatus = (status, userId) => {
         type                  : CHANGE_FOLLOWING_STATUS,
         isFollowingInProgress : status,
         userId                : userId
+    }
+}
+
+//Thunk function
+export const getUsersThunkCreator = (pageSize, currentPage, yourConfig) => {
+    return (dispatch) => {
+        dispatch(changeFetchingStatus(true));
+        GetUsers(pageSize, currentPage, yourConfig).then((response) => {
+            debugger;
+            dispatch(changeFetchingStatus(false));
+            console.log(response.status);
+            if(response.status === 200){
+                debugger;
+                console.log(response.data);
+                dispatch(set_Data_Local_Server(response.data.users));
+                dispatch(setPageCount(response.data.pageCount));
+            }
+            else{
+                alert("Error");
+            }
+            
+    
+        }).catch((error)=>{
+            alert(error.message);
+            dispatch(changeFetchingStatus(false));
+            // dispatch(setState(usersNew));
+            // dispatch(setPageCount(pageTestCount));
+        });
     }
 }
 
